@@ -1,0 +1,149 @@
+﻿<Page x:Class="UpaProject.Equipments.PageAsuEq"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UpaProject.Equipments"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAsuEq">
+<!--Бяда-->
+    <DockPanel LastChildFill="True"
+               Background="White">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    DockPanel.Dock="Top">
+            <ComboBox Name="CmbDepartment"
+                      ItemsSource="{Binding DepartmentName}"
+                      Style="{StaticResource CmbCatalog}"
+                      Width="700"
+                      IsEditable="False"
+                      Height="35"
+                      Margin="0,5"/>
+            <Button Name="btnOk"
+                    Style="{StaticResource ButtonOK}"
+                    Click="BtnOk_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="GridList"                  
+                  DockPanel.Dock="Top"
+                  HorizontalAlignment="Left"
+                  SelectionMode="Single"
+                  Margin="20" 
+                  FontSize="14" 
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  
+                  AutoGenerateColumns="False"
+                  CanUserResizeColumns="True">
+            <DataGrid.Columns >
+               
+                <DataGridTextColumn Header="№ЕО" 
+                                                CanUserResize="True" 
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding UnitEq}" />
+                <DataGridTextColumn Header="Название системы АСУ" 
+                                                CanUserResize="True" 
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding TechObjName}" />
+                <DataGridTextColumn Header="Отделение"
+                                                CanUserResize="True"
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding DepartmentEq.DepartmentName}" />
+                <DataGridTextColumn Header="Группа планирования"
+                                                CanUserResize="True" 
+                                                IsReadOnly="true"
+                                                Width="160"
+                                                Binding="{Binding GroupOfPlanners}" />
+                <DataGridTextColumn Header="ЗаводРасположТехнОб"
+                                                CanUserResize="True" 
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding FactoryLocationTechEq}"/>
+                <DataGridTextColumn Header="ОтветствРабМесто"
+                                                CanUserResize="True"
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding ResponsibleWorkplace}"/>
+                <DataGridTextColumn Header="ТипЕдОборуд"
+                                                CanUserResize="True"
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding EqUnitType}" />
+                <DataGridTextColumn Header="Код ABC"
+                                                CanUserResize="True"
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding CodeABC}"/>
+                <DataGridTextColumn Header="Название технического места"
+                                                CanUserResize="True" 
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding TechPlaceName}" />
+                <DataGridTextColumn Header="Пользовательский статус"
+                                                CanUserResize="True" 
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding UseStatus}"/>
+                <DataGridTextColumn Header="Серийный номер изготовителя" 
+                                                CanUserResize="True" 
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding SerialNumber}" />
+                <DataGridTextColumn Header="ДатВвода в эксплуат."
+                                                CanUserResize="True" 
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding ExplStartDate}"/>
+                <DataGridTextColumn Header="МВЗ" 
+                                                CanUserResize="True" 
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding MVZ}"/>
+                <DataGridTextColumn Header="Системный статус"
+                                                CanUserResize="True"
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding SysStatus}"/>
+                <DataGridTextColumn Header="Дата создания" 
+                                                CanUserResize="True" 
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding CreatedAt}"/>
+                <DataGridTextColumn Header="Дата обновления"
+                                                CanUserResize="True"
+                                                IsReadOnly="true" 
+                                                Width="auto"
+                                                Binding="{Binding UpdateAt}"/>
+                <DataGridTextColumn Header="Редактор"
+                                                CanUserResize="True"
+                                                IsReadOnly="true"
+                                                Width="auto"
+                                                Binding="{Binding LastWriter}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEdit"
+                                    Style="{StaticResource ButtonFrame}"
+                                    Content="Внести изменения"
+                                    FontSize="12pt"
+                                    FontWeight="Normal"
+                                    Padding="1"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--Решить проблему связанную с вытеснением элемента-->
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom">
+            <TextBlock Text="Дата последнего обновления:"/>
+            <TextBlock Name="TxtDateUpdate"
+                       Text=""/>
+        </StackPanel>
+    </DockPanel>
+</Page>

@@ -1,0 +1,283 @@
+﻿<Window x:Class="UpaProject.Journals.WindowNewSubj"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UpaProject.Journals"
+        mc:Ignorable="d"
+        Title="Новое событие"
+        MaxHeight="485" 
+        MinHeight="485" 
+        MinWidth="770"
+        Width="770"
+        WindowStyle="ToolWindow">
+    <DockPanel LastChildFill="False">
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    DockPanel.Dock="Top">
+            <TextBlock Margin="0,0,0,0"
+                       TextWrapping="Wrap" 
+                       Text="Cмена "
+                       FontFamily="Franklin Gothic Heavy"
+                       FontWeight="Bold"
+                       Foreground="#FF05090C"
+                       TextAlignment="Center"
+                       Height="auto"
+                       FontSize="24"/>
+            <TextBlock Margin="0,0,0,0"
+                       TextWrapping="Wrap" 
+                       Text="{Binding SelectedItem.DateStartShift,StringFormat=dd.MM.yyyy,ElementName=GridDutyPers}"
+                       FontFamily="Franklin Gothic Heavy"
+                       FontWeight="Bold"
+                       Foreground="#FF05090C"
+                       TextAlignment="Center"
+                       Height="auto"
+                       FontSize="24"/>
+            <TextBlock Margin="0,0,0,0"
+                       TextWrapping="Wrap" 
+                       Text=" - "
+                       FontFamily="Franklin Gothic Heavy"
+                       FontWeight="Bold"
+                       Foreground="#FF05090C"
+                       TextAlignment="Center"
+                       Height="auto"
+                       FontSize="24"/>
+            <TextBlock Margin="0,0,0,0"
+                       TextWrapping="Wrap" 
+                       Text="{Binding SelectedItem.DateEndShift,StringFormat=dd.MM.yyyy,ElementName=GridDutyPers}"
+                       FontFamily="Franklin Gothic Heavy"
+                       FontWeight="Bold"
+                       Foreground="#FF05090C"
+                       TextAlignment="Center"
+                       Height="auto"
+                       FontSize="24"/>
+        </StackPanel>
+        <DataGrid x:Name="GridDutyPers"
+                  DockPanel.Dock="Top"
+                  SelectionMode="Extended"  
+                  HorizontalScrollBarVisibility="Hidden"
+                  Height="auto" 
+                  FontSize="14" 
+                  CanUserResizeColumns="True" 
+                  IsReadOnly="true" 
+                  ColumnWidth="*"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Дежурный инженер КИПиа"                                          
+                                        Binding="{Binding Engineers.SNP}" />
+                <DataGridTextColumn Header="Дежурный инженер АСУ"
+                                        Binding="{Binding Engineers1.SNP}"/>
+                <DataGridTextColumn Header="Дежурный слесарь" 
+                                        Binding="{Binding Repairmens.SNP}"/>
+                <DataGridTextColumn Header="Дежурный слесарь" 
+                                        Binding="{Binding Repairmens1.SNP}" />
+                <DataGridTextColumn Header="Дежурный слесарь" 
+                                        Binding="{Binding Repairmens2.SNP}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            Margin="5,0"
+                            VerticalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" 
+                           VerticalAlignment="Center"
+                           Text="Время начала:" 
+                           Margin="5" />
+                <TextBox x:Name="TxbTimeStart" 
+                         VerticalAlignment="Center"
+                         Text="12:30"
+                         Margin="5"
+                         Padding="5,4" 
+                         BorderBrush="Black"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                            Margin="5,0"
+                            VerticalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" 
+                           VerticalAlignment="Center"
+                           Text="Время окончания:"
+                           Margin="5" />
+                <TextBox x:Name="TxbTimeEnd" 
+                         VerticalAlignment="Center" 
+                         Text="13:30"
+                         Margin="5"
+                         Padding="5,4" 
+                         BorderBrush="Black"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                            Margin="5,0"
+                            VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" 
+                           Text="Критичность:" 
+                           Margin="5"/>
+                <ComboBox x:Name="CmbSeriousness" 
+                          VerticalAlignment="Center"
+                          SelectedIndex="1"
+                          Margin="5"
+                          Width="170"
+                          BorderBrush="Black"
+                          FontFamily="Franklin Gothic Heavy"
+                          FontSize="11pt"
+                          FontWeight="DemiBold" >
+                    <ComboBoxItem Content="0-Ложный вызов"/>
+                    <ComboBoxItem Content="1-Остановки оборудования не было"/>
+                    <ComboBoxItem Content="2-Оборудование было остановлено"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center"  
+                           Text="Отделение"  
+                           Margin="5,0"
+                           Width="120"/>
+            <ComboBox IsReadOnly="False"
+                          IsEditable="True"
+                          StaysOpenOnEdit ="True"
+                          x:Name="CmbDepartment" 
+                          ItemsSource="{Binding}" 
+                          VerticalAlignment="Center" 
+                          Text="" 
+                          Margin="5"
+                          MinWidth="600"
+                          BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center"
+                           Text="Система АСУ"  
+                           Margin="5,0"
+                           Width="120"/>
+            <ComboBox IsReadOnly="False"
+                          IsEditable="True"
+                          StaysOpenOnEdit ="True"
+                          x:Name="CmbSystemASU" 
+                          ItemsSource="{Binding}" 
+                          VerticalAlignment="Center" 
+                          Text=""
+                          Margin="5" 
+                          Width="600" 
+                          BorderBrush="Black"/>
+        </StackPanel>
+        <DockPanel LastChildFill="True"
+                   DockPanel.Dock="Top">
+            <StackPanel DockPanel.Dock="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center"
+                                   Text="Тег осн. оборудования:"  
+                                   Margin="5,0" 
+                                   Width="180"/>
+                    <ComboBox x:Name="CmbTagMainEq"
+                                  IsReadOnly="False" 
+                                  IsEditable="True"
+                                  StaysOpenOnEdit ="True"
+                                  VerticalAlignment="Center" 
+                                  Text="" Margin="5" 
+                                  Width="150"
+                                  BorderBrush="Black"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center"
+                                   Text="Теговый номер:" 
+                                   Margin="5,0"
+                                   Width="180"/>
+                    <ComboBox x:Name="CmbTag"
+                                  IsReadOnly="False" 
+                                  IsEditable="True"
+                                  StaysOpenOnEdit ="True" 
+                                  VerticalAlignment="Center"
+                                  Text="" 
+                                  Margin="5"
+                                  Width="150"
+                                  BorderBrush="Black"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0,0,28,0">
+                <TextBlock HorizontalAlignment="Left" 
+                                   Text="Исполнители:" 
+                                   Margin="15,0"
+                                   Width="130" />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical"
+                                    Margin="10,0,10,0">
+                        <CheckBox Content="{Binding SelectedItem.Engineers.SNP,ElementName=GridDutyPers}"
+                                  Name="ChbEngineer"/>
+                        <CheckBox Content="{Binding SelectedItem.Engineers1.SNP,ElementName=GridDutyPers}"
+                                  Name="ChbEngineer1"/>
+                        <CheckBox Content="{Binding SelectedItem.Repairmens.SNP,ElementName=GridDutyPers}"
+                                  Name="ChbRepairmen"/>
+                        <CheckBox Content="{Binding SelectedItem.Repairmens1.SNP,ElementName=GridDutyPers}"
+                                  Name="ChbRepairmen1"/>
+                        <CheckBox Content="{Binding SelectedItem.Repairmens2.SNP,ElementName=GridDutyPers}"
+                                  Name="ChbRepairmen2"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center" 
+                           Text="Событие:" 
+                           Margin="5,0"
+                           Width="120"/>
+            <TextBox x:Name="TxbEvent"
+                         VerticalAlignment="Center"  
+                         Text="" 
+                         Margin="5"
+                         Width="600" 
+                         BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal"
+                     DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center" 
+                           Text="Причина:"  
+                           Margin="5,0"
+                           Width="120"/>
+            <TextBox x:Name="TxbCause"
+                         VerticalAlignment="Center" 
+                         Text=""
+                         Margin="5"
+                         Width="600" 
+                         BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center" 
+                           Text="Решение:" 
+                           Margin="5,0"
+                           Width="120"/>
+            <TextBox x:Name="TxbElimination"
+                         VerticalAlignment="Center" 
+                         Text=""
+                         Margin="5"
+                         Width="600" 
+                         BorderBrush="Black"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock VerticalAlignment="Center"
+                           Text="Комментарий:"  
+                           Margin="5,0"
+                           Width="120"/>
+            <TextBox x:Name="TxbComment" 
+                         VerticalAlignment="Center"
+                         Text="" 
+                         Margin="5"
+                         Width="600"
+                         BorderBrush="Black" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top"
+                    HorizontalAlignment="Center">
+            <Button x:Name="BtnAddNewSubj"
+                    Content="Добавить новое событие"
+                    Style="{StaticResource ButtonFrame}" 
+                    HorizontalAlignment="Center"
+                    FontSize="14pt"
+                    Click="BtnAddNewSubj_Click"/>
+        </StackPanel>
+
+    </DockPanel>
+</Window>

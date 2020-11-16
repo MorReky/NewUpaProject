@@ -1,0 +1,120 @@
+﻿<Page x:Class="UpaProject.Journals.PageOpJournal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UpaProject.Journals"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Оперативный журнал">
+
+    <StackPanel Background="White">
+        <StackPanel Orientation="Horizontal">
+            
+            <Button Content="Новая смена"
+                    Name="BtnNewTurn"
+                    Click="BtnNewTurn_Click"
+                    Style="{StaticResource ButtonFrame}"/>
+            <Button Content="Создать событие"
+                    Name="BtnNewSubj"
+                    Click="BtnNewSubj_Click"
+                    Style="{StaticResource ButtonFrame}"/>
+            <Button Content="Сформировать документ Excel"
+                    Style="{StaticResource ButtonFrame}"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Последняя открытая смена от:"/>
+                <TextBlock Text="*Дата*"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="GridList"
+                      ColumnWidth="auto"
+                      SelectionMode="Single"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"  
+                      Margin="10,10,10,10" 
+                      FontSize="14"
+                      FrozenColumnCount="1"
+                      AutoGenerateColumns="False" >
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF26619B" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns >
+                <!--<DataGridTextColumn  Header="Время создания записи"  CanUserResize="True" IsReadOnly="true"  Binding="{Binding RecDate }" Width="10" />-->
+                <DataGridTextColumn  
+                        Header="Время начала события" 
+                        CanUserResize="True"
+                        IsReadOnly="true" 
+                        Binding="{Binding TimeOccurrence}" 
+                        Width="auto" />
+                <DataGridTextColumn  Header="Время окончания события"  
+                                         CanUserResize="True" 
+                                         IsReadOnly="true" 
+                                         Binding="{Binding TimeSolution}" 
+                                         Width="auto" />
+                <DataGridTextColumn Header="Критичность" 
+                                        CanUserResize="True" 
+                                        IsReadOnly="true"
+                                        Binding="{Binding Emergency}"
+                                        Width="auto"/>
+                <DataGridTextColumn Header="Отделение"
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding AsuEq.AsuMainEq.ItemsOfEq.DepartmentEq.DepartmentName}" 
+                                        Width="auto" />
+                <DataGridTextColumn Header="Система АСУ" 
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding AsuEq.AsuMainEq.ItemsOfEq.TechObjName}"
+                                        Width="auto" />
+                <DataGridTextColumn Header="Осн. оборуд. АСУ"
+                                        CanUserResize="True"
+                                        IsReadOnly="true"
+                                        Binding="{Binding AsuEq.AsuMainEq.TagAsuMainEq}"
+                                        Width="auto" />
+                <DataGridTextColumn Header="Дисп.Наименование"
+                                        CanUserResize="True"
+                                        IsReadOnly="true"
+                                        Binding="{Binding AsuEq.TagAsuEq}"
+                                        Width="auto" />
+                <DataGridTextColumn Header="Событие"
+                                        CanUserResize="True"
+                                        IsReadOnly="true" 
+                                        Binding="{Binding Event}"
+                                        Width="auto" />
+                <DataGridTextColumn Header="Причина"
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding WhatHappend}" 
+                                        Width="auto"/>
+                <DataGridTextColumn Header="Устранение" 
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding WhatDoing}" 
+                                        Width="auto"/>
+                <DataGridTextColumn Header="Комментарий" 
+                                        CanUserResize="True" 
+                                        IsReadOnly="true"
+                                        Binding="{Binding Comments}" 
+                                        Width="auto"/>
+                <DataGridTextColumn Header="Доб.запись" 
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding Writer}" 
+                                        Width="auto"/>
+                <DataGridTextColumn Header="Исполнители"
+                                        CanUserResize="True" 
+                                        IsReadOnly="true" 
+                                        Binding="{Binding Perfomers}"
+                                        Width="auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Page>

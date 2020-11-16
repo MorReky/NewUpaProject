@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище UPAOborotModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsuEq">
+          <Key>
+            <PropertyRef Name="IdAsuEq" />
+          </Key>
+          <Property Name="IdAsuEq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAsuMainEq" Type="int" />
+          <Property Name="TagAsuEq" Type="varchar" MaxLength="20" />
+          <Property Name="NameAsuEq" Type="varchar" MaxLength="10" />
+          <Property Name="PlaceAsuEq" Type="varchar" MaxLength="10" />
+          <Property Name="PidAsuEq" Type="varchar" MaxLength="10" />
+          <Property Name="PlaceSchemeAsuEq" Type="varchar" MaxLength="10" />
+          <Property Name="Comments" Type="varchar" MaxLength="100" />
+          <Property Name="MaintenancePeriod" Type="date" />
+          <Property Name="NextMaintencePeriod" Type="date" />
+          <Property Name="LastMaintencePeriod" Type="date" />
+          <Property Name="Sheme" Type="varchar" MaxLength="10" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AsuMainEq">
+          <Key>
+            <PropertyRef Name="IdAsuMainEq" />
+          </Key>
+          <Property Name="IdAsuMainEq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdItemsOfEq" Type="int" />
+          <Property Name="TagAsuMainEq" Type="varchar" MaxLength="20" />
+          <Property Name="NameAsuMainEq" Type="varchar" MaxLength="60" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Writer" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DepartmentEq">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Engineers">
+          <Key>
+            <PropertyRef Name="IDEng" />
+          </Key>
+          <Property Name="IDEng" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SNP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EqList">
+          <Key>
+            <PropertyRef Name="IdEqList" />
+          </Key>
+          <Property Name="IdEqList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEqType" Type="int" />
+          <Property Name="GlobalId" Type="varchar" MaxLength="50" />
+          <Property Name="NameAbbreviated" Type="varchar" MaxLength="150" />
+          <Property Name="FullName" Type="varchar" MaxLength="600" />
+          <Property Name="BaseUnit" Type="varchar" MaxLength="50" />
+          <Property Name="NameASU_MTR" Type="varchar" MaxLength="200" />
+          <Property Name="BrandAndSize" Type="varchar" MaxLength="70" />
+          <Property Name="CatalogNumberAndGost" Type="varchar" MaxLength="70" />
+          <Property Name="MaterialGrade" Type="varchar" MaxLength="50" />
+          <Property Name="DrawingNumber" Type="varchar" MaxLength="50" />
+          <Property Name="TechnicalSpecifications" Type="varchar" MaxLength="600" />
+          <Property Name="Equipment" Type="varchar" MaxLength="200" />
+          <Property Name="TypeMTRName" Type="varchar" MaxLength="50" />
+          <Property Name="ManufacturerGlobalIentifier" Type="varchar" MaxLength="50" />
+          <Property Name="ManufacturerName" Type="varchar" MaxLength="150" />
+          <Property Name="MTPClassClassCode" Type="varchar" MaxLength="50" />
+          <Property Name="MTPClassClassName" Type="varchar" MaxLength="150" />
+          <Property Name="Comments" Type="varchar" MaxLength="100" />
+          <Property Name="OperationOfEquipmentOF" Type="bit" />
+          <Property Name="OperationOfEquipmentMPP" Type="bit" />
+          <Property Name="Manual" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EqType">
+          <Key>
+            <PropertyRef Name="IdEqType" />
+          </Key>
+          <Property Name="IdEqType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EqTypeName" Type="varchar" MaxLength="200" />
+          <Property Name="EqTypeComment" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Equipments">
+          <Key>
+            <PropertyRef Name="IdEq" />
+          </Key>
+          <Property Name="IdEq" Type="int" Nullable="false" />
+          <Property Name="IdAsuEq" Type="int" />
+          <Property Name="IdEqList" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemsOfEq">
+          <Key>
+            <PropertyRef Name="IdItemsOfEq" />
+          </Key>
+          <Property Name="IdItemsOfEq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitEq" Type="varchar" MaxLength="30" />
+          <Property Name="TechObjName" Type="varchar" MaxLength="50" />
+          <Property Name="IdDepartment" Type="int" />
+          <Property Name="GroupOfPlanners" Type="varchar" MaxLength="50" />
+          <Property Name="FactoryLocationTechEq" Type="varchar" MaxLength="10" />
+          <Property Name="ResponsibleWorkplace" Type="varchar" MaxLength="10" />
+          <Property Name="EqUnitType" Type="varchar" MaxLength="1" />
+          <Property Name="CodeABC" Type="varchar" MaxLength="10" />
+          <Property Name="TechPlace" Type="varchar" MaxLength="50" />
+          <Property Name="TechPlaceName" Type="varchar" MaxLength="60" />
+          <Property Name="UseStatus" Type="varchar" MaxLength="4" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ExplStartDate" Type="date" />
+          <Property Name="MVZ" Type="varchar" MaxLength="10" />
+          <Property Name="PrymaryMeans" Type="varchar" MaxLength="12" />
+          <Property Name="InventoryNum" Type="varchar" MaxLength="12" />
+          <Property Name="SysStatus" Type="varchar" MaxLength="4" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="LastWriter" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OpLogJournal">
+          <Key>
+            <PropertyRef Name="IdOpLogBook" />
+          </Key>
+          <Property Name="IdOpLogBook" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShift" Type="int" />
+          <Property Name="RecordingDate" Type="varchar" MaxLength="50" />
+          <Property Name="TimeOccurrence" Type="varchar" MaxLength="50" />
+          <Property Name="TimeSolution" Type="varchar" MaxLength="50" />
+          <Property Name="Emergency" Type="int" />
+          <Property Name="IdAsuEq" Type="int" />
+          <Property Name="Event" Type="varchar" MaxLength="200" />
+          <Property Name="WhatHappend" Type="varchar" MaxLength="200" />
+          <Property Name="WhatDoing" Type="varchar" MaxLength="200" />
+          <Property Name="Comments" Type="varchar" MaxLength="500" />
+          <Property Name="Writer" Type="varchar" MaxLength="50" />
+          <Property Name="Perfomers" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Repairmens">
+          <Key>
+            <PropertyRef Name="IDRep" />
+          </Key>
+          <Property Name="IDRep" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SNP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="IdShift" />
+          </Key>
+          <Property Name="IdShift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateStartShift" Type="date" />
+          <Property Name="DateEndShift" Type="date" />
+          <Property Name="DutyEngKIP" Type="int" />
+          <Property Name="DutyEngASU" Type="int" />
+          <Property Name="DutyRep1" Type="int" />
+          <Property Name="DutyRep2" Type="int" />
+          <Property Name="DutyRep3" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_AsuEq_AsuMainEq">
+          <End Role="AsuMainEq" Type="Self.AsuMainEq" Multiplicity="0..1" />
+          <End Role="AsuEq" Type="Self.AsuEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuMainEq">
+              <PropertyRef Name="IdAsuMainEq" />
+            </Principal>
+            <Dependent Role="AsuEq">
+              <PropertyRef Name="IdAsuMainEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsuMainEq_ItemsOfEq">
+          <End Role="ItemsOfEq" Type="Self.ItemsOfEq" Multiplicity="0..1" />
+          <End Role="AsuMainEq" Type="Self.AsuMainEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsOfEq">
+              <PropertyRef Name="IdItemsOfEq" />
+            </Principal>
+            <Dependent Role="AsuMainEq">
+              <PropertyRef Name="IdItemsOfEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EqList_EqType">
+          <End Role="EqType" Type="Self.EqType" Multiplicity="0..1" />
+          <End Role="EqList" Type="Self.EqList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EqType">
+              <PropertyRef Name="IdEqType" />
+            </Principal>
+            <Dependent Role="EqList">
+              <PropertyRef Name="IdEqType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_AsuEq">
+          <End Role="AsuEq" Type="Self.AsuEq" Multiplicity="0..1" />
+          <End Role="Equipments" Type="Self.Equipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuEq">
+              <PropertyRef Name="IdAsuEq" />
+            </Principal>
+            <Dependent Role="Equipments">
+              <PropertyRef Name="IdAsuEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_EqList">
+          <End Role="EqList" Type="Self.EqList" Multiplicity="1" />
+          <End Role="Equipments" Type="Self.Equipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EqList">
+              <PropertyRef Name="IdEqList" />
+            </Principal>
+            <Dependent Role="Equipments">
+              <PropertyRef Name="IdEqList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsOfEq_DepartmentEq">
+          <End Role="DepartmentEq" Type="Self.DepartmentEq" Multiplicity="0..1" />
+          <End Role="ItemsOfEq" Type="Self.ItemsOfEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentEq">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="ItemsOfEq">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpLogBook_AsuEq1">
+          <End Role="AsuEq" Type="Self.AsuEq" Multiplicity="0..1" />
+          <End Role="OpLogJournal" Type="Self.OpLogJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuEq">
+              <PropertyRef Name="IdAsuEq" />
+            </Principal>
+            <Dependent Role="OpLogJournal">
+              <PropertyRef Name="IdAsuEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpLogBook_Shifts">
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="0..1" />
+          <End Role="OpLogJournal" Type="Self.OpLogJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shifts">
+              <PropertyRef Name="IdShift" />
+            </Principal>
+            <Dependent Role="OpLogJournal">
+              <PropertyRef Name="IdShift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Engineers">
+          <End Role="Engineers" Type="Self.Engineers" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engineers">
+              <PropertyRef Name="IDEng" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyEngKIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Engineers1">
+          <End Role="Engineers" Type="Self.Engineers" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engineers">
+              <PropertyRef Name="IDEng" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyEngASU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens">
+          <End Role="Repairmens" Type="Self.Repairmens" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens1">
+          <End Role="Repairmens" Type="Self.Repairmens" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens2">
+          <End Role="Repairmens" Type="Self.Repairmens" Multiplicity="0..1" />
+          <End Role="Shifts" Type="Self.Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UPAOborotModelContainer">
+          <EntitySet Name="AsuEq" EntityType="Self.AsuEq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsuMainEq" EntityType="Self.AsuMainEq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentEq" EntityType="Self.DepartmentEq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engineers" EntityType="Self.Engineers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EqList" EntityType="Self.EqList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EqType" EntityType="Self.EqType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipments" EntityType="Self.Equipments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsOfEq" EntityType="Self.ItemsOfEq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpLogJournal" EntityType="Self.OpLogJournal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repairmens" EntityType="Self.Repairmens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AsuEq_AsuMainEq" Association="Self.FK_AsuEq_AsuMainEq">
+            <End Role="AsuMainEq" EntitySet="AsuMainEq" />
+            <End Role="AsuEq" EntitySet="AsuEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsuMainEq_ItemsOfEq" Association="Self.FK_AsuMainEq_ItemsOfEq">
+            <End Role="ItemsOfEq" EntitySet="ItemsOfEq" />
+            <End Role="AsuMainEq" EntitySet="AsuMainEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EqList_EqType" Association="Self.FK_EqList_EqType">
+            <End Role="EqType" EntitySet="EqType" />
+            <End Role="EqList" EntitySet="EqList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_AsuEq" Association="Self.FK_Equipments_AsuEq">
+            <End Role="AsuEq" EntitySet="AsuEq" />
+            <End Role="Equipments" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_EqList" Association="Self.FK_Equipments_EqList">
+            <End Role="EqList" EntitySet="EqList" />
+            <End Role="Equipments" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsOfEq_DepartmentEq" Association="Self.FK_ItemsOfEq_DepartmentEq">
+            <End Role="DepartmentEq" EntitySet="DepartmentEq" />
+            <End Role="ItemsOfEq" EntitySet="ItemsOfEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpLogBook_AsuEq1" Association="Self.FK_OpLogBook_AsuEq1">
+            <End Role="AsuEq" EntitySet="AsuEq" />
+            <End Role="OpLogJournal" EntitySet="OpLogJournal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpLogBook_Shifts" Association="Self.FK_OpLogBook_Shifts">
+            <End Role="Shifts" EntitySet="Shifts" />
+            <End Role="OpLogJournal" EntitySet="OpLogJournal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Engineers" Association="Self.FK_Shifts_Engineers">
+            <End Role="Engineers" EntitySet="Engineers" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Engineers1" Association="Self.FK_Shifts_Engineers1">
+            <End Role="Engineers" EntitySet="Engineers" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens" Association="Self.FK_Shifts_Repairmens">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens1" Association="Self.FK_Shifts_Repairmens1">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens2" Association="Self.FK_Shifts_Repairmens2">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UPAOborotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UPAOborotEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsuEq" EntityType="UPAOborotModel.AsuEq" />
+          <EntitySet Name="AsuMainEq" EntityType="UPAOborotModel.AsuMainEq" />
+          <EntitySet Name="DepartmentEq" EntityType="UPAOborotModel.DepartmentEq" />
+          <EntitySet Name="Engineers" EntityType="UPAOborotModel.Engineers" />
+          <EntitySet Name="EqList" EntityType="UPAOborotModel.EqList" />
+          <EntitySet Name="EqType" EntityType="UPAOborotModel.EqType" />
+          <EntitySet Name="Equipments" EntityType="UPAOborotModel.Equipments" />
+          <EntitySet Name="ItemsOfEq" EntityType="UPAOborotModel.ItemsOfEq" />
+          <EntitySet Name="OpLogJournal" EntityType="UPAOborotModel.OpLogJournal" />
+          <EntitySet Name="Repairmens" EntityType="UPAOborotModel.Repairmens" />
+          <EntitySet Name="Shifts" EntityType="UPAOborotModel.Shifts" />
+          <EntitySet Name="sysdiagrams" EntityType="UPAOborotModel.sysdiagrams" />
+          <AssociationSet Name="FK_AsuEq_AsuMainEq" Association="UPAOborotModel.FK_AsuEq_AsuMainEq">
+            <End Role="AsuMainEq" EntitySet="AsuMainEq" />
+            <End Role="AsuEq" EntitySet="AsuEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_AsuEq" Association="UPAOborotModel.FK_Equipments_AsuEq">
+            <End Role="AsuEq" EntitySet="AsuEq" />
+            <End Role="Equipments" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpLogBook_AsuEq1" Association="UPAOborotModel.FK_OpLogBook_AsuEq1">
+            <End Role="AsuEq" EntitySet="AsuEq" />
+            <End Role="OpLogJournal" EntitySet="OpLogJournal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsuMainEq_ItemsOfEq" Association="UPAOborotModel.FK_AsuMainEq_ItemsOfEq">
+            <End Role="ItemsOfEq" EntitySet="ItemsOfEq" />
+            <End Role="AsuMainEq" EntitySet="AsuMainEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsOfEq_DepartmentEq" Association="UPAOborotModel.FK_ItemsOfEq_DepartmentEq">
+            <End Role="DepartmentEq" EntitySet="DepartmentEq" />
+            <End Role="ItemsOfEq" EntitySet="ItemsOfEq" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Engineers" Association="UPAOborotModel.FK_Shifts_Engineers">
+            <End Role="Engineers" EntitySet="Engineers" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Engineers1" Association="UPAOborotModel.FK_Shifts_Engineers1">
+            <End Role="Engineers" EntitySet="Engineers" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EqList_EqType" Association="UPAOborotModel.FK_EqList_EqType">
+            <End Role="EqType" EntitySet="EqType" />
+            <End Role="EqList" EntitySet="EqList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_EqList" Association="UPAOborotModel.FK_Equipments_EqList">
+            <End Role="EqList" EntitySet="EqList" />
+            <End Role="Equipments" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpLogBook_Shifts" Association="UPAOborotModel.FK_OpLogBook_Shifts">
+            <End Role="Shifts" EntitySet="Shifts" />
+            <End Role="OpLogJournal" EntitySet="OpLogJournal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens" Association="UPAOborotModel.FK_Shifts_Repairmens">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens1" Association="UPAOborotModel.FK_Shifts_Repairmens1">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shifts_Repairmens2" Association="UPAOborotModel.FK_Shifts_Repairmens2">
+            <End Role="Repairmens" EntitySet="Repairmens" />
+            <End Role="Shifts" EntitySet="Shifts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AsuEq">
+          <Key>
+            <PropertyRef Name="IdAsuEq" />
+          </Key>
+          <Property Name="IdAsuEq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAsuMainEq" Type="Int32" />
+          <Property Name="TagAsuEq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NameAsuEq" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceAsuEq" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PidAsuEq" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceSchemeAsuEq" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MaintenancePeriod" Type="DateTime" Precision="0" />
+          <Property Name="NextMaintencePeriod" Type="DateTime" Precision="0" />
+          <Property Name="LastMaintencePeriod" Type="DateTime" Precision="0" />
+          <Property Name="Sheme" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AsuMainEq" Relationship="UPAOborotModel.FK_AsuEq_AsuMainEq" FromRole="AsuEq" ToRole="AsuMainEq" />
+          <NavigationProperty Name="Equipments" Relationship="UPAOborotModel.FK_Equipments_AsuEq" FromRole="AsuEq" ToRole="Equipments" />
+          <NavigationProperty Name="OpLogJournal" Relationship="UPAOborotModel.FK_OpLogBook_AsuEq1" FromRole="AsuEq" ToRole="OpLogJournal" />
+        </EntityType>
+        <EntityType Name="AsuMainEq">
+          <Key>
+            <PropertyRef Name="IdAsuMainEq" />
+          </Key>
+          <Property Name="IdAsuMainEq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdItemsOfEq" Type="Int32" />
+          <Property Name="TagAsuMainEq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NameAsuMainEq" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Writer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsuEq" Relationship="UPAOborotModel.FK_AsuEq_AsuMainEq" FromRole="AsuMainEq" ToRole="AsuEq" />
+          <NavigationProperty Name="ItemsOfEq" Relationship="UPAOborotModel.FK_AsuMainEq_ItemsOfEq" FromRole="AsuMainEq" ToRole="ItemsOfEq" />
+        </EntityType>
+        <EntityType Name="DepartmentEq">
+          <Key>
+            <PropertyRef Name="IdDepartment" />
+          </Key>
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ItemsOfEq" Relationship="UPAOborotModel.FK_ItemsOfEq_DepartmentEq" FromRole="DepartmentEq" ToRole="ItemsOfEq" />
+        </EntityType>
+        <EntityType Name="Engineers">
+          <Key>
+            <PropertyRef Name="IDEng" />
+          </Key>
+          <Property Name="IDEng" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SNP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Shifts" Relationship="UPAOborotModel.FK_Shifts_Engineers" FromRole="Engineers" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts1" Relationship="UPAOborotModel.FK_Shifts_Engineers1" FromRole="Engineers" ToRole="Shifts" />
+        </EntityType>
+        <EntityType Name="EqList">
+          <Key>
+            <PropertyRef Name="IdEqList" />
+          </Key>
+          <Property Name="IdEqList" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEqType" Type="Int32" />
+          <Property Name="GlobalId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameAbbreviated" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="BaseUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameASU_MTR" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BrandAndSize" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="CatalogNumberAndGost" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="MaterialGrade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DrawingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TechnicalSpecifications" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="Equipment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TypeMTRName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturerGlobalIentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MTPClassClassCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MTPClassClassName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OperationOfEquipmentOF" Type="Boolean" />
+          <Property Name="OperationOfEquipmentMPP" Type="Boolean" />
+          <Property Name="Manual" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EqType" Relationship="UPAOborotModel.FK_EqList_EqType" FromRole="EqList" ToRole="EqType" />
+          <NavigationProperty Name="Equipments" Relationship="UPAOborotModel.FK_Equipments_EqList" FromRole="EqList" ToRole="Equipments" />
+        </EntityType>
+        <EntityType Name="EqType">
+          <Key>
+            <PropertyRef Name="IdEqType" />
+          </Key>
+          <Property Name="IdEqType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EqTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EqTypeComment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EqList" Relationship="UPAOborotModel.FK_EqList_EqType" FromRole="EqType" ToRole="EqList" />
+        </EntityType>
+        <EntityType Name="Equipments">
+          <Key>
+            <PropertyRef Name="IdEq" />
+          </Key>
+          <Property Name="IdEq" Type="Int32" Nullable="false" />
+          <Property Name="IdAsuEq" Type="Int32" />
+          <Property Name="IdEqList" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AsuEq" Relationship="UPAOborotModel.FK_Equipments_AsuEq" FromRole="Equipments" ToRole="AsuEq" />
+          <NavigationProperty Name="EqList" Relationship="UPAOborotModel.FK_Equipments_EqList" FromRole="Equipments" ToRole="EqList" />
+        </EntityType>
+        <EntityType Name="ItemsOfEq">
+          <Key>
+            <PropertyRef Name="IdItemsOfEq" />
+          </Key>
+          <Property Name="IdItemsOfEq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitEq" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TechObjName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdDepartment" Type="Int32" />
+          <Property Name="GroupOfPlanners" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FactoryLocationTechEq" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ResponsibleWorkplace" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EqUnitType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CodeABC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TechPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TechPlaceName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="UseStatus" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExplStartDate" Type="DateTime" Precision="0" />
+          <Property Name="MVZ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PrymaryMeans" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="InventoryNum" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SysStatus" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="LastWriter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsuMainEq" Relationship="UPAOborotModel.FK_AsuMainEq_ItemsOfEq" FromRole="ItemsOfEq" ToRole="AsuMainEq" />
+          <NavigationProperty Name="DepartmentEq" Relationship="UPAOborotModel.FK_ItemsOfEq_DepartmentEq" FromRole="ItemsOfEq" ToRole="DepartmentEq" />
+        </EntityType>
+        <EntityType Name="OpLogJournal">
+          <Key>
+            <PropertyRef Name="IdOpLogBook" />
+          </Key>
+          <Property Name="IdOpLogBook" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShift" Type="Int32" />
+          <Property Name="RecordingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeOccurrence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeSolution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emergency" Type="Int32" />
+          <Property Name="IdAsuEq" Type="Int32" />
+          <Property Name="Event" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="WhatHappend" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="WhatDoing" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Writer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Perfomers" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsuEq" Relationship="UPAOborotModel.FK_OpLogBook_AsuEq1" FromRole="OpLogJournal" ToRole="AsuEq" />
+          <NavigationProperty Name="Shifts" Relationship="UPAOborotModel.FK_OpLogBook_Shifts" FromRole="OpLogJournal" ToRole="Shifts" />
+        </EntityType>
+        <EntityType Name="Repairmens">
+          <Key>
+            <PropertyRef Name="IDRep" />
+          </Key>
+          <Property Name="IDRep" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SNP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Shifts" Relationship="UPAOborotModel.FK_Shifts_Repairmens" FromRole="Repairmens" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts1" Relationship="UPAOborotModel.FK_Shifts_Repairmens1" FromRole="Repairmens" ToRole="Shifts" />
+          <NavigationProperty Name="Shifts2" Relationship="UPAOborotModel.FK_Shifts_Repairmens2" FromRole="Repairmens" ToRole="Shifts" />
+        </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="IdShift" />
+          </Key>
+          <Property Name="IdShift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateStartShift" Type="DateTime" Precision="0" />
+          <Property Name="DateEndShift" Type="DateTime" Precision="0" />
+          <Property Name="DutyEngKIP" Type="Int32" />
+          <Property Name="DutyEngASU" Type="Int32" />
+          <Property Name="DutyRep1" Type="Int32" />
+          <Property Name="DutyRep2" Type="Int32" />
+          <Property Name="DutyRep3" Type="Int32" />
+          <NavigationProperty Name="Engineers" Relationship="UPAOborotModel.FK_Shifts_Engineers" FromRole="Shifts" ToRole="Engineers" />
+          <NavigationProperty Name="Engineers1" Relationship="UPAOborotModel.FK_Shifts_Engineers1" FromRole="Shifts" ToRole="Engineers" />
+          <NavigationProperty Name="OpLogJournal" Relationship="UPAOborotModel.FK_OpLogBook_Shifts" FromRole="Shifts" ToRole="OpLogJournal" />
+          <NavigationProperty Name="Repairmens" Relationship="UPAOborotModel.FK_Shifts_Repairmens" FromRole="Shifts" ToRole="Repairmens" />
+          <NavigationProperty Name="Repairmens1" Relationship="UPAOborotModel.FK_Shifts_Repairmens1" FromRole="Shifts" ToRole="Repairmens" />
+          <NavigationProperty Name="Repairmens2" Relationship="UPAOborotModel.FK_Shifts_Repairmens2" FromRole="Shifts" ToRole="Repairmens" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_AsuEq_AsuMainEq">
+          <End Type="UPAOborotModel.AsuMainEq" Role="AsuMainEq" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.AsuEq" Role="AsuEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuMainEq">
+              <PropertyRef Name="IdAsuMainEq" />
+            </Principal>
+            <Dependent Role="AsuEq">
+              <PropertyRef Name="IdAsuMainEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_AsuEq">
+          <End Type="UPAOborotModel.AsuEq" Role="AsuEq" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Equipments" Role="Equipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuEq">
+              <PropertyRef Name="IdAsuEq" />
+            </Principal>
+            <Dependent Role="Equipments">
+              <PropertyRef Name="IdAsuEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpLogBook_AsuEq1">
+          <End Type="UPAOborotModel.AsuEq" Role="AsuEq" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.OpLogJournal" Role="OpLogJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsuEq">
+              <PropertyRef Name="IdAsuEq" />
+            </Principal>
+            <Dependent Role="OpLogJournal">
+              <PropertyRef Name="IdAsuEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsuMainEq_ItemsOfEq">
+          <End Type="UPAOborotModel.ItemsOfEq" Role="ItemsOfEq" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.AsuMainEq" Role="AsuMainEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsOfEq">
+              <PropertyRef Name="IdItemsOfEq" />
+            </Principal>
+            <Dependent Role="AsuMainEq">
+              <PropertyRef Name="IdItemsOfEq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsOfEq_DepartmentEq">
+          <End Type="UPAOborotModel.DepartmentEq" Role="DepartmentEq" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.ItemsOfEq" Role="ItemsOfEq" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentEq">
+              <PropertyRef Name="IdDepartment" />
+            </Principal>
+            <Dependent Role="ItemsOfEq">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Engineers">
+          <End Type="UPAOborotModel.Engineers" Role="Engineers" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engineers">
+              <PropertyRef Name="IDEng" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyEngKIP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Engineers1">
+          <End Type="UPAOborotModel.Engineers" Role="Engineers" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engineers">
+              <PropertyRef Name="IDEng" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyEngASU" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EqList_EqType">
+          <End Type="UPAOborotModel.EqType" Role="EqType" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.EqList" Role="EqList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EqType">
+              <PropertyRef Name="IdEqType" />
+            </Principal>
+            <Dependent Role="EqList">
+              <PropertyRef Name="IdEqType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_EqList">
+          <End Type="UPAOborotModel.EqList" Role="EqList" Multiplicity="1" />
+          <End Type="UPAOborotModel.Equipments" Role="Equipments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EqList">
+              <PropertyRef Name="IdEqList" />
+            </Principal>
+            <Dependent Role="Equipments">
+              <PropertyRef Name="IdEqList" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpLogBook_Shifts">
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.OpLogJournal" Role="OpLogJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shifts">
+              <PropertyRef Name="IdShift" />
+            </Principal>
+            <Dependent Role="OpLogJournal">
+              <PropertyRef Name="IdShift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens">
+          <End Type="UPAOborotModel.Repairmens" Role="Repairmens" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens1">
+          <End Type="UPAOborotModel.Repairmens" Role="Repairmens" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shifts_Repairmens2">
+          <End Type="UPAOborotModel.Repairmens" Role="Repairmens" Multiplicity="0..1" />
+          <End Type="UPAOborotModel.Shifts" Role="Shifts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repairmens">
+              <PropertyRef Name="IDRep" />
+            </Principal>
+            <Dependent Role="Shifts">
+              <PropertyRef Name="DutyRep3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UPAOborotModelContainer" CdmEntityContainer="UPAOborotEntities">
+          <EntitySetMapping Name="AsuEq">
+            <EntityTypeMapping TypeName="UPAOborotModel.AsuEq">
+              <MappingFragment StoreEntitySet="AsuEq">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Sheme" ColumnName="Sheme" />
+                <ScalarProperty Name="LastMaintencePeriod" ColumnName="LastMaintencePeriod" />
+                <ScalarProperty Name="NextMaintencePeriod" ColumnName="NextMaintencePeriod" />
+                <ScalarProperty Name="MaintenancePeriod" ColumnName="MaintenancePeriod" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PlaceSchemeAsuEq" ColumnName="PlaceSchemeAsuEq" />
+                <ScalarProperty Name="PidAsuEq" ColumnName="PidAsuEq" />
+                <ScalarProperty Name="PlaceAsuEq" ColumnName="PlaceAsuEq" />
+                <ScalarProperty Name="NameAsuEq" ColumnName="NameAsuEq" />
+                <ScalarProperty Name="TagAsuEq" ColumnName="TagAsuEq" />
+                <ScalarProperty Name="IdAsuMainEq" ColumnName="IdAsuMainEq" />
+                <ScalarProperty Name="IdAsuEq" ColumnName="IdAsuEq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsuMainEq">
+            <EntityTypeMapping TypeName="UPAOborotModel.AsuMainEq">
+              <MappingFragment StoreEntitySet="AsuMainEq">
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NameAsuMainEq" ColumnName="NameAsuMainEq" />
+                <ScalarProperty Name="TagAsuMainEq" ColumnName="TagAsuMainEq" />
+                <ScalarProperty Name="IdItemsOfEq" ColumnName="IdItemsOfEq" />
+                <ScalarProperty Name="IdAsuMainEq" ColumnName="IdAsuMainEq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentEq">
+            <EntityTypeMapping TypeName="UPAOborotModel.DepartmentEq">
+              <MappingFragment StoreEntitySet="DepartmentEq">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Engineers">
+            <EntityTypeMapping TypeName="UPAOborotModel.Engineers">
+              <MappingFragment StoreEntitySet="Engineers">
+                <ScalarProperty Name="SNP" ColumnName="SNP" />
+                <ScalarProperty Name="IDEng" ColumnName="IDEng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EqList">
+            <EntityTypeMapping TypeName="UPAOborotModel.EqList">
+              <MappingFragment StoreEntitySet="EqList">
+                <ScalarProperty Name="Manual" ColumnName="Manual" />
+                <ScalarProperty Name="OperationOfEquipmentMPP" ColumnName="OperationOfEquipmentMPP" />
+                <ScalarProperty Name="OperationOfEquipmentOF" ColumnName="OperationOfEquipmentOF" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="MTPClassClassName" ColumnName="MTPClassClassName" />
+                <ScalarProperty Name="MTPClassClassCode" ColumnName="MTPClassClassCode" />
+                <ScalarProperty Name="ManufacturerName" ColumnName="ManufacturerName" />
+                <ScalarProperty Name="ManufacturerGlobalIentifier" ColumnName="ManufacturerGlobalIentifier" />
+                <ScalarProperty Name="TypeMTRName" ColumnName="TypeMTRName" />
+                <ScalarProperty Name="Equipment" ColumnName="Equipment" />
+                <ScalarProperty Name="TechnicalSpecifications" ColumnName="TechnicalSpecifications" />
+                <ScalarProperty Name="DrawingNumber" ColumnName="DrawingNumber" />
+                <ScalarProperty Name="MaterialGrade" ColumnName="MaterialGrade" />
+                <ScalarProperty Name="CatalogNumberAndGost" ColumnName="CatalogNumberAndGost" />
+                <ScalarProperty Name="BrandAndSize" ColumnName="BrandAndSize" />
+                <ScalarProperty Name="NameASU_MTR" ColumnName="NameASU_MTR" />
+                <ScalarProperty Name="BaseUnit" ColumnName="BaseUnit" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="NameAbbreviated" ColumnName="NameAbbreviated" />
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="IdEqType" ColumnName="IdEqType" />
+                <ScalarProperty Name="IdEqList" ColumnName="IdEqList" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EqType">
+            <EntityTypeMapping TypeName="UPAOborotModel.EqType">
+              <MappingFragment StoreEntitySet="EqType">
+                <ScalarProperty Name="EqTypeComment" ColumnName="EqTypeComment" />
+                <ScalarProperty Name="EqTypeName" ColumnName="EqTypeName" />
+                <ScalarProperty Name="IdEqType" ColumnName="IdEqType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="UPAOborotModel.Equipments">
+              <MappingFragment StoreEntitySet="Equipments">
+                <ScalarProperty Name="IdEqList" ColumnName="IdEqList" />
+                <ScalarProperty Name="IdAsuEq" ColumnName="IdAsuEq" />
+                <ScalarProperty Name="IdEq" ColumnName="IdEq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsOfEq">
+            <EntityTypeMapping TypeName="UPAOborotModel.ItemsOfEq">
+              <MappingFragment StoreEntitySet="ItemsOfEq">
+                <ScalarProperty Name="LastWriter" ColumnName="LastWriter" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="SysStatus" ColumnName="SysStatus" />
+                <ScalarProperty Name="InventoryNum" ColumnName="InventoryNum" />
+                <ScalarProperty Name="PrymaryMeans" ColumnName="PrymaryMeans" />
+                <ScalarProperty Name="MVZ" ColumnName="MVZ" />
+                <ScalarProperty Name="ExplStartDate" ColumnName="ExplStartDate" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="UseStatus" ColumnName="UseStatus" />
+                <ScalarProperty Name="TechPlaceName" ColumnName="TechPlaceName" />
+                <ScalarProperty Name="TechPlace" ColumnName="TechPlace" />
+                <ScalarProperty Name="CodeABC" ColumnName="CodeABC" />
+                <ScalarProperty Name="EqUnitType" ColumnName="EqUnitType" />
+                <ScalarProperty Name="ResponsibleWorkplace" ColumnName="ResponsibleWorkplace" />
+                <ScalarProperty Name="FactoryLocationTechEq" ColumnName="FactoryLocationTechEq" />
+                <ScalarProperty Name="GroupOfPlanners" ColumnName="GroupOfPlanners" />
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="TechObjName" ColumnName="TechObjName" />
+                <ScalarProperty Name="UnitEq" ColumnName="UnitEq" />
+                <ScalarProperty Name="IdItemsOfEq" ColumnName="IdItemsOfEq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpLogJournal">
+            <EntityTypeMapping TypeName="UPAOborotModel.OpLogJournal">
+              <MappingFragment StoreEntitySet="OpLogJournal">
+                <ScalarProperty Name="Perfomers" ColumnName="Perfomers" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="WhatDoing" ColumnName="WhatDoing" />
+                <ScalarProperty Name="WhatHappend" ColumnName="WhatHappend" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="IdAsuEq" ColumnName="IdAsuEq" />
+                <ScalarProperty Name="Emergency" ColumnName="Emergency" />
+                <ScalarProperty Name="TimeSolution" ColumnName="TimeSolution" />
+                <ScalarProperty Name="TimeOccurrence" ColumnName="TimeOccurrence" />
+                <ScalarProperty Name="RecordingDate" ColumnName="RecordingDate" />
+                <ScalarProperty Name="IdShift" ColumnName="IdShift" />
+                <ScalarProperty Name="IdOpLogBook" ColumnName="IdOpLogBook" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repairmens">
+            <EntityTypeMapping TypeName="UPAOborotModel.Repairmens">
+              <MappingFragment StoreEntitySet="Repairmens">
+                <ScalarProperty Name="SNP" ColumnName="SNP" />
+                <ScalarProperty Name="IDRep" ColumnName="IDRep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="UPAOborotModel.Shifts">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="DutyRep3" ColumnName="DutyRep3" />
+                <ScalarProperty Name="DutyRep2" ColumnName="DutyRep2" />
+                <ScalarProperty Name="DutyRep1" ColumnName="DutyRep1" />
+                <ScalarProperty Name="DutyEngASU" ColumnName="DutyEngASU" />
+                <ScalarProperty Name="DutyEngKIP" ColumnName="DutyEngKIP" />
+                <ScalarProperty Name="DateEndShift" ColumnName="DateEndShift" />
+                <ScalarProperty Name="DateStartShift" ColumnName="DateStartShift" />
+                <ScalarProperty Name="IdShift" ColumnName="IdShift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UPAOborotModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

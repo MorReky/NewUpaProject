@@ -11,7 +11,7 @@
         <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                     DockPanel.Dock="Bottom"
-                        Margin="0,20,0,50">
+                        Margin="0,20,0,30">
             <Button Style="{StaticResource ButtonFrame}"
                         Content="Сохранить и добавить"
                         Name="BtnSave"
@@ -30,12 +30,13 @@
                                        Width="auto"
                                        Text="ГИД"/>
             <TextBox x:Name="TxbGlobalIdSet"
-                         TextWrapping="Wrap" 
-                         HorizontalContentAlignment="Left"
-                         Height="auto"
-                         MinWidth="600"
-                         MaxLength="10"
-                         PreviewTextInput="GlobalIdSet_PreviewTextInput"/>
+                     Text="{Binding GlobalId}"
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"
+                     Height="auto"
+                     MinWidth="600"
+                     MaxLength="10"
+                     PreviewTextInput="GlobalIdSet_PreviewTextInput"/>
         </StackPanel>
         <StackPanel Height="auto"
                         DockPanel.Dock="Top"
@@ -46,11 +47,12 @@
                                        Width="auto" 
                                        Text="Наим. сокращенное"/>
             <TextBox x:Name="TxbNameAbbreviatedSet"
-                         TextWrapping="Wrap" 
-                         HorizontalContentAlignment="Left"
-                         MaxLength="150"
-                         Height="auto" 
-                         MinWidth="600"/>
+                     Text="{Binding NameAbbreviated}"                     
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"
+                     MaxLength="150"
+                     Height="auto" 
+                     MinWidth="600"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         Orientation="Horizontal"
@@ -61,11 +63,12 @@
                                        Width="auto"
                                        Text="Наим. полное"/>
             <TextBox x:Name="TxbNameSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="600"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding FullName}"                     
+                     MaxLength="600"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -76,10 +79,12 @@
                                        Width="auto"  
                                        Text="Подкласс оборуд."/>
             <ComboBox x:Name="CmbTypeSet" 
-                                      Style="{StaticResource CmbCatalog}"
-                                      Text="{Binding SelectedItem.Type, ElementName=GridList}"
-                                      ItemsSource="{Binding}" 
-                                      MinWidth="600">
+                      SelectedValuePath = "IdEqType"
+                      DisplayMemberPath = "EqTypeName"
+                      Style="{StaticResource CmbCatalog}"
+                      SelectedItem="{Binding EqType}"
+                      ItemsSource="{Binding}" 
+                      MinWidth="600">
             </ComboBox>
         </StackPanel>
         <StackPanel Height="auto" 
@@ -91,11 +96,12 @@
                                        Width="auto" 
                                        Text="Базовая Ед.Изм."/>
             <TextBox x:Name="TxbUnitSet"
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left"
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="50"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left"
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding BaseUnit}"
+                     MaxLength="50"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -106,11 +112,12 @@
                                        Width="auto"
                                        Text="Наим. АСУ МТР"/>
             <TextBox x:Name="TxbNameAsuMtrSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="200"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding NameASU_MTR}"
+                     MaxLength="200"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -121,11 +128,12 @@
                                        Width="auto" 
                                        Text="Марка/Размер"/>
             <TextBox x:Name="TxbBrandAndSizeSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="70"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding BrandAndSize}"
+                     MaxLength="70"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -136,11 +144,12 @@
                                        Width="auto" 
                                        Text="Кат. номер, ГОСТ"/>
             <TextBox x:Name="TxbCatalogNumberSet" 
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="70"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left" 
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding CatalogNumberAndGost}"
+                     MaxLength="70"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -151,11 +160,12 @@
                                        Width="auto" 
                                        Text="Марка материала"/>
             <TextBox x:Name="TxbMaterialGradeSet" 
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxWidth="50"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding MaterialGrade}"
+                     MaxWidth="50"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -166,11 +176,12 @@
                                        Width="auto" 
                                        Text="Номер чертежа"/>
             <TextBox x:Name="TxbDrawingNumberSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="50"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding DrawingNumber}"
+                     MaxLength="50"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -181,11 +192,12 @@
                                        Width="auto" 
                                        Text="Тех. характеристики"/>
             <TextBox x:Name="TxbTechCharacterSet" 
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto" 
-                                     MinWidth="600"
-                         MaxLength="600"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left" 
+                     Height="auto" 
+                     MinWidth="600"
+                     Text="{Binding TechnicalSpecifications}"
+                     MaxLength="600"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -196,11 +208,12 @@
                                        Width="auto"
                                        Text="Оборудование"/>
             <TextBox x:Name="TxbEquipmentSet"
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="200"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left" 
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding Equipment}"
+                     MaxLength="200"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -211,11 +224,12 @@
                                        Width="auto"
                                        Text="Вид МТР"/>
             <TextBox x:Name="TxbTypeMTRNameSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto" 
-                         MaxLength="50"
-                                     MinWidth="600"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left" 
+                     Height="auto" 
+                     MaxLength="50"
+                     Text="{Binding TypeMTRName}"
+                     MinWidth="600"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -226,11 +240,12 @@
                                        Width="auto" 
                                        Text="Код производителя"/>
             <TextBox x:Name="TxbManufacturerGlobalIentifierSet" 
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="50"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding ManufacturerGlobalIentifier}"
+                     MaxLength="50"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -241,11 +256,12 @@
                                        Width="auto" 
                                        Text="Производитель"/>
             <TextBox x:Name="TxbManufacturerNameSet"
-                                     TextWrapping="Wrap" 
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="150"/>
+                     TextWrapping="Wrap" 
+                     HorizontalContentAlignment="Left"  
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding ManufacturerName}"
+                     MaxLength="150"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -256,11 +272,12 @@
                                        Width="auto" 
                                        Text="Класс МТР Код "/>
             <TextBox x:Name="TxbMTPClassClassCodeSet"
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left"  
-                                     Height="auto" 
-                                     MinWidth="600"
-                         MaxLength="50"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left"  
+                     Height="auto" 
+                     MinWidth="600"
+                     Text="{Binding MTPClassClassCode}"
+                     MaxLength="50"/>
         </StackPanel>
         <StackPanel Height="auto" 
                         DockPanel.Dock="Top"
@@ -271,11 +288,12 @@
                                        Width="auto"
                                        Text="Класс МТР Наим. "/>
             <TextBox x:Name="TxbMTPClassClassNameSet" 
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto"
-                                     MinWidth="600"
-                         MaxLength="150"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left" 
+                     Height="auto"
+                     MinWidth="600"
+                     Text="{Binding MTPClassClassName}"
+                     MaxLength="150"/>
         </StackPanel>
         <StackPanel Height="auto"
                         DockPanel.Dock="Top"
@@ -286,26 +304,29 @@
                                        Width="auto" 
                                        Text="Комментарии"/>
             <TextBox x:Name="TxbCommentsSet"
-                                     TextWrapping="Wrap"
-                                     HorizontalContentAlignment="Left" 
-                                     Height="auto" 
-                                     MinWidth="600"
-                         MaxLength="100"/>
+                     TextWrapping="Wrap"
+                     HorizontalContentAlignment="Left" 
+                     Height="auto" 
+                     MinWidth="600"
+                     Text="{Binding MTPClassClassName}"
+                     MaxLength="100"/>
         </StackPanel>
         <StackPanel Height="auto" 
-                        DockPanel.Dock="Top"
-                                    Orientation="Horizontal"
-                                    Margin="20,2,0,2">
+                    DockPanel.Dock="Top"
+                    Orientation="Horizontal"
+                    Margin="20,2,0,2">
             <CheckBox x:Name="MPP" 
-                                      IsHitTestVisible="True" 
-                                      Content="Использование на ГОК"
-                                      Margin="20,0,20,0" 
-                                      FontWeight="Bold"/>
+                      IsChecked="{Binding OperationOfEquipmentMPP}"
+                      IsHitTestVisible="True" 
+                      Content="Использование на ГОК"
+                      Margin="20,0,20,0" 
+                      FontWeight="Bold"/>
             <CheckBox x:Name="OF" 
-                                      IsHitTestVisible="True"
-                                      Content="Использование на ОФ"
-                                      Margin="20,0,20,0" 
-                                      FontWeight="Bold"/>
+                      IsChecked="{Binding OperationOfEquipmentOF}"
+                      IsHitTestVisible="True"
+                      Content="Использование на ОФ"
+                      Margin="20,0,20,0" 
+                      FontWeight="Bold"/>
         </StackPanel>
     </DockPanel>
 </Window>

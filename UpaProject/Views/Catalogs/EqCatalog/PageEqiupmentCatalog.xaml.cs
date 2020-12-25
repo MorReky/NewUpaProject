@@ -19,6 +19,7 @@ using System.Data;
 using System.Data.SqlClient;
 using UpaProject.Catalogs.EqCatalog;
 using UpaProject.Models.DataFilesApp;
+using System.Windows.Threading;
 
 namespace UpaProject.Catalogs
 {
@@ -32,12 +33,20 @@ namespace UpaProject.Catalogs
             InitializeComponent();
 
             CmbLoader();
-
+           
             GridList.ItemsSource = DBConnectHelper.DbObj.EqList.ToList();
-            GridList.SelectedIndex = 0;
 
             TypeSet.DisplayMemberPath = "EqTypeName";
             TypeSet.ItemsSource = DBConnectHelper.DbObj.EqType.GroupBy(x => x.EqTypeName).ToList();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += UpdateContext;
+        }
+
+        private void UpdateContext(object sender,EventArgs e)
+        {
+            GridList.ItemsSource = DBConnectHelper.DbObj.EqList.ToList();
         }
 
         private void CmbLoader()

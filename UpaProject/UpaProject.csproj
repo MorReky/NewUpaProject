@@ -64,35 +64,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Catalogs\EqCatalog\PageAddNewEq.xaml">
+    <Page Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Catalogs\EqCatalog\PageEditEq.xaml">
+    <Page Include="Views\Catalogs\EqCatalog\PageEditEq.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Catalogs\EqCatalog\PageEqiupmentCatalog.xaml">
+    <Page Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Equipments\PageAsuEq.xaml">
+    <Page Include="Views\Equipments\PageAsuEq.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Journals\PageOpJournal.xaml">
+    <Page Include="Views\Journals\PageOpJournal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Journals\WindowNewOpTurn.xaml">
+    <Page Include="Views\Journals\WindowNewOpTurn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Journals\WindowNewSubj.xaml">
+    <Page Include="Views\Journals\WindowNewSubj.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -100,82 +100,83 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Catalogs\EqCatalog\PageAddNewEq.xaml.cs">
+    <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml.cs">
       <DependentUpon>PageAddNewEq.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Catalogs\EqCatalog\PageEditEq.xaml.cs">
+    <Compile Include="Views\Catalogs\EqCatalog\PageEditEq.xaml.cs">
       <DependentUpon>PageEditEq.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Catalogs\EqCatalog\PageEqiupmentCatalog.xaml.cs">
+    <Compile Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml.cs">
       <DependentUpon>PageEqiupmentCatalog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClassHelper\Class1.cs" />
-    <Compile Include="DataFilesApp\AsuEq.cs">
+    <Compile Include="Infrastracture\ClassHelper\Class1.cs" />
+    <Compile Include="Models\DataFilesApp\AsuEq.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\AsuMainEq.cs">
+    <Compile Include="Models\DataFilesApp\AsuMainEq.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\DBConnectHelper.cs" />
-    <Compile Include="DataFilesApp\DepartmentEq.cs">
+    <Compile Include="Models\DataFilesApp\DBConnectHelper.cs" />
+    <Compile Include="Models\DataFilesApp\DepartmentEq.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Engineers.cs">
+    <Compile Include="Models\DataFilesApp\Engineers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\EqList.cs">
+    <Compile Include="Models\DataFilesApp\EqList.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\EqType.cs">
+    <Compile Include="Models\DataFilesApp\EqType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Equipments.cs">
+    <Compile Include="Models\DataFilesApp\Equipments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\ItemsOfEq.cs">
+    <Compile Include="Models\DataFilesApp\ItemsOfEq.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Model1.Context.cs">
+    <Compile Include="Models\DataFilesApp\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Model1.cs">
+    <Compile Include="Models\DataFilesApp\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Model1.Designer.cs">
+    <Compile Include="Models\DataFilesApp\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\OpLogJournal.cs">
+    <Compile Include="Models\DataFilesApp\OpLogJournal.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Repairmens.cs">
+    <Compile Include="Models\DataFilesApp\Repairmens.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\Shifts.cs">
+    <Compile Include="Models\DataFilesApp\Shifts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataFilesApp\sysdiagrams.cs">
+    <Compile Include="Models\DataFilesApp\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Equipments\PageAsuEq.xaml.cs">
+    <Compile Include="Views\Equipments\PageAsuEq.xaml.cs">
       <DependentUpon>PageAsuEq.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FrameApp\FrameLoader.cs" />
-    <Compile Include="Journals\PageOpJournal.xaml.cs">
+    <Compile Include="Infrastracture\FrameApp\FrameLoader.cs" />
+    <Compile Include="Views\Journals\PageOpJournal.xaml.cs">
       <DependentUpon>PageOpJournal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Journals\WindowNewOpTurn.xaml.cs">
+    <Compile Include="Views\Journals\WindowNewOpTurn.xaml.cs">
       <DependentUpon>WindowNewOpTurn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Journals\WindowNewSubj.xaml.cs">
+    <Compile Include="Views\Journals\WindowNewSubj.xaml.cs">
       <DependentUpon>WindowNewSubj.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -198,11 +199,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataFilesApp\Model1.edmx">
+    <EntityDeploy Include="Models\DataFilesApp\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataFilesApp\Model1.edmx.diagram">
+    <None Include="Models\DataFilesApp\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -218,12 +219,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataFilesApp\Model1.Context.tt">
+    <Content Include="Models\DataFilesApp\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataFilesApp\Model1.tt">
+    <Content Include="Models\DataFilesApp\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>

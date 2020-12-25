@@ -7,6 +7,7 @@
       <Diagram DiagramId="4c352175a832445b8c3032aa919b92cf" Name="Diagram1">
         <EntityTypeShape EntityType="UPAOborotModel.AsuEq" Width="1.5" PointX="3" PointY="9.625" />
         <EntityTypeShape EntityType="UPAOborotModel.AsuMainEq" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="UPAOborotModel.BaseUnit" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="UPAOborotModel.DepartmentEq" Width="1.5" PointX="1.5" PointY="21.875" />
         <EntityTypeShape EntityType="UPAOborotModel.Engineers" Width="1.5" PointX="0.75" PointY="6.125" />
         <EntityTypeShape EntityType="UPAOborotModel.EqList" Width="1.5" PointX="3" PointY="24.875" />
@@ -16,7 +17,7 @@
         <EntityTypeShape EntityType="UPAOborotModel.OpLogJournal" Width="1.5" PointX="5.25" PointY="1" />
         <EntityTypeShape EntityType="UPAOborotModel.Repairmens" Width="1.5" PointX="0.75" PointY="2" />
         <EntityTypeShape EntityType="UPAOborotModel.Shifts" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="UPAOborotModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UPAOborotModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="5.75" />
         <AssociationConnector Association="UPAOborotModel.FK_AsuEq_AsuMainEq" />
         <AssociationConnector Association="UPAOborotModel.FK_Equipments_AsuEq" />
         <AssociationConnector Association="UPAOborotModel.FK_OpLogBook_AsuEq1" />

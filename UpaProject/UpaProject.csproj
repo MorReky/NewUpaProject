@@ -100,7 +100,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\DataFilesApp\BaseUnit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelPageAddNewEq.cs" />
     <Compile Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml.cs">
       <DependentUpon>PageAddNewEq.xaml</DependentUpon>
     </Compile>
@@ -110,7 +114,6 @@
     <Compile Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml.cs">
       <DependentUpon>PageEqiupmentCatalog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Infrastracture\ClassHelper\Class1.cs" />
     <Compile Include="Models\DataFilesApp\AsuEq.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -230,6 +233,8 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Infrastracture\ClassHelper\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

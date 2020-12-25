@@ -37,6 +37,12 @@
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="Writer" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="BaseUnit">
+          <Key>
+            <PropertyRef Name="Unit" />
+          </Key>
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="DepartmentEq">
           <Key>
             <PropertyRef Name="IdDepartment" />
@@ -327,6 +333,7 @@
         <EntityContainer Name="Хранилище UPAOborotModelContainer">
           <EntitySet Name="AsuEq" EntityType="Self.AsuEq" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AsuMainEq" EntityType="Self.AsuMainEq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaseUnit" EntityType="Self.BaseUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DepartmentEq" EntityType="Self.DepartmentEq" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Engineers" EntityType="Self.Engineers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EqList" EntityType="Self.EqList" Schema="dbo" store:Type="Tables" />
@@ -397,6 +404,7 @@
         <EntityContainer Name="UPAOborotEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AsuEq" EntityType="UPAOborotModel.AsuEq" />
           <EntitySet Name="AsuMainEq" EntityType="UPAOborotModel.AsuMainEq" />
+          <EntitySet Name="BaseUnit" EntityType="UPAOborotModel.BaseUnit" />
           <EntitySet Name="DepartmentEq" EntityType="UPAOborotModel.DepartmentEq" />
           <EntitySet Name="Engineers" EntityType="UPAOborotModel.Engineers" />
           <EntitySet Name="EqList" EntityType="UPAOborotModel.EqList" />
@@ -496,6 +504,12 @@
           <Property Name="Writer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AsuEq" Relationship="UPAOborotModel.FK_AsuEq_AsuMainEq" FromRole="AsuMainEq" ToRole="AsuEq" />
           <NavigationProperty Name="ItemsOfEq" Relationship="UPAOborotModel.FK_AsuMainEq_ItemsOfEq" FromRole="AsuMainEq" ToRole="ItemsOfEq" />
+        </EntityType>
+        <EntityType Name="BaseUnit">
+          <Key>
+            <PropertyRef Name="Unit" />
+          </Key>
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DepartmentEq">
           <Key>
@@ -842,6 +856,13 @@
                 <ScalarProperty Name="TagAsuMainEq" ColumnName="TagAsuMainEq" />
                 <ScalarProperty Name="IdItemsOfEq" ColumnName="IdItemsOfEq" />
                 <ScalarProperty Name="IdAsuMainEq" ColumnName="IdAsuMainEq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaseUnit">
+            <EntityTypeMapping TypeName="UPAOborotModel.BaseUnit">
+              <MappingFragment StoreEntitySet="BaseUnit">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

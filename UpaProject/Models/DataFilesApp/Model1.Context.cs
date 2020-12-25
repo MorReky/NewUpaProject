@@ -36,6 +36,8 @@ public partial class UPAOborotEntities : DbContext
 
     public virtual DbSet<AsuMainEq> AsuMainEq { get; set; }
 
+    public virtual DbSet<BaseUnit> BaseUnit { get; set; }
+
     public virtual DbSet<DepartmentEq> DepartmentEq { get; set; }
 
     public virtual DbSet<Engineers> Engineers { get; set; }

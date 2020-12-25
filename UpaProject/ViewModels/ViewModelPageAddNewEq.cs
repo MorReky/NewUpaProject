@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpaProject.ClassHelper
+namespace UpaProject.ViewModels
 {
-    class Class1
+    class ViewModelPageAddNewEq
     {
     }
 }

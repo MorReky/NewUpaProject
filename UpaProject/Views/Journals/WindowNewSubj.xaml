@@ -6,10 +6,8 @@
         xmlns:local="clr-namespace:UpaProject.Journals"
         mc:Ignorable="d"
         Title="Новое событие"
-        MaxHeight="485" 
-        MinHeight="485" 
-        MinWidth="770"
-        Width="770"
+        MaxHeight="510"
+        MaxWidth="800"
         WindowStyle="ToolWindow">
     <DockPanel LastChildFill="False">
         <StackPanel Orientation="Horizontal"
@@ -57,10 +55,10 @@
                   SelectionMode="Extended"  
                   HorizontalScrollBarVisibility="Hidden"
                   Height="auto" 
+                  ColumnWidth="auto"
                   FontSize="14" 
                   CanUserResizeColumns="True" 
-                  IsReadOnly="true" 
-                  ColumnWidth="*"
+                  IsReadOnly="true"
                   AutoGenerateColumns="False">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Дежурный инженер КИПиа"

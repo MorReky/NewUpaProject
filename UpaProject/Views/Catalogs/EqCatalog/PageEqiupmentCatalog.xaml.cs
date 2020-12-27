@@ -17,7 +17,6 @@ using UpaProject.FrameApp;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Data.SqlClient;
-using UpaProject.Catalogs.EqCatalog;
 using UpaProject.Models.DataFilesApp;
 using System.Windows.Threading;
 
@@ -46,6 +45,8 @@ namespace UpaProject.Catalogs
 
         private void UpdateContext(object sender,EventArgs e)
         {
+            //Разобрать строку
+           // DBConnectHelper.DbObj.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             GridList.ItemsSource = DBConnectHelper.DbObj.EqList.ToList();
         }
 

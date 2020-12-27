@@ -25,41 +25,18 @@ namespace UpaProject.Catalogs
     public partial class PageAddNewEq : Window
     {
         EqList EqListObj=new EqList();
-        public PageAddNewEq()
+        public PageAddNewEq(EqList eqList=null)
         {
             InitializeComponent();
+
+            if (eqList != null)
+                EqListObj = eqList;
 
             DataContext = EqListObj;
 
             CmbTypeSet.ItemsSource = DBConnectHelper.DbObj.EqType.ToList();
         }
 
-
-        public PageAddNewEq(EqList eqList)
-        {
-            InitializeComponent();
-            CmbTypeSet.ItemsSource = DBConnectHelper.DbObj.EqType.GroupBy(x => x.EqTypeName).ToList();
-
-            //EqListobj = eqList;
-            //TxbGlobalIdSet.Text = eqList.GlobalId;
-            //TxbNameAbbreviatedSet.Text = eqList.NameAbbreviated;
-            //TxbNameSet.Text = eqList.FullName;
-            //CmbTypeSet.SelectedValue = eqList.IdEqType;
-            //TxbUnitSet.Text = eqList.BaseUnit;
-            //TxbNameAsuMtrSet.Text = eqList.NameASU_MTR;
-            //TxbBrandAndSizeSet.Text = eqList.BrandAndSize;
-            //TxbCatalogNumberSet.Text = eqList.CatalogNumberAndGost;
-            //TxbMaterialGradeSet.Text = eqList.MaterialGrade;
-            //TxbDrawingNumberSet.Text = eqList.DrawingNumber;
-            //TxbTechCharacterSet.Text = eqList.TechnicalSpecifications;
-            //TxbEquipmentSet.Text = eqList.Equipment;
-            //TxbTypeMTRNameSet.Text = eqList.TypeMTRName;
-            //TxbManufacturerGlobalIentifierSet.Text = eqList.ManufacturerGlobalIentifier;
-            //TxbManufacturerNameSet.Text = eqList.ManufacturerName;
-            //TxbMTPClassClassCodeSet.Text = eqList.MTPClassClassCode;
-            //TxbMTPClassClassNameSet.Text = eqList.MTPClassClassName;
-            //TxbCommentsSet.Text = eqList.Comments;
-        }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {

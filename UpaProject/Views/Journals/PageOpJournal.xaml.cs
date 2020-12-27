@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using UpaProject.DataFilesApp;
 
 namespace UpaProject.Journals
@@ -28,6 +29,17 @@ namespace UpaProject.Journals
             //сделатьь реализацию через объект
             GridList.ItemsSource = DBConnectHelper.DbObj.OpLogJournal.ToList();
             GridList.SelectedIndex = 0;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += UpdateContext;
+        }
+
+        private void UpdateContext(object sender, EventArgs e)
+        {
+            //Разобрать строку
+            // DBConnectHelper.DbObj.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            GridList.ItemsSource = DBConnectHelper.DbObj.EqList.ToList();
         }
 
         private void BtnNewTurn_Click(object sender, RoutedEventArgs e)

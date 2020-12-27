@@ -63,7 +63,7 @@
                   ColumnWidth="*"
                   AutoGenerateColumns="False">
             <DataGrid.Columns >
-                <DataGridTextColumn Header="Дежурный инженер КИПиа"                                          
+                <DataGridTextColumn Header="Дежурный инженер КИПиа"
                                         Binding="{Binding Engineers.SNP}" />
                 <DataGridTextColumn Header="Дежурный инженер АСУ"
                                         Binding="{Binding Engineers1.SNP}"/>
@@ -82,6 +82,8 @@
                             Margin="5,0"
                             VerticalAlignment="Center">
                 <TextBlock TextWrapping="Wrap" 
+                           Style="{StaticResource Txt}"
+                           MinWidth="110"
                            VerticalAlignment="Center"
                            Text="Время начала:" 
                            Margin="5" />
@@ -97,6 +99,8 @@
                             VerticalAlignment="Center">
                 <TextBlock TextWrapping="Wrap" 
                            VerticalAlignment="Center"
+                           Style="{StaticResource Txt}"
+                           MinWidth="110"
                            Text="Время окончания:"
                            Margin="5" />
                 <TextBox x:Name="TxbTimeEnd" 
@@ -111,6 +115,8 @@
                             VerticalAlignment="Center">
                 <TextBlock VerticalAlignment="Center" 
                            Text="Критичность:" 
+                           Style="{StaticResource Txt}"
+                           MinWidth="110"
                            Margin="5"/>
                 <ComboBox x:Name="CmbSeriousness" 
                           VerticalAlignment="Center"
@@ -131,6 +137,8 @@
                     DockPanel.Dock="Top">
             <TextBlock VerticalAlignment="Center"  
                            Text="Отделение"  
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
             <ComboBox IsReadOnly="False"
@@ -149,6 +157,8 @@
             <TextBlock VerticalAlignment="Center"
                            Text="Система АСУ"  
                            Margin="5,0"
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Width="120"/>
             <ComboBox IsReadOnly="False"
                           IsEditable="True"
@@ -168,6 +178,8 @@
                     <TextBlock VerticalAlignment="Center"
                                    Text="Тег осн. оборудования:"  
                                    Margin="5,0" 
+                                   Style="{StaticResource Txt}"
+                                   MinWidth="135"
                                    Width="180"/>
                     <ComboBox x:Name="CmbTagMainEq"
                                   IsReadOnly="False" 
@@ -181,6 +193,8 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center"
                                    Text="Теговый номер:" 
+                                   Style="{StaticResource Txt}"
+                                   MinWidth="135"
                                    Margin="5,0"
                                    Width="180"/>
                     <ComboBox x:Name="CmbTag"
@@ -196,9 +210,10 @@
             </StackPanel>
             <StackPanel Margin="0,0,28,0">
                 <TextBlock HorizontalAlignment="Left" 
-                                   Text="Исполнители:" 
+                                   Text="Исполнители выполняющие работу:" 
                                    Margin="15,0"
-                                   Width="130" />
+                                   Style="{StaticResource Txt}"
+                                   MinWidth="135" />
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical"
                                     Margin="10,0,10,0">
@@ -219,7 +234,9 @@
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
             <TextBlock VerticalAlignment="Center" 
-                           Text="Событие:" 
+                           Text="Событие:"
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
             <TextBox x:Name="TxbEvent"
@@ -233,6 +250,8 @@
                      DockPanel.Dock="Top">
             <TextBlock VerticalAlignment="Center" 
                            Text="Причина:"  
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
             <TextBox x:Name="TxbCause"
@@ -246,6 +265,8 @@
                     DockPanel.Dock="Top">
             <TextBlock VerticalAlignment="Center" 
                            Text="Решение:" 
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
             <TextBox x:Name="TxbElimination"
@@ -260,6 +281,8 @@
             <TextBlock VerticalAlignment="Center"
                            Text="Комментарий:"  
                            Margin="5,0"
+                           Style="{StaticResource Txt}"
+                           MinWidth="135"
                            Width="120"/>
             <TextBox x:Name="TxbComment" 
                          VerticalAlignment="Center"

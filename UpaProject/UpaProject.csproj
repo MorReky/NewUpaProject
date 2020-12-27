@@ -68,10 +68,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Catalogs\EqCatalog\PageEditEq.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,9 +99,6 @@
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml.cs">
       <DependentUpon>PageAddNewEq.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Catalogs\EqCatalog\PageEditEq.xaml.cs">
-      <DependentUpon>PageEditEq.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml.cs">
       <DependentUpon>PageEqiupmentCatalog.xaml</DependentUpon>

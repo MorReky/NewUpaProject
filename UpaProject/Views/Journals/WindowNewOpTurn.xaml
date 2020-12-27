@@ -13,6 +13,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock  VerticalAlignment="Center" 
                             Margin="10,0" 
+                            Style="{StaticResource Txt}"
                             Width="200"
                             Text="Дежурный инженер КИП:"/>
                 <ComboBox x:Name="CmbDutyEngKIP" 
@@ -20,6 +21,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock  VerticalAlignment="Center"
+                            Style="{StaticResource Txt}"
                             Margin="10,0"
                             Width="200"
                             Text="Дежурный инженер АСУ:"/>
@@ -30,6 +32,7 @@
             <StackPanel DockPanel.Dock="Top"
                         Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center"
+                            Style="{StaticResource Txt}"
                            Margin="10,0" 
                            Width="200"
                            Text="Дата начала смены:"/>
@@ -50,10 +53,12 @@
                 <RadioButton x:Name="RdbDayTurn"
                              Content="Дневная смена" 
                              Margin= "20,10"
+                             Style="{StaticResource Rdb}"
                              FontWeight="DemiBold"
                              VerticalAlignment="Center" 
                              GroupName="GroupTurn" />
                 <RadioButton x:Name="RdbNightTurn"
+                             Style="{StaticResource Rdb}"
                              Content="Ночная смена"
                              Margin= "20,10"
                              FontWeight="DemiBold"
@@ -62,6 +67,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock  VerticalAlignment="Center"
+                            Style="{StaticResource Txt}"
                             Margin="10,0" 
                             Width="200"
                             Text="Дежурный слесарь:"/>
@@ -73,6 +79,7 @@
             <StackPanel Orientation="Horizontal"
                         Name="StckDutyRep2">
                 <TextBlock  VerticalAlignment="Center" 
+                            Style="{StaticResource Txt}"
                             Margin="10,0" 
                             Width="200"
                             Text="Дежурный слесарь:"/>
@@ -84,6 +91,7 @@
                 <TextBlock  VerticalAlignment="Center"                              
                             Margin="10,0"
                             Width="200"
+                            Style="{StaticResource Txt}"
                             Text="Дежурный слесарь:"/>
                 <ComboBox x:Name="CmbDutyRep3" 
                           Style="{StaticResource CmbJournal}"/>

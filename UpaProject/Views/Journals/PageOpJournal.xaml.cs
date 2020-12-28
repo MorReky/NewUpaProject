@@ -30,6 +30,8 @@ namespace UpaProject.Journals
             GridList.ItemsSource = DBConnectHelper.DbObj.OpLogJournal.ToList();
             GridList.SelectedIndex = 0;
 
+            txtDate.Text = DBConnectHelper.DbObj.Shifts.OrderByDescending(x => x.IdShift).First().DateStartShift.ToString();
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);
             timer.Tick += UpdateContext;

@@ -72,10 +72,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Equipments\PageAsuEq.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Journals\PageOpJournal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,10 +152,8 @@
     <Compile Include="Models\DataFilesApp\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Equipments\PageAsuEq.xaml.cs">
-      <DependentUpon>PageAsuEq.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Infrastracture\FrameApp\FrameLoader.cs" />
+    <Compile Include="Views\Equipments\PageAsuEqEdit.cs" />
     <Compile Include="Views\Journals\PageOpJournal.xaml.cs">
       <DependentUpon>PageOpJournal.xaml</DependentUpon>
     </Compile>

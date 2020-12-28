@@ -8,25 +8,35 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Оперативный журнал">
 
-    <StackPanel Background="White">
-        <StackPanel Orientation="Horizontal">
-            
+    <DockPanel Background="White" LastChildFill="True">
+        <DockPanel  DockPanel.Dock="Top">            
             <Button Content="Новая смена"
                     Name="BtnNewTurn"
                     Click="BtnNewTurn_Click"
+                    DockPanel.Dock="Left"
                     Style="{StaticResource ButtonFrame}"/>
             <Button Content="Создать событие"
                     Name="BtnNewSubj"
+                    DockPanel.Dock="Left"
                     Click="BtnNewSubj_Click"
                     Style="{StaticResource ButtonFrame}"/>
             <Button Content="Сформировать документ Excel"
+                    DockPanel.Dock="Left"
                     Style="{StaticResource ButtonFrame}"/>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Последняя открытая смена от:"/>
+            <StackPanel Orientation="Vertical"
+                    DockPanel.Dock="Right">
+                <TextBlock Text="Последняя открытая смена от:"
+                           HorizontalAlignment="Center"
+                           FontWeight="Black"
+                           Style="{StaticResource Txt}"/>
                 <TextBlock Text="*Дата*"
+                           Name="txtDate"
+                           FontWeight="Black"
+                           Style="{StaticResource Txt}" 
+                           TextAlignment="Center"
                            HorizontalAlignment="Center"/>
             </StackPanel>
-        </StackPanel>
+        </DockPanel>
 
         <DataGrid x:Name="GridList"
                       ColumnWidth="auto"
@@ -116,5 +126,5 @@
                                         Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
-    </StackPanel>
+    </DockPanel>
 </Page>

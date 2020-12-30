@@ -12,7 +12,7 @@
                     HorizontalAlignment="Center"
                     DockPanel.Dock="Top"
                     >
-            <ComboBox Name="CMB"  />
+            <ComboBox Name="CmbStorage"  />
         </StackPanel>
         <DataGrid Margin="10"/>
     </DockPanel>

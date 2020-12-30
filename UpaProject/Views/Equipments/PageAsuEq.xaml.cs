@@ -36,5 +36,10 @@ namespace UpaProject.Equipments
             GridList.ItemsSource = DBConnectHelper.DbObj.ItemsOfEq.Where(x => x.DepartmentEq.DepartmentName == CmbDepartment.Text).ToList();
 
         }
+
+        private void btnEditAsuEq_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

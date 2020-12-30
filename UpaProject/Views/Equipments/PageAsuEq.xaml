@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:UpaProject.Equipments"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageAsuEq">
+      Title="Единицы оборудования">
 <!--Бяда-->
     <DockPanel LastChildFill="True"
                Background="White">
@@ -125,10 +125,11 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnEdit"
+                            <Button Name="btnEditAsuEq"
                                     Style="{StaticResource ButtonFrame}"
                                     Content="Внести изменения"
                                     FontSize="12pt"
+                                    Click="btnEditAsuEq_Click"
                                     FontWeight="Normal"
                                     Padding="1"/>
                         </DataTemplate>

@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UpaProject.Catalogs;
 using UpaProject.DataFilesApp;
-using UpaProject.Equipments;
 using UpaProject.FrameApp;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
@@ -70,11 +69,6 @@ namespace UpaProject
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void BtnEq_Click(object sender, RoutedEventArgs e)
-        {
-            FrmMain.Navigate(new PageAsuEq());
         }
     }
 }

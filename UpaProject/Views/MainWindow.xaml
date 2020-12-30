@@ -73,7 +73,6 @@
         </DockPanel>
         <Frame
             NavigationUIVisibility="Hidden"
-            Background="Aquamarine"
             Name="FrmMain"
             Grid.Row="0"
             Grid.Column="1"/>

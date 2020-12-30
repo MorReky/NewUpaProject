@@ -43,16 +43,14 @@
         <!--Кнопка для страниц-->
         <Style TargetType="Button" x:Key="ButtonFrame">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="Height" Value="auto"/>
-            <Setter Property="Width" Value="auto"/>
+            <Setter Property="MinWidth" Value="200"/>
             <Setter Property="FrameworkElement.Margin" Value="10,5,10,3"/>
             <Setter Property="Background" Value="#7F088DD0"/>
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Foreground" Value="#FF0E0E0B"/>
             <Setter Property="FontSize" Value="12px"/>
             <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="3"/>
         </Style>
         <!--Типовая кнопка ОК-->
         <Style TargetType="Button" x:Key="ButtonOK">

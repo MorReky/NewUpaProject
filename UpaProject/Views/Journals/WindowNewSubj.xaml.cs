@@ -25,27 +25,7 @@ namespace UpaProject.Journals
     {
         public WindowNewSubj()
         {
-            InitializeComponent();
-            var source = DBConnectHelper.DbObj.Shifts.Where(x => x.IdShift == DBConnectHelper.DbObj.Shifts.OrderByDescending(y => y.IdShift).FirstOrDefault().IdShift);
-            GridDutyPers.ItemsSource = source.ToList();
-            GridDutyPers.SelectedIndex = 0;
-
-            CmbDepartment.DisplayMemberPath = "DepartmentName";
-            CmbDepartment.SelectedValuePath = "IdDepartment";
-            CmbDepartment.ItemsSource = DBConnectHelper.DbObj.DepartmentEq.ToList();
-
-            CmbSystemASU.DisplayMemberPath = "TechObjName";
-            CmbSystemASU.SelectedValuePath = "IdItemsOfEq";
-            CmbSystemASU.ItemsSource = DBConnectHelper.DbObj.ItemsOfEq.ToList();
-
-            CmbTagMainEq.DisplayMemberPath = "TagAsuMainEq";
-            CmbTagMainEq.SelectedValuePath = "IdItemsOfEq";
-            CmbTagMainEq.ItemsSource = DBConnectHelper.DbObj.AsuMainEq.ToList();
-
-            CmbTag.DisplayMemberPath = "TagAsuEq";
-            CmbTag.SelectedValuePath = "IdAsuEq";
-            CmbTag.ItemsSource = DBConnectHelper.DbObj.AsuEq.ToList();
-
+            InitializeComponent();         
         }
 
         private void BtnAddNewSubj_Click(object sender, RoutedEventArgs e)
@@ -66,23 +46,7 @@ namespace UpaProject.Journals
                         perf += " " + ChbRepairmen1.Content.ToString() + " ";
                     if (ChbRepairmen2.IsChecked == true)
                         perf += " " + ChbRepairmen2.Content.ToString() + " ";
-                    OpLogJournal opLogJournalObj = new OpLogJournal()
-                    {
-                        IdShift = DBConnectHelper.DbObj.Shifts.OrderByDescending(y => y.IdShift).FirstOrDefault().IdShift,
-                        RecordingDate = DateTime.Now.Date.ToShortDateString(),
-                        TimeOccurrence= TxbTimeStart.Text,
-                        TimeSolution=TxbTimeEnd.Text,
-                        Emergency=CmbSeriousness.SelectedIndex,
-                        AsuEq = CmbTag.SelectedItem as AsuEq,
-                        Event= TxbEvent.Text,
-                        WhatHappend= TxbCause.Text,
-                        WhatDoing=TxbElimination.Text,
-                        Comments=TxbComment.Text,
-                        Writer="Programm",
-                        Perfomers=perf
-                    };
-                    DBConnectHelper.DbObj.OpLogJournal.Add(opLogJournalObj);
-                    DBConnectHelper.DbObj.SaveChanges();
+                   
                     MessageBox.Show("Запись успешно добавлена",
                                         "Уведомление",
                                          MessageBoxButton.OK,

@@ -9,6 +9,6 @@ namespace UpaProject.DataFilesApp
 {
     class DBConnectHelper
     {
-        public static UPAOborotEntities DbObj;
+        public static UpaDBEntities DbObj;
     }
 }

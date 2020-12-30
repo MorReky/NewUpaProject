@@ -4,32 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4c352175a832445b8c3032aa919b92cf" Name="Diagram1">
-        <EntityTypeShape EntityType="UPAOborotModel.AsuEq" Width="1.5" PointX="3" PointY="9.625" />
-        <EntityTypeShape EntityType="UPAOborotModel.AsuMainEq" Width="1.5" PointX="0.75" PointY="10.25" />
-        <EntityTypeShape EntityType="UPAOborotModel.DepartmentEq" Width="1.5" PointX="1.5" PointY="21.875" />
-        <EntityTypeShape EntityType="UPAOborotModel.Engineers" Width="1.5" PointX="0.75" PointY="6.125" />
-        <EntityTypeShape EntityType="UPAOborotModel.EqList" Width="1.5" PointX="3" PointY="24.875" />
-        <EntityTypeShape EntityType="UPAOborotModel.EqType" Width="1.5" PointX="0.75" PointY="26.875" />
-        <EntityTypeShape EntityType="UPAOborotModel.Equipments" Width="1.5" PointX="5.25" PointY="10.75" />
-        <EntityTypeShape EntityType="UPAOborotModel.ItemsOfEq" Width="1.5" PointX="1.5" PointY="15" />
-        <EntityTypeShape EntityType="UPAOborotModel.OpLogJournal" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="UPAOborotModel.Repairmens" Width="1.5" PointX="0.75" PointY="2" />
-        <EntityTypeShape EntityType="UPAOborotModel.Shifts" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="UPAOborotModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" />
-        <AssociationConnector Association="UPAOborotModel.FK_AsuEq_AsuMainEq" />
-        <AssociationConnector Association="UPAOborotModel.FK_Equipments_AsuEq" />
-        <AssociationConnector Association="UPAOborotModel.FK_OpLogBook_AsuEq1" />
-        <AssociationConnector Association="UPAOborotModel.FK_AsuMainEq_ItemsOfEq" />
-        <AssociationConnector Association="UPAOborotModel.FK_ItemsOfEq_DepartmentEq" />
-        <AssociationConnector Association="UPAOborotModel.FK_Shifts_Engineers" />
-        <AssociationConnector Association="UPAOborotModel.FK_Shifts_Engineers1" />
-        <AssociationConnector Association="UPAOborotModel.FK_EqList_EqType" />
-        <AssociationConnector Association="UPAOborotModel.FK_Equipments_EqList" />
-        <AssociationConnector Association="UPAOborotModel.FK_OpLogBook_Shifts" />
-        <AssociationConnector Association="UPAOborotModel.FK_Shifts_Repairmens" />
-        <AssociationConnector Association="UPAOborotModel.FK_Shifts_Repairmens1" />
-        <AssociationConnector Association="UPAOborotModel.FK_Shifts_Repairmens2" />
+      <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1">
+        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="UpaDBModel.SystemsAsu_Tags" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

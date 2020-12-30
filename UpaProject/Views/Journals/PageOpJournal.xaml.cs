@@ -26,12 +26,6 @@ namespace UpaProject.Journals
         {
             InitializeComponent();
                      
-            //сделатьь реализацию через объект
-            GridList.ItemsSource = DBConnectHelper.DbObj.OpLogJournal.ToList();
-            GridList.SelectedIndex = 0;
-
-            txtDate.Text = DBConnectHelper.DbObj.Shifts.OrderByDescending(x => x.IdShift).First().DateStartShift.ToString();
-
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);
             timer.Tick += UpdateContext;
@@ -39,9 +33,7 @@ namespace UpaProject.Journals
 
         private void UpdateContext(object sender, EventArgs e)
         {
-            //Разобрать строку
-            // DBConnectHelper.DbObj.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            GridList.ItemsSource = DBConnectHelper.DbObj.EqList.ToList();
+            
         }
 
         private void BtnNewTurn_Click(object sender, RoutedEventArgs e)

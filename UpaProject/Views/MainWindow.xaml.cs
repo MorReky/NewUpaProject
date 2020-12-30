@@ -31,7 +31,7 @@ namespace UpaProject
 
             FrameLoader.frmObj = FrmMain;
 
-            DBConnectHelper.DbObj = new UPAOborotEntities();
+            DBConnectHelper.DbObj = new UpaDBEntities();
 
         }
 
@@ -69,6 +69,11 @@ namespace UpaProject
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void BtnEq_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

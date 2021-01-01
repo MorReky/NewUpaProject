@@ -17,7 +17,7 @@
             <Setter Property="FontSize" Value="13pt"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style TargetType="TextBox">
+        <Style TargetType="TextBox" x:Key="Txb">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
             <Setter Property="FontSize" Value="12pt"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -41,30 +41,28 @@
             <Setter Property="Padding" Value="10"/>
         </Style>
         <!--Кнопка для страниц-->
-        <Style TargetType="Button" x:Key="ButtonFrame">
+        <Style TargetType="Button" x:Key="BtnFrame">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="MinWidth" Value="200"/>
+            <Setter Property="MinWidth" Value="130"/>
             <Setter Property="FrameworkElement.Margin" Value="10,5,10,3"/>
             <Setter Property="Background" Value="#7F088DD0"/>
-            <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="Foreground" Value="#FF0E0E0B"/>
-            <Setter Property="FontSize" Value="12px"/>
+            <Setter Property="FontSize" Value="14px"/>
+            <Setter Property="FontWeight" Value="Black"/>
             <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
             <Setter Property="Padding" Value="3"/>
         </Style>
         <!--Типовая кнопка ОК-->
         <Style TargetType="Button" x:Key="ButtonOK">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="Height" Value="auto"/>
+            <Setter Property="MinWidth" Value="50"/>
             <Setter Property="Width" Value="auto"/>
-            <Setter Property="FrameworkElement.Margin" Value="10,5,10,3"/>
+            <Setter Property="FrameworkElement.Margin" Value="5,0"/>
             <Setter Property="Background" Value="#7F088DD0"/>
             <Setter Property="Foreground" Value="#FF0E0E0B"/>
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="FontSize" Value="12px"/>
             <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
             <Setter Property="Content" Value="Ok"/>
         </Style>
         <Style TargetType="MenuItem" x:Key="BtnItem">
@@ -74,25 +72,15 @@
             <Setter Property="FontSize" Value="12px"/>
             <Setter Property="Height" Value="65"/>
         </Style>
-        <Style TargetType="ComboBox" x:Key="CmbCatalog">
+        <Style TargetType="ComboBox" x:Key="Cmb">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="FontSize" Value="12px"/>
+            <Setter Property="SelectedIndex" Value="0"/>
+            <Setter Property="MinWidth" Value="200"/>
             <Setter Property="Height" Value="auto"/>
             <Setter Property="IsEditable" Value="True"/>
             <Setter Property="StaysOpenOnEdit" Value="True"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        </Style>
-        <Style TargetType="ComboBox" x:Key="CmbJournal">
-            <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
-            <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="FontSize" Value="12px"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="IsEditable" Value="True"/>
-            <Setter Property="StaysOpenOnEdit" Value="True"/>
-            <Setter Property="Width" Value="270"/>
-            <Setter Property="Margin" Value="0,12"/>
-            <!--<Setter Property="" Value=""/>-->
         </Style>
     </Application.Resources>
 </Application>

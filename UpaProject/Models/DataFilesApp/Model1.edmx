@@ -4,13 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UpaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UpaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="IDDepartment" />
           </Key>
           <Property Name="IDDepartment" Type="int" Nullable="false" />
           <Property Name="Название" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MTR">
+          <Key>
+            <PropertyRef Name="IdMTR" />
+          </Key>
+          <Property Name="IdMTR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSap" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -23,7 +32,23 @@
           <Key>
             <PropertyRef Name="IdPromActivites" />
           </Key>
-          <Property Name="IdPromActivites" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPromActivites" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "UpaDB.dbo.Storage-MTR" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Storage-MTR">
+          <Key>
+            <PropertyRef Name="IdMTR" />
+          </Key>
+          <Property Name="IdMTR" Type="int" Nullable="false" />
+          <Property Name="Storage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Storages">
+          <Key>
+            <PropertyRef Name="Storage" />
+          </Key>
+          <Property Name="Storage" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -53,6 +78,30 @@
           <Property Name="IDSystemAsu" Type="int" Nullable="false" />
           <Property Name="IdPlace" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Storage-MTR_MTR">
+          <End Role="MTR" Type="Self.MTR" Multiplicity="1" />
+          <End Role="Storage-MTR" Type="Self.Storage-MTR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IdMTR" />
+            </Principal>
+            <Dependent Role="Storage-MTR">
+              <PropertyRef Name="IdMTR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storage-MTR_Storages">
+          <End Role="Storages" Type="Self.Storages" Multiplicity="0..1" />
+          <End Role="Storage-MTR" Type="Self.Storage-MTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storages">
+              <PropertyRef Name="Storage" />
+            </Principal>
+            <Dependent Role="Storage-MTR">
+              <PropertyRef Name="Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SystemsAsu_Departments">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="SystemsAsu" Type="Self.SystemsAsu" Multiplicity="*" />
@@ -91,16 +140,33 @@
         </Association>
         <EntityContainer Name="Хранилище UpaDBModelContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MTR" EntityType="Self.MTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromActivites" EntityType="Self.PromActivites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storages" EntityType="Self.Storages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemsAsu" EntityType="Self.SystemsAsu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage-MTR" EntityType="Self.Storage-MTR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Storage-MTR].[IdMTR] AS [IdMTR], 
+    [Storage-MTR].[Storage] AS [Storage], 
+    [Storage-MTR].[Quantity] AS [Quantity]
+    FROM [dbo].[Storage-MTR] AS [Storage-MTR]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="SystemsAsu-Tags" EntityType="Self.SystemsAsu-Tags" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [SystemsAsu-Tags].[IDSystemAsu] AS [IDSystemAsu], 
     [SystemsAsu-Tags].[IdPlace] AS [IdPlace]
     FROM [dbo].[SystemsAsu-Tags] AS [SystemsAsu-Tags]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Storage-MTR_MTR" Association="Self.FK_Storage-MTR_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="Storage-MTR" EntitySet="Storage-MTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage-MTR_Storages" Association="Self.FK_Storage-MTR_Storages">
+            <End Role="Storages" EntitySet="Storages" />
+            <End Role="Storage-MTR" EntitySet="Storage-MTR" />
+          </AssociationSet>
           <AssociationSet Name="FK_SystemsAsu_Departments" Association="Self.FK_SystemsAsu_Departments">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="SystemsAsu" EntitySet="SystemsAsu" />
@@ -114,18 +180,53 @@
             <End Role="SystemsAsu-Tags" EntitySet="SystemsAsu-Tags" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UpaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UpaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="UpaDBModel.Departments" />
+          <EntitySet Name="MTR" EntityType="UpaDBModel.MTR" />
+          <EntitySet Name="Place" EntityType="UpaDBModel.Place" />
+          <EntitySet Name="PromActivites" EntityType="UpaDBModel.PromActivites" />
+          <EntitySet Name="Storages" EntityType="UpaDBModel.Storages" />
+          <EntitySet Name="sysdiagrams" EntityType="UpaDBModel.sysdiagrams" />
+          <EntitySet Name="SystemsAsu" EntityType="UpaDBModel.SystemsAsu" />
+          <EntitySet Name="Storage_MTR" EntityType="UpaDBModel.Storage_MTR" />
+          <AssociationSet Name="FK_SystemsAsu_Departments" Association="UpaDBModel.FK_SystemsAsu_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_MTR_MTR" Association="UpaDBModel.FK_Storage_MTR_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="Storage_MTR" EntitySet="Storage_MTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Storage_MTR_Storages" Association="UpaDBModel.FK_Storage_MTR_Storages">
+            <End Role="Storages" EntitySet="Storages" />
+            <End Role="Storage_MTR" EntitySet="Storage_MTR" />
+          </AssociationSet>
+          <AssociationSet Name="SystemsAsu_Tags" Association="UpaDBModel.SystemsAsu_Tags">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="IDDepartment" />
           </Key>
           <Property Name="IDDepartment" Type="Int32" Nullable="false" />
           <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SystemsAsu" Relationship="Self.FK_SystemsAsu_Departments" FromRole="Departments" ToRole="SystemsAsu" />
+          <NavigationProperty Name="SystemsAsu" Relationship="UpaDBModel.FK_SystemsAsu_Departments" FromRole="Departments" ToRole="SystemsAsu" />
+        </EntityType>
+        <EntityType Name="MTR">
+          <Key>
+            <PropertyRef Name="IdMTR" />
+          </Key>
+          <Property Name="IdMTR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSap" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Storage_MTR" Relationship="UpaDBModel.FK_Storage_MTR_MTR" FromRole="MTR" ToRole="Storage_MTR" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -133,19 +234,26 @@
           </Key>
           <Property Name="IdPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SystemsAsu" Relationship="Self.SystemsAsu_Tags" FromRole="Place" ToRole="SystemsAsu" />
+          <NavigationProperty Name="SystemsAsu" Relationship="UpaDBModel.SystemsAsu_Tags" FromRole="Place" ToRole="SystemsAsu" />
         </EntityType>
         <EntityType Name="PromActivites">
           <Key>
             <PropertyRef Name="IdPromActivites" />
           </Key>
-          <Property Name="IdPromActivites" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPromActivites" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storages">
+          <Key>
+            <PropertyRef Name="Storage" />
+          </Key>
+          <Property Name="Storage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Storage_MTR" Relationship="UpaDBModel.FK_Storage_MTR_Storages" FromRole="Storages" ToRole="Storage_MTR" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -158,12 +266,22 @@
           <Property Name="IDSystemAsu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDepartment" Type="Int32" Nullable="false" />
           <Property Name="НазваниеСистемы" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Departments" Relationship="Self.FK_SystemsAsu_Departments" FromRole="SystemsAsu" ToRole="Departments" />
-          <NavigationProperty Name="Place" Relationship="Self.SystemsAsu_Tags" FromRole="SystemsAsu" ToRole="Place" />
+          <NavigationProperty Name="Departments" Relationship="UpaDBModel.FK_SystemsAsu_Departments" FromRole="SystemsAsu" ToRole="Departments" />
+          <NavigationProperty Name="Place" Relationship="UpaDBModel.SystemsAsu_Tags" FromRole="SystemsAsu" ToRole="Place" />
+        </EntityType>
+        <EntityType Name="Storage_MTR">
+          <Key>
+            <PropertyRef Name="IdMTR" />
+          </Key>
+          <Property Name="IdMTR" Type="Int32" Nullable="false" />
+          <Property Name="Storage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="MTR" Relationship="UpaDBModel.FK_Storage_MTR_MTR" FromRole="Storage_MTR" ToRole="MTR" />
+          <NavigationProperty Name="Storages" Relationship="UpaDBModel.FK_Storage_MTR_Storages" FromRole="Storage_MTR" ToRole="Storages" />
         </EntityType>
         <Association Name="FK_SystemsAsu_Departments">
-          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
-          <End Role="SystemsAsu" Type="Self.SystemsAsu" Multiplicity="*" />
+          <End Type="UpaDBModel.Departments" Role="Departments" Multiplicity="1" />
+          <End Type="UpaDBModel.SystemsAsu" Role="SystemsAsu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Departments">
               <PropertyRef Name="IDDepartment" />
@@ -173,25 +291,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SystemsAsu_Tags">
-          <End Role="Place" Type="Self.Place" Multiplicity="*" />
-          <End Role="SystemsAsu" Type="Self.SystemsAsu" Multiplicity="*" />
+        <Association Name="FK_Storage_MTR_MTR">
+          <End Type="UpaDBModel.MTR" Role="MTR" Multiplicity="1" />
+          <End Type="UpaDBModel.Storage_MTR" Role="Storage_MTR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IdMTR" />
+            </Principal>
+            <Dependent Role="Storage_MTR">
+              <PropertyRef Name="IdMTR" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UpaDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Departments" EntityType="Self.Departments" />
-          <EntitySet Name="Place" EntityType="Self.Place" />
-          <EntitySet Name="PromActivites" EntityType="Self.PromActivites" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="SystemsAsu" EntityType="Self.SystemsAsu" />
-          <AssociationSet Name="FK_SystemsAsu_Departments" Association="Self.FK_SystemsAsu_Departments">
-            <End Role="Departments" EntitySet="Departments" />
-            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
-          </AssociationSet>
-          <AssociationSet Name="SystemsAsu_Tags" Association="Self.SystemsAsu_Tags">
-            <End Role="Place" EntitySet="Place" />
-            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
-          </AssociationSet>
-        </EntityContainer>
+        <Association Name="FK_Storage_MTR_Storages">
+          <End Type="UpaDBModel.Storages" Role="Storages" Multiplicity="0..1" />
+          <End Type="UpaDBModel.Storage_MTR" Role="Storage_MTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storages">
+              <PropertyRef Name="Storage" />
+            </Principal>
+            <Dependent Role="Storage_MTR">
+              <PropertyRef Name="Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SystemsAsu_Tags">
+          <End Type="UpaDBModel.Place" Role="Place" Multiplicity="*" />
+          <End Type="UpaDBModel.SystemsAsu" Role="SystemsAsu" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -201,16 +328,26 @@
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="UpaDBModel.Departments">
               <MappingFragment StoreEntitySet="Departments">
-                <ScalarProperty Name="IDDepartment" ColumnName="IDDepartment" />
                 <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="IDDepartment" ColumnName="IDDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MTR">
+            <EntityTypeMapping TypeName="UpaDBModel.MTR">
+              <MappingFragment StoreEntitySet="MTR">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDSap" ColumnName="IDSap" />
+                <ScalarProperty Name="IdMTR" ColumnName="IdMTR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Place">
             <EntityTypeMapping TypeName="UpaDBModel.Place">
               <MappingFragment StoreEntitySet="Place">
-                <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -221,32 +358,48 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="UpaDBModel.Storages">
+              <MappingFragment StoreEntitySet="Storages">
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="UpaDBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SystemsAsu">
             <EntityTypeMapping TypeName="UpaDBModel.SystemsAsu">
               <MappingFragment StoreEntitySet="SystemsAsu">
-                <ScalarProperty Name="IDSystemAsu" ColumnName="IDSystemAsu" />
-                <ScalarProperty Name="IDDepartment" ColumnName="IDDepartment" />
                 <ScalarProperty Name="НазваниеСистемы" ColumnName="НазваниеСистемы" />
+                <ScalarProperty Name="IDDepartment" ColumnName="IDDepartment" />
+                <ScalarProperty Name="IDSystemAsu" ColumnName="IDSystemAsu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage_MTR">
+            <EntityTypeMapping TypeName="UpaDBModel.Storage_MTR">
+              <MappingFragment StoreEntitySet="Storage-MTR">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="IdMTR" ColumnName="IdMTR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="SystemsAsu_Tags" TypeName="UpaDBModel.SystemsAsu_Tags" StoreEntitySet="SystemsAsu-Tags">
-            <EndProperty Name="Place">
-              <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
-            </EndProperty>
             <EndProperty Name="SystemsAsu">
               <ScalarProperty Name="IDSystemAsu" ColumnName="IDSystemAsu" />
+            </EndProperty>
+            <EndProperty Name="Place">
+              <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

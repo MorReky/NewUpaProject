@@ -17,6 +17,7 @@ using UpaProject.DataFilesApp;
 using UpaProject.FrameApp;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
+using UpaProject.Views.Storages;
 
 namespace UpaProject
 {
@@ -39,6 +40,38 @@ namespace UpaProject
         {
            VoidContextMenu(sender, "ContextCatalogs");
         }
+        
+
+        private void BtnCatalogEq_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnJournal_Click(object sender, RoutedEventArgs e)
+        {
+            VoidContextMenu(sender, "ContextJournals");
+        }
+
+        private void BtnOpJournal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEq_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnStorage_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLoader.frmObj.Navigate(new StoragesPage());
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         /// <summary>
         /// Логика взаимодействия с контекстным меню
         /// </summary>
@@ -51,29 +84,6 @@ namespace UpaProject
             contextMenu.IsOpen = true;
         }
 
-        private void BtnCatalogEq_Click(object sender, RoutedEventArgs e)
-        {
-            FrmMain.Navigate(new PageEqiupmentCatalog());
-        }
-
-        private void BtnJournal_Click(object sender, RoutedEventArgs e)
-        {
-            VoidContextMenu(sender, "ContextJournals");
-        }
-
-        private void BtnOpJournal_Click(object sender, RoutedEventArgs e)
-        {
-            FrmMain.Navigate(new PageOpJournal());
-        }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void BtnEq_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

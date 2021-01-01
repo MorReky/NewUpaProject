@@ -5,13 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1">
-        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Departments" ManuallyRouted="false" />
-        <AssociationConnector Association="UpaDBModel.SystemsAsu_Tags" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="2.75" PointY="4.125" />
+        <EntityTypeShape EntityType="UpaDBModel.MTR" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="2.75" PointY="7.125" />
+        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UpaDBModel.Storages" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="5" PointY="3.875" />
+        <EntityTypeShape EntityType="UpaDBModel.Storage_MTR" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Departments" />
+        <AssociationConnector Association="UpaDBModel.FK_Storage_MTR_MTR" />
+        <AssociationConnector Association="UpaDBModel.FK_Storage_MTR_Storages" />
+        <AssociationConnector Association="UpaDBModel.SystemsAsu_Tags" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -11,9 +11,39 @@
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     DockPanel.Dock="Top"
-                    >
-            <ComboBox Name="CmbStorage"  />
+                    Margin="5">
+            <TextBlock Text="Поиск:"
+                       Style="{StaticResource Txt}"
+                       MinWidth="60"/>
+            <ComboBox Name="CmbStorage" 
+                      Style="{StaticResource Cmb}"/>
+            <Button Style="{StaticResource ButtonOK}"
+                    Name="BtnSearch"/>
         </StackPanel>
-        <DataGrid Margin="10"/>
+            <GroupBox DockPanel.Dock="Top">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Редактирование"
+                           FontSize="10pt"/>
+            </GroupBox.Header>
+        <StackPanel Orientation="Horizontal"                    
+                    Margin="5">
+            <Button Style="{StaticResource BtnFrame}"
+                    Name="BtnAddMTR"
+                    Content="Внесение МТР"/>
+            <Button Style="{StaticResource BtnFrame}"
+                    Name="BtnDelMTR"
+                    Content="Вынесение МТР"/>
+        </StackPanel>
+        </GroupBox>
+        <DataGrid Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ГИД" Binding="{Binding MTR.IDSap}"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}"/>
+                <DataGridTextColumn Header="Ед.Измерения" Binding="{Binding MTR.Unit}"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Местоположение" Binding="{Binding Storage}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 </Page>

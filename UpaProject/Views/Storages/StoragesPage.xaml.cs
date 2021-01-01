@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpaProject.DataFilesApp;
 
 namespace UpaProject.Views.Storages
 {
@@ -23,6 +24,9 @@ namespace UpaProject.Views.Storages
         public StoragesPage()
         {
             InitializeComponent();
+            
+            DataContext = DBConnectHelper.DbObj.Storage_MTR;
+
         }
     }
 }

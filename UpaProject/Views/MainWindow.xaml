@@ -45,12 +45,14 @@
             <ColumnDefinition Width="699*"/>
         </Grid.ColumnDefinitions>
         <DockPanel Background="#FF088DD0" LastChildFill="False" >
-            <Button Content="Справочники"    
+            <Button Content="Справочники"   
+                    IsEnabled="False"
                     DockPanel.Dock="Top"
                     Style="{StaticResource Button_Main}"
                     Name="BtnCatalogs"
                     Click="BtnCatalogs_Click"/>
             <Button Content="Журналы"
+                    IsEnabled="False"
                     DockPanel.Dock="Top"                    
                     Style="{StaticResource Button_Main}"
                     Name="BtnJournal"
@@ -58,10 +60,12 @@
             <Button Content="Склад"
                     DockPanel.Dock="Top"                    
                     Style="{StaticResource Button_Main}"
-                    Name="BtnStorage"/>
+                    Name="BtnStorage"
+                    Click="BtnStorage_Click"/>
             <Button Content="Оборудование"
                     DockPanel.Dock="Top"                    
                     Style="{StaticResource Button_Main}"
+                    IsEnabled="False"
                     Name="BtnEq"
                     Click="BtnEq_Click"/>
             <Button Content="Выход"

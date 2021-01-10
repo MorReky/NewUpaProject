@@ -60,6 +60,7 @@
             <Button Content="Склад"
                     DockPanel.Dock="Top"                    
                     Style="{StaticResource Button_Main}"
+                    IsEnabled="False"
                     Name="BtnStorage"
                     Click="BtnStorage_Click"/>
             <Button Content="Оборудование"
@@ -79,7 +80,8 @@
             NavigationUIVisibility="Hidden"
             Name="FrmMain"
             Grid.Row="0"
-            Grid.Column="1"/>
+            Grid.Column="1"
+            ContentRendered="FrmMain_ContentRendered"/>
         <!--<TextBlock Text="Программа в стадии разработки"
                    VerticalAlignment="Bottom"  
                    HorizontalAlignment="Right"

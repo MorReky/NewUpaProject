@@ -15,8 +15,10 @@ using System.Windows.Shapes;
 using UpaProject.Catalogs;
 using UpaProject.DataFilesApp;
 using UpaProject.FrameApp;
+using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
+using UpaProject.Views.LogIN;
 using UpaProject.Views.Storages;
 
 namespace UpaProject
@@ -33,6 +35,8 @@ namespace UpaProject
             FrameLoader.frmObj = FrmMain;
 
             DBConnectHelper.DbObj = new UpaDBEntities();
+
+            FrmMain.Navigate(new AutorizationFrame());
 
         }
 
@@ -84,6 +88,21 @@ namespace UpaProject
             contextMenu.IsOpen = true;
         }
 
-        
+        private void FrmMain_ContentRendered(object sender, EventArgs e)
+        {
+            if (ClassUserHelper.Role==1)
+            {
+                BtnCatalogs.IsEnabled = true;
+                BtnJournal.IsEnabled = true;
+                BtnStorage.IsEnabled = true;
+                BtnEq.IsEnabled = true;
+            }
+            if (ClassUserHelper.Role == 2)
+            {
+                BtnCatalogs.IsEnabled = true;
+                BtnStorage.IsEnabled = true;
+            }
+
+        }
     }
 }

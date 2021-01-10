@@ -12,23 +12,18 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class MTR
+    public partial class Images
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MTR()
+        public Images()
         {
             this.MTR_Images = new HashSet<MTR_Images>();
-            this.Storage_MTR = new HashSet<Storage_MTR>();
         }
     
-        public int IDMTR { get; set; }
-        public Nullable<int> IdSap { get; set; }
-        public string Name { get; set; }
-        public string Unit { get; set; }
+        public int IDImage { get; set; }
+        public string PathToImage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MTR_Images> MTR_Images { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storage_MTR> Storage_MTR { get; set; }
     }
 }

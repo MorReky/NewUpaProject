@@ -22,6 +22,11 @@
             <Setter Property="FontSize" Value="12pt"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        <Style TargetType="PasswordBox" x:Key="Psb">
+            <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
+            <Setter Property="FontSize" Value="12pt"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
         <Style TargetType="RadioButton" x:Key="Rdb">
             <Setter Property="FontFamily" Value="Franklin Gothic Heavy"/>
             <Setter Property="FontSize" Value="12pt"/>

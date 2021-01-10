@@ -12,23 +12,21 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class MTR
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MTR()
+        public Users()
         {
-            this.MTR_Images = new HashSet<MTR_Images>();
-            this.Storage_MTR = new HashSet<Storage_MTR>();
+            this.HistoryStorages = new HashSet<HistoryStorages>();
         }
     
-        public int IDMTR { get; set; }
-        public Nullable<int> IdSap { get; set; }
+        public int IDUser { get; set; }
         public string Name { get; set; }
-        public string Unit { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public int Role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MTR_Images> MTR_Images { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storage_MTR> Storage_MTR { get; set; }
+        public virtual ICollection<HistoryStorages> HistoryStorages { get; set; }
     }
 }

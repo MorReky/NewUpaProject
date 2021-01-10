@@ -26,12 +26,16 @@ namespace UpaProject.Models.DataFilesApp
         }
     
         public virtual DbSet<Departments> Departments { get; set; }
+        public virtual DbSet<HistoryStorages> HistoryStorages { get; set; }
+        public virtual DbSet<Images> Images { get; set; }
         public virtual DbSet<MTR> MTR { get; set; }
+        public virtual DbSet<MTR_Images> MTR_Images { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<PromActivites> PromActivites { get; set; }
+        public virtual DbSet<Storage_MTR> Storage_MTR { get; set; }
         public virtual DbSet<Storages> Storages { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<SystemsAsu> SystemsAsu { get; set; }
-        public virtual DbSet<Storage_MTR> Storage_MTR { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

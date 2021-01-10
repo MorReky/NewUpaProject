@@ -1,0 +1,45 @@
+﻿<Page x:Class="UpaProject.Views.LogIN.AutorizationFrame"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UpaProject.Views.LogIN"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Окно авторизации">
+    <DockPanel  HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="Логин:"
+                       Style="{StaticResource Txt}"
+                       FontSize="16pt"
+                       MinWidth="80"/>
+            <TextBox Style="{StaticResource Txb}"
+                     Name="TxbLogin"
+                     Width="200"
+                     Margin="5"
+                     Text="admin"
+                     FontSize="16pt"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <TextBlock Text="Пароль:"
+                       Style="{StaticResource Txt}"
+                         FontSize="16pt"
+                       MinWidth="80"/>
+            <PasswordBox Style="{StaticResource Psb}"
+                         Name="PsbPass"
+                         Width="200"
+                         Password="0"
+                         FontSize="16pt"
+                         Margin="5"/>
+        </StackPanel>
+        <Button Style="{StaticResource BtnFrame}"
+                Content="Вход"
+                Name="BtnAutoriz"
+                FontSize="16pt"
+                Click="BtnAutoriz_Click"
+                DockPanel.Dock="Top"/>
+    </DockPanel>
+</Page>

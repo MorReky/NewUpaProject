@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">"Data Source=АДМИН\\SQLEXPRESS;Initial Catalog=UPAOborot;Integrated Security=True"</Value>
+      <Value Profile="(Default)">"Data Source=VGZGRKBUITEX01\\SQLSERVER;Initial Catalog=UPAOborot;Integrated Security=True"</Value>
     </Setting>
   </Settings>
 </SettingsFile>

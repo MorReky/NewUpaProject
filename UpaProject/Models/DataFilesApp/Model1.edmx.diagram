@@ -4,20 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1">
-        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="5.75" PointY="7.375" />
-        <EntityTypeShape EntityType="UpaDBModel.HistoryStorages" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="UpaDBModel.Images" Width="1.5" PointX="0.75" PointY="7.25" />
-        <EntityTypeShape EntityType="UpaDBModel.MTR" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="UpaDBModel.MTR_Images" Width="1.5" PointX="3" PointY="4" />
-        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="5.75" PointY="4.375" />
-        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="7.75" PointY="2" />
-        <EntityTypeShape EntityType="UpaDBModel.Storage_MTR" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="UpaDBModel.Storages" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7" />
-        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="8" PointY="4.25" />
-        <EntityTypeShape EntityType="UpaDBModel.Users" Width="1.5" PointX="3" PointY="7" />
+      <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="5.75" PointY="5.125" />
+        <EntityTypeShape EntityType="UpaDBModel.HistoryMTR" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="UpaDBModel.HistoryStorages" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="UpaDBModel.Images" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="UpaDBModel.MTR" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="UpaDBModel.MTR_Images" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="5.75" PointY="8.125" />
+        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UpaDBModel.Storage_MTR" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="UpaDBModel.Storages" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="8" PointY="4.875" />
+        <EntityTypeShape EntityType="UpaDBModel.Users" Width="1.5" PointX="3" PointY="11.125" />
         <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Departments" />
+        <AssociationConnector Association="UpaDBModel.FK_HistoryMTR_MTR" />
+        <AssociationConnector Association="UpaDBModel.FK_HistoryMTR_Users" />
         <AssociationConnector Association="UpaDBModel.FK_HistoryStorages_Storage_MTR" />
         <AssociationConnector Association="UpaDBModel.FK_HistoryStorages_Users" />
         <AssociationConnector Association="UpaDBModel.FK_MTR_Images_Images1" />

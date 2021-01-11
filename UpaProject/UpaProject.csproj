@@ -73,6 +73,9 @@
     <Compile Include="Models\DataFilesApp\Departments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\HistoryMTR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\HistoryStorages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -127,6 +130,9 @@
     </Compile>
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Storages\NewMTR.xaml.cs">
+      <DependentUpon>NewMTR.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Storages\StoragesPage.xaml.cs">
       <DependentUpon>StoragesPage.xaml</DependentUpon>
@@ -186,6 +192,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storages\NewMTR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

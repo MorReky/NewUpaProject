@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using UpaProject.DataFilesApp;
+using UpaProject.FrameApp;
 using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Models.DataFilesApp;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -37,19 +38,19 @@ namespace UpaProject.Views.Storages
         {
             InitializeComponent();
 
-            if (ClassUserHelper.Role==1)
+            if (ClassUserHelper.Role == 1)
             {
                 MTRGrid.IsReadOnly = false;
             }
 
             StoragesCollection = DBConnectHelper.DbObj.Storages.ToList();
 
-            MTRGrid.ItemsSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
+            MTRGrid.ItemsSource = DBConnectHelper.DbObj.MTR.ToList();
             CmbGrid.ItemsSource = StoragesCollection;
 
             CmbStorage.ItemsSource = StoragesCollection;
             CmbStorage.Text = "Общий склад";
-                      
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += FrameLoad;
@@ -59,15 +60,16 @@ namespace UpaProject.Views.Storages
         private void CmbStorage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CmbStorage.SelectedValue.ToString() == "Общий склад")
-                Source = DBConnectHelper.DbObj.Storage_MTR.ToList();
+                Source = DBConnectHelper.DbObj.MTR.ToList();
             else
                 // MTRGrid.ItemsSource = (MTRGrid.ItemsSource as IEnumerable<Storage_MTR>).Where(x=>x.Storage==CmbStorage.SelectedValue.ToString()).ToList();
-                Source = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdStorage == CmbStorage.SelectedValue.ToString()).ToList();
+                //Source = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdStorage == CmbStorage.SelectedValue.ToString()).ToList();
+                Source = DBConnectHelper.DbObj.MTR.Select(x => x.Storage_MTR.FirstOrDefault(y => y.IdStorage == CmbStorage.SelectedValue.ToString())).ToList();
             MTRGrid.ItemsSource = Source;
         }
 
         private void FrameLoad(object sender, object e)
-        {   
+        {
             MTRGrid.ItemsSource = MTRGrid.ItemsSource;
         }
 
@@ -81,7 +83,7 @@ namespace UpaProject.Views.Storages
 
         private void TxbName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MTRGrid.ItemsSource = (Source as IEnumerable<Storage_MTR>).Where(x => x.MTR.Name.ToString().Contains(TxbName.Text));
+            MTRGrid.ItemsSource = (Source as IEnumerable<MTR>).Where(x => x.Name.ToString().Contains(TxbName.Text));
         }
 
         private void TxbComments_TextChanged(object sender, TextChangedEventArgs e)
@@ -91,17 +93,21 @@ namespace UpaProject.Views.Storages
 
         private void MTRGrid_CurrentCellChanged(object sender, EventArgs e)
         {
-            int IdStorage_mtr = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR;
-            if (IdStorage_mtr != 0)
-            {
+            //try
+            //{
+            int IdStorage_mtr = ((sender as DataGrid).CurrentItem as MTR).Storage_MTR.First().IDStorage_MTR;
                 HistoryStorages historyObj = new HistoryStorages()
                 {
-                    IdStorage_MTR = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR,
+                    IdStorage_MTR = IdStorage_mtr,
                     IdUser = ClassUserHelper.ID
                 };
                 DBConnectHelper.DbObj.HistoryStorages.Add(historyObj);
-            }
-            DBConnectHelper.DbObj.SaveChanges();            
+                DBConnectHelper.DbObj.SaveChanges();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show("Исключение:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         private void BtnToExcel_Click(object sender, RoutedEventArgs e)
@@ -135,10 +141,15 @@ namespace UpaProject.Views.Storages
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Исключение:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void BtnNewRow_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLoader.frmObj.Navigate(new NewMTR());
         }
     }
 }

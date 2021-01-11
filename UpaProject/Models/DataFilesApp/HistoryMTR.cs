@@ -12,14 +12,14 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class HistoryStorages
+    public partial class HistoryMTR
     {
         public int ID { get; set; }
+        public int IdMTR { get; set; }
         public int IdUser { get; set; }
-        public int IdStorage_MTR { get; set; }
         public Nullable<System.DateTime> DateEdit { get; set; }
     
-        public virtual Storage_MTR Storage_MTR { get; set; }
+        public virtual MTR MTR { get; set; }
         public virtual Users Users { get; set; }
     }
 }

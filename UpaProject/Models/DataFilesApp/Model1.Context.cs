@@ -26,6 +26,7 @@ namespace UpaProject.Models.DataFilesApp
         }
     
         public virtual DbSet<Departments> Departments { get; set; }
+        public virtual DbSet<HistoryMTR> HistoryMTR { get; set; }
         public virtual DbSet<HistoryStorages> HistoryStorages { get; set; }
         public virtual DbSet<Images> Images { get; set; }
         public virtual DbSet<MTR> MTR { get; set; }

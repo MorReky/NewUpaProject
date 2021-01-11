@@ -181,6 +181,10 @@
                     IsEnabled="False"
                     Content="Вынесение МТР"/>
                 <Button Style="{StaticResource BtnFrame}"
+                    Name="BtnNewRow"
+                    Content="Новый материал"
+                    Click="BtnNewRow_Click"/>
+                <Button Style="{StaticResource BtnFrame}"
                     Name="BtnToExcel"
                     Content="Вывод данных в Excel"
                     Click="BtnToExcel_Click"/>
@@ -193,16 +197,16 @@
                   CurrentCellChanged="MTRGrid_CurrentCellChanged"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ГИД" Binding="{Binding MTR.IdSap}" />
-                <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}"/>
-                <DataGridTextColumn Header="Ед.Измерения" Binding="{Binding MTR.Unit}"/>
-                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="ГИД" Binding="{Binding IdSap}" />
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Ед.Измерения" Binding="{Binding Unit}"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Storage_MTR.Quantity}"/>
                 <DataGridComboBoxColumn Header="Местоположение"
                                         x:Name="CmbGrid"
-                                        TextBinding="{Binding IdStorage}"
+                                        TextBinding="{Binding Storage_MTR.IDStorage}"
                                         DisplayMemberPath="Storage"
                                         SelectedValuePath="IdStorage"/>
-                <DataGridTextColumn Header="Комментарии" Binding="{Binding Comment}"/>
+                <DataGridTextColumn Header="Комментарии" Binding="{Binding Storage_MTR.Comment}"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

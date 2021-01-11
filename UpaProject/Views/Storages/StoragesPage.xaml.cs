@@ -91,9 +91,10 @@ namespace UpaProject.Views.Storages
 
         private void MTRGrid_CurrentCellChanged(object sender, EventArgs e)
         {
-            int IdStorage_mtr = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR;
-            if (IdStorage_mtr != 0)
+            int IdStorage_mtr;
+            if (((sender as DataGrid).CurrentItem as Storage_MTR)!=null)
             {
+                IdStorage_mtr = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR;
                 HistoryStorages historyObj = new HistoryStorages()
                 {
                     IdStorage_MTR = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR,

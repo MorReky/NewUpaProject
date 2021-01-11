@@ -17,6 +17,7 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            this.HistoryMTR = new HashSet<HistoryMTR>();
             this.HistoryStorages = new HashSet<HistoryStorages>();
         }
     
@@ -26,6 +27,8 @@ namespace UpaProject.Models.DataFilesApp
         public string Password { get; set; }
         public int Role { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoryMTR> HistoryMTR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoryStorages> HistoryStorages { get; set; }
     }

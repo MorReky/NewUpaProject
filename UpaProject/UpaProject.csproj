@@ -73,6 +73,9 @@
     <Compile Include="Models\DataFilesApp\Departments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\HistoryMTR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\HistoryStorages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

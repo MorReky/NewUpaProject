@@ -181,6 +181,10 @@
                     IsEnabled="False"
                     Content="Вынесение МТР"/>
                 <Button Style="{StaticResource BtnFrame}"
+                    Name="BtnNewPosition"
+                    Content="Новая позиция"
+                    Click="BtnNewPosition_Click"/>
+                <Button Style="{StaticResource BtnFrame}"
                     Name="BtnToExcel"
                     Content="Вывод данных в Excel"
                     Click="BtnToExcel_Click"/>

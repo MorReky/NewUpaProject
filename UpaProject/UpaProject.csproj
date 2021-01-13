@@ -131,6 +131,9 @@
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Storages\NewMTRPage.xaml.cs">
+      <DependentUpon>NewMTRPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Storages\StoragesPage.xaml.cs">
       <DependentUpon>StoragesPage.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
     <Page Include="Views\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Storages\NewMTRPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Storages\StoragesPage.xaml">
       <SubType>Designer</SubType>

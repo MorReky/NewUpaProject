@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using UpaProject.DataFilesApp;
+using UpaProject.FrameApp;
 using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Models.DataFilesApp;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -140,6 +141,11 @@ namespace UpaProject.Views.Storages
             {
                 MessageBox.Show("Исключение:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void BtnNewPosition_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLoader.frmObj.Navigate(new NewMTRPage());
         }
     }
 }

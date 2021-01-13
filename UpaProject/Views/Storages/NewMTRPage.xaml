@@ -1,0 +1,92 @@
+﻿<Page x:Class="UpaProject.Views.Storages.NewMTRPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UpaProject.Views.Storages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Новый материал">
+    <DockPanel>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="ГИД:"
+                           FontSize="13pt"
+                           MinWidth="200"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Width="100"
+                         FontSize="13pt"
+                         Name="TxbIdSap"
+                         MaxLength="7"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Наименование:"
+                           FontSize="13pt"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Name="TxbName"
+                         FontSize="13pt"
+                         Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Базовая ЕИ МТР:"
+                           FontSize="13pt"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Width="100"
+                         FontSize="13pt"
+                         MaxLength="6"
+                         Name="TxbBaseEI"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Количество: "
+                           FontSize="13pt"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Width="100"
+                         FontSize="13pt"
+                         Name="TxbQuantity"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin=" 5">
+                <TextBlock Text="Расположение:"
+                           Style="{StaticResource Txt}"
+                           FontSize="13pt"/>
+                <ComboBox DisplayMemberPath="Storage"
+                          VerticalAlignment="Center"
+                          SelectedValuePath="Storage"
+                          ItemsSource="{Binding Storages}"
+                          Style="{StaticResource Cmb}"
+                          Name="CmbStorage"
+                          FontSize="13pt"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Комментарии: "
+                           FontSize="13pt"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Width="300"
+                         FontSize="13pt"
+                         Name="TxbComment"/>
+            </StackPanel>
+            <Button Content="Продолжить"
+                    Style="{StaticResource BtnFrame}"
+                    Name="BtnNext" 
+                    FontSize="13pt"
+                    Click="BtnNext_Click"/>
+            <Button Content="Отмена"
+                    FontSize="13pt"
+                    Style="{StaticResource BtnFrame}"
+                    Name="BtnCancel" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </DockPanel>
+</Page>
+

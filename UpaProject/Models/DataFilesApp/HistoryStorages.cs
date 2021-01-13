@@ -18,6 +18,7 @@ namespace UpaProject.Models.DataFilesApp
         public int IdUser { get; set; }
         public int IdStorage_MTR { get; set; }
         public Nullable<System.DateTime> DateEdit { get; set; }
+        public string Activity { get; set; }
     
         public virtual Storage_MTR Storage_MTR { get; set; }
         public virtual Users Users { get; set; }

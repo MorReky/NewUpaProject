@@ -20,6 +20,7 @@
           <Property Name="IdMTR" Type="int" Nullable="false" />
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="DateEdit" Type="datetime" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HistoryStorages">
           <Key>
@@ -29,6 +30,7 @@
           <Property Name="IdUser" Type="int" Nullable="false" />
           <Property Name="IdStorage_MTR" Type="int" Nullable="false" />
           <Property Name="DateEdit" Type="datetime" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -393,6 +395,7 @@
           <Property Name="IdMTR" Type="Int32" Nullable="false" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="DateEdit" Type="DateTime" Precision="3" />
+          <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MTR" Relationship="UpaDBModel.FK_HistoryMTR_MTR" FromRole="HistoryMTR" ToRole="MTR" />
           <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_HistoryMTR_Users" FromRole="HistoryMTR" ToRole="Users" />
         </EntityType>
@@ -404,6 +407,7 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="IdStorage_MTR" Type="Int32" Nullable="false" />
           <Property Name="DateEdit" Type="DateTime" Precision="3" />
+          <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Storage_MTR" Relationship="UpaDBModel.FK_HistoryStorages_Storage_MTR" FromRole="HistoryStorages" ToRole="Storage_MTR" />
           <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_HistoryStorages_Users" FromRole="HistoryStorages" ToRole="Users" />
         </EntityType>
@@ -632,6 +636,7 @@
           <EntitySetMapping Name="HistoryMTR">
             <EntityTypeMapping TypeName="UpaDBModel.HistoryMTR">
               <MappingFragment StoreEntitySet="HistoryMTR">
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="DateEdit" ColumnName="DateEdit" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdMTR" ColumnName="IdMTR" />
@@ -642,6 +647,7 @@
           <EntitySetMapping Name="HistoryStorages">
             <EntityTypeMapping TypeName="UpaDBModel.HistoryStorages">
               <MappingFragment StoreEntitySet="HistoryStorages">
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="DateEdit" ColumnName="DateEdit" />
                 <ScalarProperty Name="IdStorage_MTR" ColumnName="IdStorage_MTR" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />

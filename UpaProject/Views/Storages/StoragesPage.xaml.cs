@@ -52,7 +52,7 @@ namespace UpaProject.Views.Storages
             CmbStorage.Text = "Общий склад";
                       
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += FrameLoad;
             timer.Start();
         }

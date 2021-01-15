@@ -125,6 +125,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
+    <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">
+      <DependentUpon>HistoriesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogIN\AutorizationFrame.xaml.cs">
       <DependentUpon>AutorizationFrame.xaml</DependentUpon>
     </Compile>
@@ -145,15 +148,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Journals\PageOpJournal.xaml">
+    <Page Include="Views\Journals\Histories\HistoriesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Journals\WindowNewOpTurn.xaml">
+    <Page Include="Views\Journals\Operativs\PageOpJournal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Journals\WindowNewSubj.xaml">
+    <Page Include="Views\Journals\Operativs\WindowNewOpTurn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Journals\Operativs\WindowNewSubj.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,13 +185,13 @@
     </Compile>
     <Compile Include="Models\DataFilesApp\DBConnectHelper.cs" />
     <Compile Include="Infrastracture\FrameApp\FrameLoader.cs" />
-    <Compile Include="Views\Journals\PageOpJournal.xaml.cs">
+    <Compile Include="Views\Journals\Operativs\PageOpJournal.xaml.cs">
       <DependentUpon>PageOpJournal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Journals\WindowNewOpTurn.xaml.cs">
+    <Compile Include="Views\Journals\Operativs\WindowNewOpTurn.xaml.cs">
       <DependentUpon>WindowNewOpTurn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Journals\WindowNewSubj.xaml.cs">
+    <Compile Include="Views\Journals\Operativs\WindowNewSubj.xaml.cs">
       <DependentUpon>WindowNewSubj.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">

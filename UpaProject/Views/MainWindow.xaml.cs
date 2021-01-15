@@ -18,6 +18,7 @@ using UpaProject.FrameApp;
 using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
+using UpaProject.Views.Journals.Histories;
 using UpaProject.Views.LogIN;
 using UpaProject.Views.Storages;
 
@@ -58,7 +59,7 @@ namespace UpaProject
 
         private void BtnOpJournal_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameLoader.frmObj.Navigate(new PageOpJournal());
         }
 
         private void BtnEq_Click(object sender, RoutedEventArgs e)
@@ -103,6 +104,11 @@ namespace UpaProject
                 BtnStorage.IsEnabled = true;
             }
 
+        }
+
+        private void BtnHistory_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLoader.frmObj.Navigate(new HistoriesPage());
         }
     }
 }

@@ -34,50 +34,78 @@ namespace UpaProject.Views.Storages
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
-            if (!(String.IsNullOrEmpty(TxbQuantity.Text) || String.IsNullOrEmpty(TxbName.Text) || String.IsNullOrEmpty(TxbBaseEI.Text) || String.IsNullOrEmpty(CmbStorage.SelectedValue.ToString()) || String.IsNullOrEmpty(TxbComment.Text) || String.IsNullOrEmpty(TxbQuantity.Text)))
+            if (!(String.IsNullOrEmpty(TxbIdSap.Text) || String.IsNullOrEmpty(TxbName.Text) || String.IsNullOrEmpty(TxbBaseEI.Text) || String.IsNullOrEmpty(CmbStorage.SelectedValue.ToString()) || String.IsNullOrEmpty(TxbComment.Text) || String.IsNullOrEmpty(TxbQuantity.Text)))
             {
-                int IdObj;
-                if (!DBConnectHelper.DbObj.MTR.Select(x => x.IdSap).Contains(Convert.ToInt32(TxbQuantity.Text)))
+                try
                 {
-                    MTR mtrObj = new MTR()
+                    var obj = DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.MTR.IdSap.ToString() == TxbIdSap.Text && x.IdStorage == CmbStorage.SelectedValue.ToString());
+                    //Если совпадений на запись МТР в этом  контейнере нет,то...
+                    if (obj == null)
                     {
-                        IdSap = Convert.ToInt32(TxbQuantity.Text),
-                        Name = TxbName.Text,
-                        Unit = TxbBaseEI.Text
-                    };
-                    DBConnectHelper.DbObj.MTR.Add(mtrObj);
-                    IdObj = mtrObj.IDMTR;
-                    HistoryMTR historyObj = new HistoryMTR()
+                        int IdObj;
+                        //Если указанного МТР нет,то добавляет записи в соответствующие таблицы. Иначе находит ID МТР
+                        if (!DBConnectHelper.DbObj.MTR.Select(x => x.IdSap).Contains(Convert.ToInt32(TxbIdSap.Text)))
+                        {
+                            MTR mtrObj = new MTR()
+                            {
+                                IdSap = Convert.ToInt32(TxbIdSap.Text),
+                                Name = TxbName.Text,
+                                Unit = TxbBaseEI.Text
+                            };
+                            DBConnectHelper.DbObj.MTR.Add(mtrObj);
+                            IdObj = mtrObj.IDMTR;
+                            HistoryMTR historyObj = new HistoryMTR()
+                            {
+                                IdMTR = IdObj,
+                                IdUser = ClassUserHelper.ID,
+                                DateEdit = DateTime.Now,
+                                Activity = "Добавление нового МТР"
+                            };
+                            DBConnectHelper.DbObj.HistoryMTR.Add(historyObj);
+                        }
+                        else
+                            IdObj = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IdSap.ToString() == TxbIdSap.Text).IDMTR;
+                        //Создаем записи в таблице учета и в таблице истории внесения МТР
+                        Storage_MTR storage_MTR = new Storage_MTR()
+                        {
+                            IdMTR = IdObj,
+                            IdStorage = CmbStorage.SelectedValue.ToString(),
+                            Quantity = Convert.ToInt32(TxbQuantity.Text),
+                            Comment = TxbComment.Text,
+                        };
+                        DBConnectHelper.DbObj.Storage_MTR.Add(storage_MTR);
+                        HistoryStorages historyStorages = new HistoryStorages()
+                        {
+                            IdUser = ClassUserHelper.ID,
+                            IdStorage_MTR = storage_MTR.IDStorage_MTR,
+                            DateEdit = DateTime.Now,
+                            Activity = "Добавление новой позиции для материала"
+                        };
+                        DBConnectHelper.DbObj.HistoryStorages.Add(historyStorages);
+                        DBConnectHelper.DbObj.SaveChanges();
+                    }
+                    //...если запись находится,то обновляем данные и делаем запись в журнале
+                    else
                     {
-                        IdMTR = IdObj,
-                        IdUser = ClassUserHelper.ID,
-                        DateEdit = DateTime.Now,
-                        Activity = "Добавление нового МТР"
-                    };
-                    DBConnectHelper.DbObj.HistoryMTR.Add(historyObj);
-                    // DBConnectHelper.DbObj.SaveChanges();
+                        obj.Quantity = Convert.ToInt32(TxbQuantity.Text);
+                        obj.Comment = TxbComment.Text;
+                        HistoryStorages historyStorages = new HistoryStorages()
+                        {
+                            IdUser = ClassUserHelper.ID,
+                            IdStorage_MTR = obj.IDStorage_MTR,
+                            DateEdit = DateTime.Now,
+                            Activity = "Внесение изменений позиции материала"
+                        };
+                        DBConnectHelper.DbObj.HistoryStorages.Add(historyStorages);
+                        DBConnectHelper.DbObj.SaveChanges();
+                    }
+                    MessageBox.Show("Запись успешно добавлена или изменена");
+                    FrameLoader.frmObj.GoBack();
                 }
-                else
-                    IdObj = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IdSap == Convert.ToInt32(TxbQuantity.Text)).IDMTR;
-                Storage_MTR storage_MTR = new Storage_MTR()
+                catch (Exception ex)
                 {
-                    IdMTR = IdObj,
-                    IdStorage = CmbStorage.SelectedValue.ToString(),
-                    Comment = TxbComment.Text,
-                    Quantity = Convert.ToInt32(TxbQuantity.Text)
-                };
-                DBConnectHelper.DbObj.Storage_MTR.Add(storage_MTR);
-                HistoryStorages historyStorages = new HistoryStorages()
-                {
-                    IdUser = ClassUserHelper.ID,
-                    IdStorage_MTR = storage_MTR.IDStorage_MTR,
-                    DateEdit = DateTime.Now,
-                    Activity = "Добавление новой позиции для материала"
-                };
-                DBConnectHelper.DbObj.HistoryStorages.Add(historyStorages);
-                DBConnectHelper.DbObj.SaveChanges();
-                MessageBox.Show("Запись добавлена!");
-                FrameLoader.frmObj.GoBack();
+                    MessageBox.Show("Сбой программы. Пожалуйста,обратитесь к администратору:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             else
                 MessageBox.Show("Все поля Обязательны для заполнения");

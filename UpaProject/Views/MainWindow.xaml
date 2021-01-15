@@ -19,7 +19,7 @@
                  FontWeight="DemiBold"
                  Foreground="#FF3D3D35"
                  Padding="3"
-                Header="Справочник оборудования и материалов"
+                 Header="Справочник оборудования и материалов"
                       Click="BtnCatalogEq_Click"/>
             <!--<MenuItem x:Name="BtnCatalogASUEq"
                       Background="#FF088DD0"
@@ -32,11 +32,30 @@
                      Height="auto"
                      x:Key="ContextJournals">
             <MenuItem x:Name="BtnOpJournal"
-                      Background="#FF088DD0"
+                      Background="#7F088DD0"
                       MinHeight="45"
                       MaxWidth="500"
                       Header="Оперативный журнал"
-                      Click="BtnOpJournal_Click"/>
+                      Click="BtnOpJournal_Click"
+                      Margin="0"
+                      FontWeight="DemiBold"
+                      Padding="3"
+                      FontFamily="Franklin Gothic Heavy"
+                      FontSize="12pt"
+                      IsEnabled="False"
+                      />
+            <MenuItem x:Name="BtnHistory"
+                      Background="#7F088DD0"
+                      MinHeight="45"
+                      MaxWidth="500"
+                      Header="Журналы изменений"
+                      Click="BtnHistory_Click"
+                      Margin="0"
+                      FontWeight="DemiBold"
+                      Padding="3"
+                      FontFamily="Franklin Gothic Heavy"
+                      FontSize="12pt"
+                      />
         </ContextMenu>
     </Window.Resources>
     <Grid>

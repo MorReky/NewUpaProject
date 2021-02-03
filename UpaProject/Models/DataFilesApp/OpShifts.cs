@@ -12,21 +12,22 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class SystemsAsu
+    public partial class OpShifts
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SystemsAsu()
+        public OpShifts()
         {
-            this.SystemsAsu_Tags = new HashSet<SystemsAsu_Tags>();
+            this.OpShifts_OpRecord = new HashSet<OpShifts_OpRecord>();
+            this.Shifts_Persons = new HashSet<Shifts_Persons>();
         }
     
-        public int IDSystemAsu { get; set; }
-        public int IDDepartment { get; set; }
-        public Nullable<int> IdSapSystem { get; set; }
-        public string Name { get; set; }
+        public int IDShift { get; set; }
+        public int Type { get; set; }
+        public System.DateTime DateStartShift { get; set; }
     
-        public virtual Departments Departments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SystemsAsu_Tags> SystemsAsu_Tags { get; set; }
+        public virtual ICollection<OpShifts_OpRecord> OpShifts_OpRecord { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shifts_Persons> Shifts_Persons { get; set; }
     }
 }

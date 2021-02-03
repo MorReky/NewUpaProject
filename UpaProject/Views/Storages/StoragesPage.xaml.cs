@@ -99,7 +99,9 @@ namespace UpaProject.Views.Storages
                 HistoryStorages historyObj = new HistoryStorages()
                 {
                     IdStorage_MTR = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR,
-                    IdUser = ClassUserHelper.ID
+                    IdUser = ClassUserHelper.ID,
+                    DateEdit=DateTime.Now,
+                    Activity="Редактирование записи"
                 };
                 DBConnectHelper.DbObj.HistoryStorages.Add(historyObj);
             }

@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
       xmlns:local="clr-namespace:UpaProject.Views.Journals.Histories"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HistoriesPage">
+    <Page.DataContext>
+        <vm:HistoriesPageViewModel/>
+    </Page.DataContext>
     <!--_________________________Нужно будет переработать под TabItem(Отличная возможность для практики MVVM_________________________________-->
     <Grid>
         <Grid.RowDefinitions>
@@ -18,5 +22,56 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <GroupBox Grid.Row="0" Grid.Column="0" >
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}" Text="Изменение МТР"/>
+            </GroupBox.Header>
+            <DataGrid Grid.Row="0" Grid.Column="0"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="3"
+                      Name="HistoryMtrGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,DD'}"/>
+                    <DataGridTextColumn Header="Редактор" Binding="{Binding Users.Name}"/>
+                    <DataGridTextColumn Header="Гид" Binding="{Binding MTR.IdSap}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}"/>
+                    <DataGridTextColumn Header="" Binding="{Binding Activity}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="1" >
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}" Text="Изменение складской позиции"/>
+            </GroupBox.Header>
+            <DataGrid Grid.Row="0" Grid.Column="0"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="3"
+                      Name="HistoryStoragesGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,DD'}"/>
+                    <DataGridTextColumn Header="Редактор" Binding="{Binding Users.Name}"/>
+                    <DataGridTextColumn Header="Гид" Binding="{Binding Storage_MTR.MTR.IdSap}"/>
+                    <DataGridTextColumn Header="Наименование" Binding="{Binding Storage_MTR.MTR.Name}"/>
+                    <DataGridTextColumn Header="Местоположение" Binding="{Binding Storage_MTR.IdStorage}"/>
+                    <DataGridTextColumn Header="" Binding="{Binding Activity}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" >
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}" Text="Редактирование оперативного журнала"/>
+            </GroupBox.Header>
+            <DataGrid Grid.Row="0" Grid.Column="0"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="3"
+                      Name="HistoryOpJournal">
+                <DataGrid.Columns>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
     </Grid>
 </Page>

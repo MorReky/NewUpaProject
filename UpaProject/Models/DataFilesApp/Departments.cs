@@ -17,12 +17,15 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Departments()
         {
+            this.OpRececord = new HashSet<OpRececord>();
             this.SystemsAsu = new HashSet<SystemsAsu>();
         }
     
         public int IDDepartment { get; set; }
-        public string Название { get; set; }
+        public string Name { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OpRececord> OpRececord { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SystemsAsu> SystemsAsu { get; set; }
     }

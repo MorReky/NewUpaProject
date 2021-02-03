@@ -8,5 +8,8 @@
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">"Data Source=АДМИН\\SQLEXPRESS;Initial Catalog=UPAOborot;Integrated Security=True"</Value>
     </Setting>
+    <Setting Name="LastLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

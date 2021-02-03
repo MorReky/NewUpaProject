@@ -42,7 +42,6 @@
                       Padding="3"
                       FontFamily="Franklin Gothic Heavy"
                       FontSize="12pt"
-                      IsEnabled="False"
                       />
             <MenuItem x:Name="BtnHistory"
                       Background="#7F088DD0"

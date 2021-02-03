@@ -6,16 +6,23 @@
         xmlns:local="clr-namespace:UpaProject.Journals"
         mc:Ignorable="d"
         Title="Новое событие"
-        MaxHeight="510"
-        MaxWidth="800"
-        WindowStyle="ToolWindow">
-    <DockPanel LastChildFill="False">
+        WindowStyle="ToolWindow" MaxHeight="500" MaxWidth="780" >
+    <DockPanel LastChildFill="False" >
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     DockPanel.Dock="Top">
             <TextBlock Margin="0,0,0,0"
+                       TextWrapping="Wrap"
+                       FontFamily="Franklin Gothic Heavy"
+                       FontWeight="Bold"
+                       Name="TxtType"
+                       Foreground="#FF05090C"
+                       TextAlignment="Center"
+                       Height="auto"
+                       FontSize="24"/>
+            <TextBlock Margin="0,0,0,0"
                        TextWrapping="Wrap" 
-                       Text="Cмена "
+                       Text=" смена от "
                        FontFamily="Franklin Gothic Heavy"
                        FontWeight="Bold"
                        Foreground="#FF05090C"
@@ -23,26 +30,8 @@
                        Height="auto"
                        FontSize="24"/>
             <TextBlock Margin="0,0,0,0"
+                       Name="TxtDate"
                        TextWrapping="Wrap" 
-                       Text="{Binding SelectedItem.DateStartShift,StringFormat=dd.MM.yyyy,ElementName=GridDutyPers}"
-                       FontFamily="Franklin Gothic Heavy"
-                       FontWeight="Bold"
-                       Foreground="#FF05090C"
-                       TextAlignment="Center"
-                       Height="auto"
-                       FontSize="24"/>
-            <TextBlock Margin="0,0,0,0"
-                       TextWrapping="Wrap" 
-                       Text=" - "
-                       FontFamily="Franklin Gothic Heavy"
-                       FontWeight="Bold"
-                       Foreground="#FF05090C"
-                       TextAlignment="Center"
-                       Height="auto"
-                       FontSize="24"/>
-            <TextBlock Margin="0,0,0,0"
-                       TextWrapping="Wrap" 
-                       Text="{Binding SelectedItem.DateEndShift,StringFormat=dd.MM.yyyy,ElementName=GridDutyPers}"
                        FontFamily="Franklin Gothic Heavy"
                        FontWeight="Bold"
                        Foreground="#FF05090C"
@@ -50,29 +39,6 @@
                        Height="auto"
                        FontSize="24"/>
         </StackPanel>
-        <DataGrid x:Name="GridDutyPers"
-                  DockPanel.Dock="Top"
-                  SelectionMode="Extended"  
-                  HorizontalScrollBarVisibility="Hidden"
-                  Height="auto" 
-                  ColumnWidth="auto"
-                  FontSize="14" 
-                  CanUserResizeColumns="True" 
-                  IsReadOnly="true"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Дежурный инженер КИПиа"
-                                        Binding="{Binding Engineers.SNP}" />
-                <DataGridTextColumn Header="Дежурный инженер АСУ"
-                                        Binding="{Binding Engineers1.SNP}"/>
-                <DataGridTextColumn Header="Дежурный слесарь" 
-                                        Binding="{Binding Repairmens.SNP}"/>
-                <DataGridTextColumn Header="Дежурный слесарь" 
-                                        Binding="{Binding Repairmens1.SNP}" />
-                <DataGridTextColumn Header="Дежурный слесарь" 
-                                        Binding="{Binding Repairmens2.SNP}"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal"
@@ -88,9 +54,11 @@
                 <TextBox x:Name="TxbTimeStart" 
                          VerticalAlignment="Center"
                          Text="12:30"
+                         Style="{StaticResource Txb}"
                          Margin="5"
                          Padding="5,4" 
-                         BorderBrush="Black"/>
+                         BorderBrush="Black"
+                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                             Margin="5,0"
@@ -103,10 +71,12 @@
                            Margin="5" />
                 <TextBox x:Name="TxbTimeEnd" 
                          VerticalAlignment="Center" 
+                         Style="{StaticResource Txb}"
                          Text="13:30"
                          Margin="5"
                          Padding="5,4" 
-                         BorderBrush="Black"/>
+                         BorderBrush="Black"
+                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                             Margin="5,0"
@@ -118,6 +88,7 @@
                            Margin="5"/>
                 <ComboBox x:Name="CmbSeriousness" 
                           VerticalAlignment="Center"
+                           Style="{StaticResource Cmb}"
                           SelectedIndex="1"
                           Margin="5"
                           Width="170"
@@ -142,8 +113,11 @@
             <ComboBox IsReadOnly="False"
                           IsEditable="True"
                           StaysOpenOnEdit ="True"
+                       Style="{StaticResource Cmb}"
                           x:Name="CmbDepartment" 
-                          ItemsSource="{Binding}" 
+                          SelectedValuePath="IDDepartment"
+                      SelectionChanged="CmbDepartment_SelectionChanged"
+                      DisplayMemberPath="Name"
                           VerticalAlignment="Center" 
                           Text="" 
                           Margin="5"
@@ -159,35 +133,22 @@
                            MinWidth="135"
                            Width="120"/>
             <ComboBox IsReadOnly="False"
-                          IsEditable="True"
-                          StaysOpenOnEdit ="True"
-                          x:Name="CmbSystemASU" 
-                          ItemsSource="{Binding}" 
-                          VerticalAlignment="Center" 
-                          Text=""
-                          Margin="5" 
-                          Width="600" 
-                          BorderBrush="Black"/>
+                      IsEditable="True"
+                      StaysOpenOnEdit ="True"
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="IDSystemAsu"
+                      Style="{StaticResource Cmb}"
+                      x:Name="CmbSystemASU" 
+                      ItemsSource="{Binding}" 
+                      VerticalAlignment="Center" 
+                      Text=""
+                      Margin="5" 
+                      Width="600" 
+                      BorderBrush="Black"/>
         </StackPanel>
         <DockPanel LastChildFill="True"
                    DockPanel.Dock="Top">
             <StackPanel DockPanel.Dock="Left">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center"
-                                   Text="Тег осн. оборудования:"  
-                                   Margin="5,0" 
-                                   Style="{StaticResource Txt}"
-                                   MinWidth="135"
-                                   Width="180"/>
-                    <ComboBox x:Name="CmbTagMainEq"
-                                  IsReadOnly="False" 
-                                  IsEditable="True"
-                                  StaysOpenOnEdit ="True"
-                                  VerticalAlignment="Center" 
-                                  Text="" Margin="5" 
-                                  Width="150"
-                                  BorderBrush="Black"/>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center"
                                    Text="Теговый номер:" 
@@ -198,6 +159,9 @@
                     <ComboBox x:Name="CmbTag"
                                   IsReadOnly="False" 
                                   IsEditable="True"
+                              DisplayMemberPath="Tag"
+                              SelectedValuePath="IDPlace"
+                               Style="{StaticResource Cmb}"
                                   StaysOpenOnEdit ="True" 
                                   VerticalAlignment="Center"
                                   Text="" 
@@ -206,28 +170,65 @@
                                   BorderBrush="Black"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Margin="0,0,28,0">
-                <TextBlock HorizontalAlignment="Left" 
-                                   Text="Исполнители выполняющие работу:" 
+        </DockPanel>
+        <DockPanel LastChildFill="False"
+                   DockPanel.Dock="Top">
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock HorizontalAlignment="Left" 
+                                   Text="Персонал" 
                                    Margin="15,0"
-                                   Style="{StaticResource Txt}"
-                                   MinWidth="135" />
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical"
-                                    Margin="10,0,10,0">
-                        <CheckBox Content="{Binding SelectedItem.Engineers.SNP,ElementName=GridDutyPers}"
-                                  Name="ChbEngineer"/>
-                        <CheckBox Content="{Binding SelectedItem.Engineers1.SNP,ElementName=GridDutyPers}"
-                                  Name="ChbEngineer1"/>
-                        <CheckBox Content="{Binding SelectedItem.Repairmens.SNP,ElementName=GridDutyPers}"
-                                  Name="ChbRepairmen"/>
-                        <CheckBox Content="{Binding SelectedItem.Repairmens1.SNP,ElementName=GridDutyPers}"
-                                  Name="ChbRepairmen1"/>
-                        <CheckBox Content="{Binding SelectedItem.Repairmens2.SNP,ElementName=GridDutyPers}"
-                                  Name="ChbRepairmen2"/>
+                                   FontSize="10pt"
+                                   Style="{StaticResource Txt}" />
+                </GroupBox.Header>
+                <DockPanel LastChildFill="False">
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock HorizontalAlignment="Left" 
+                                   Text="Дежурный персонал" 
+                                   Margin="15,0"
+                                   FontSize="10pt"
+                                   Style="{StaticResource Txt}" />
+                        </GroupBox.Header>
+                        <ListView DockPanel.Dock="Left"
+                                  Name="LBPersonal"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Person.IDPerson">
+                            
+                        </ListView>
+                        <!--<ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource Txt}"
+                                           Text="{Binding}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>-->
+                    </GroupBox>
+                    <StackPanel Orientation="Vertical">
+                        <Button Style="{StaticResource ButtonOK}"
+                                Name="BtnPersonAdd"
+                                Click="BtnPersonAdd_Click"
+                                Content="==&gt;"/>
+                        <Button Style="{StaticResource ButtonOK}"
+                                Name="BtnPersonSub"
+                                Content= "&lt;=="/>
                     </StackPanel>
-                </StackPanel>
-            </StackPanel>
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <TextBlock HorizontalAlignment="Left" 
+                                   Text="Исполнители работы" 
+                                   Margin="15,0"
+                                   FontSize="10pt"
+                                   Style="{StaticResource Txt}" />
+                        </GroupBox.Header>
+                        <ListView DockPanel.Dock="Right"
+                                  Name="LBRealizers"
+                                  ItemsSource="{Binding}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Person.IDPerson">
+                        </ListView>
+                    </GroupBox>
+                </DockPanel>
+            </GroupBox>
         </DockPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
@@ -242,6 +243,8 @@
                          Text="" 
                          Margin="5"
                          Width="600" 
+                     TextWrapping="Wrap"
+                     Style="{StaticResource Txb}"
                          BorderBrush="Black"/>
         </StackPanel>
         <StackPanel  Orientation="Horizontal"
@@ -255,8 +258,10 @@
             <TextBox x:Name="TxbCause"
                          VerticalAlignment="Center" 
                          Text=""
+                     TextWrapping="Wrap"
                          Margin="5"
                          Width="600" 
+                     Style="{StaticResource Txb}"
                          BorderBrush="Black"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -271,7 +276,9 @@
                          VerticalAlignment="Center" 
                          Text=""
                          Margin="5"
+                     TextWrapping="Wrap"
                          Width="600" 
+                     Style="{StaticResource Txb}"
                          BorderBrush="Black"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -286,15 +293,18 @@
                          VerticalAlignment="Center"
                          Text="" 
                          Margin="5"
+                     TextWrapping="Wrap"
                          Width="600"
+                     Style="{StaticResource Txb}"
                          BorderBrush="Black" />
         </StackPanel>
+
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top"
                     HorizontalAlignment="Center">
             <Button x:Name="BtnAddNewSubj"
                     Content="Добавить новое событие"
-                    Style="{StaticResource ButtonFrame}" 
+                    Style="{StaticResource BtnFrame}" 
                     HorizontalAlignment="Center"
                     FontSize="14pt"
                     Click="BtnAddNewSubj_Click"/>

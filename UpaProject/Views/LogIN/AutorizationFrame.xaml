@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
       xmlns:local="clr-namespace:UpaProject.Views.LogIN"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Окно авторизации">
+    <Page.DataContext>
+        <vm:AutorizationPageViewModel/>
+    </Page.DataContext>
     <DockPanel  HorizontalAlignment="Center"
                 VerticalAlignment="Center">
         <StackPanel Orientation="Horizontal"
@@ -19,7 +23,7 @@
                      Name="TxbLogin"
                      Width="200"
                      Margin="5"
-                     Text="admin"
+                     Text="{Binding Login}"
                      FontSize="16pt"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
@@ -35,11 +39,16 @@
                          FontSize="16pt"
                          Margin="5"/>
         </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <CheckBox Content="Запомнить меня"
+                      IsChecked="{Binding RememberMe}"/>
+        </StackPanel>
         <Button Style="{StaticResource BtnFrame}"
                 Content="Вход"
-                Name="BtnAutoriz"
                 FontSize="16pt"
-                Click="BtnAutoriz_Click"
+                Command="{Binding LogInCommand}"
+                CommandParameter="{Binding ElementName=PsbPass}"
                 DockPanel.Dock="Top"/>
     </DockPanel>
 </Page>

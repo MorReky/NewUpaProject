@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpaProject.DataFilesApp;
 
 namespace UpaProject.Views.Journals.Histories
 {
@@ -23,6 +24,10 @@ namespace UpaProject.Views.Journals.Histories
         public HistoriesPage()
         {
             InitializeComponent();
+
+            HistoryMtrGrid.ItemsSource = DBConnectHelper.DbObj.HistoryMTR.ToList();
+
+            HistoryStoragesGrid.ItemsSource = DBConnectHelper.DbObj.HistoryStorages.ToList();
         }
     }
 }

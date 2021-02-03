@@ -17,13 +17,17 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Place()
         {
-            this.SystemsAsu = new HashSet<SystemsAsu>();
+            this.OpRececord = new HashSet<OpRececord>();
+            this.SystemsAsu_Tags = new HashSet<SystemsAsu_Tags>();
         }
     
-        public int IdPlace { get; set; }
+        public int IDPlace { get; set; }
         public string Tag { get; set; }
+        public string Comments { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SystemsAsu> SystemsAsu { get; set; }
+        public virtual ICollection<OpRececord> OpRececord { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SystemsAsu_Tags> SystemsAsu_Tags { get; set; }
     }
 }

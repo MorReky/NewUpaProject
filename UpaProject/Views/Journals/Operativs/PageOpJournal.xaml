@@ -20,7 +20,7 @@
                     DockPanel.Dock="Left"
                     Click="BtnNewSubj_Click"
                     Style="{StaticResource BtnFrame}"/>
-            <Button Content="Сформировать документ Excel"
+            <Button Content="Импорт в Excel"
                     DockPanel.Dock="Left"
                     Style="{StaticResource BtnFrame}"/>
             <StackPanel Orientation="Vertical"
@@ -37,6 +37,17 @@
                            HorizontalAlignment="Center"/>
             </StackPanel>
         </DockPanel>
+        <GroupBox DockPanel.Dock="Top">
+            <GroupBox.Header>
+                <TextBlock Text="Сортировка и фильтры"
+                           Style="{StaticResource Txt}"
+                           FontWeight="Black"
+                           FontSize="10pt"/>
+            </GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                
+            </StackPanel>
+        </GroupBox>
 
         <DataGrid x:Name="GridList"
                       ColumnWidth="auto"
@@ -45,7 +56,7 @@
                       HorizontalScrollBarVisibility="Auto"  
                       Margin="10,10,10,10" 
                       FontSize="14"
-                      FrozenColumnCount="1"
+                      FrozenColumnCount="2"
                       AutoGenerateColumns="False" >
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
@@ -58,72 +69,26 @@
             </DataGrid.Resources>
             <DataGrid.Columns >
                 <!--<DataGridTextColumn  Header="Время создания записи"  CanUserResize="True" IsReadOnly="true"  Binding="{Binding RecDate }" Width="10" />-->
-                <DataGridTextColumn  
-                        Header="Время начала события" 
-                        CanUserResize="True"
-                        IsReadOnly="true" 
-                        Binding="{Binding TimeOccurrence}" 
-                        Width="auto" />
-                <DataGridTextColumn  Header="Время окончания события"  
-                                         CanUserResize="True" 
-                                         IsReadOnly="true" 
-                                         Binding="{Binding TimeSolution}" 
-                                         Width="auto" />
-                <DataGridTextColumn Header="Критичность" 
-                                        CanUserResize="True" 
-                                        IsReadOnly="true"
-                                        Binding="{Binding Emergency}"
-                                        Width="auto"/>
-                <DataGridTextColumn Header="Отделение"
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding AsuEq.AsuMainEq.ItemsOfEq.DepartmentEq.DepartmentName}" 
-                                        Width="auto" />
-                <DataGridTextColumn Header="Система АСУ" 
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding AsuEq.AsuMainEq.ItemsOfEq.TechObjName}"
-                                        Width="auto" />
-                <DataGridTextColumn Header="Осн. оборуд. АСУ"
-                                        CanUserResize="True"
-                                        IsReadOnly="true"
-                                        Binding="{Binding AsuEq.AsuMainEq.TagAsuMainEq}"
-                                        Width="auto" />
-                <DataGridTextColumn Header="Дисп.Наименование"
-                                        CanUserResize="True"
-                                        IsReadOnly="true"
-                                        Binding="{Binding AsuEq.TagAsuEq}"
-                                        Width="auto" />
-                <DataGridTextColumn Header="Событие"
-                                        CanUserResize="True"
-                                        IsReadOnly="true" 
-                                        Binding="{Binding Event}"
-                                        Width="auto" />
-                <DataGridTextColumn Header="Причина"
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding WhatHappend}" 
-                                        Width="auto"/>
-                <DataGridTextColumn Header="Устранение" 
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding WhatDoing}" 
-                                        Width="auto"/>
-                <DataGridTextColumn Header="Комментарий" 
-                                        CanUserResize="True" 
-                                        IsReadOnly="true"
-                                        Binding="{Binding Comments}" 
-                                        Width="auto"/>
-                <DataGridTextColumn Header="Доб.запись" 
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding Writer}" 
-                                        Width="auto"/>
-                <DataGridTextColumn Header="Исполнители"
-                                        CanUserResize="True" 
-                                        IsReadOnly="true" 
-                                        Binding="{Binding Perfomers}"
-                                        Width="auto"/>
+                <DataGridTextColumn Header="Смена" Binding="{Binding OpShifts.Type}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding OpRececord.DateOccurence}"/>
+                <DataGridTextColumn Header="Время возникновения" Binding="{Binding OpRececord.TimeOccurence}"/>
+                <DataGridTextColumn Header="Время решения" Binding="{Binding OpRececord.TimeSolution}"/>
+                <DataGridTextColumn Header="Отделение" Binding="{Binding OpRececord.Departments.Name}"/>
+                <DataGridTextColumn Header="Критичность" Binding="{Binding OpRececord.Criticality}"/>
+                <DataGridTextColumn Header="Тег" Binding="{Binding OpRececord.Place.Tag}"/>
+                <DataGridTextColumn Header="Событие" Binding="{Binding OpRececord.Occurence}"/>
+                <DataGridTextColumn Header="Причина" Binding="{Binding OpRececord.Account}"/>
+                <DataGridTextColumn Header="Решение" Binding="{Binding OpRececord.Solution}"/>
+                <DataGridTextColumn Header="Комментарии" Binding="{Binding OpRececord.Comments}"/>
+                <DataGridTemplateColumn Header="Исполнитель" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ListView ItemsSource="{Binding OpShifts.Type}"
+                                      Name="Lv"
+                                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

@@ -73,10 +73,16 @@
     <Compile Include="Models\DataFilesApp\Departments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\HistoryLoginUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\HistoryMTR.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataFilesApp\HistoryStorages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\HistroyOpRecord.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataFilesApp\Images.cs">
@@ -103,10 +109,28 @@
     <Compile Include="Models\DataFilesApp\MTR_Images.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\OpRececord.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\OpShifts.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\OpShifts_OpRecord.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\Persons.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\Place.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataFilesApp\PromActivites.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\Realizers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataFilesApp\Shifts_Persons.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataFilesApp\Storages.cs">
@@ -121,9 +145,14 @@
     <Compile Include="Models\DataFilesApp\SystemsAsu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\SystemsAsu_Tags.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AutorizationPageViewModel.cs" />
+    <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">
       <DependentUpon>HistoriesPage.xaml</DependentUpon>

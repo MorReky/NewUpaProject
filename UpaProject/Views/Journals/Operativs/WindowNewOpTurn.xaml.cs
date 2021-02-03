@@ -27,13 +27,16 @@ namespace UpaProject.Journals
         {
             InitializeComponent();
 
-            CmbDutyEngKIP.SelectedIndex = 0;
-            CmbDutyEngASU.SelectedIndex = 0;
-            CmbDutyRep1.SelectedIndex = 0;
-            CmbDutyRep2.SelectedIndex = 0;
-            CmbDutyRep3.SelectedIndex = 0;
-
             DtOccur.SelectedDate = DateTime.Today;
+
+            CmbDutyEngKIP.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.WorkGroup == 2).ToList();
+            CmbDutyEngKIP.Text = "-";
+            CmbDutyRep1.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.WorkGroup == 1).ToList();
+            CmbDutyRep1.Text = "-";
+            CmbDutyRep2.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.WorkGroup == 1).ToList();
+            CmbDutyRep2.Text = "-";
+            CmbDutyRep3.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.WorkGroup == 1).ToList();
+            CmbDutyRep3.Text = "-";
         }
 
         private void BtnAddNewEmployee_Click(object sender, RoutedEventArgs e)
@@ -43,10 +46,55 @@ namespace UpaProject.Journals
 
         private void BtnAddNewTurn_Click(object sender, RoutedEventArgs e)
         {
-           
+            try
+            {
+                if (DtOccur.SelectedDate != null)
+                {
+                    int typeSheme = 0;
+                    if (RdbDayTurn.IsChecked == true)
+                        typeSheme = 1;
+                    if (RdbNightTurn.IsChecked == true)
+                        typeSheme = 2;
+                    if (typeSheme != 0)
+                    {
+                        OpShifts Shift = new OpShifts()
+                        {
+                            DateStartShift = DtOccur.SelectedDate.Value,
+                            Type = typeSheme
+                        };
+                        DBConnectHelper.DbObj.OpShifts.Add(Shift);
+                        if (CmbDutyEngKIP.Text != "-")
+                            AddPerson(Shift.IDShift, Convert.ToInt32(CmbDutyEngKIP.SelectedValue));
+                        if (CmbDutyRep1.Text != "-")
+                            AddPerson(Shift.IDShift, Convert.ToInt32(CmbDutyRep1.SelectedValue));
+                        if (CmbDutyRep2.Text != "-")
+                            AddPerson(Shift.IDShift, Convert.ToInt32(CmbDutyRep2.SelectedValue));
+                        if (CmbDutyRep3.Text != "-")
+                            AddPerson(Shift.IDShift, Convert.ToInt32(CmbDutyRep3.SelectedValue));
+                        DBConnectHelper.DbObj.SaveChanges();
+                        MessageBox.Show("Смена успешно объявлена");
+                        this.Close();
+                    }
+                    else
+                        MessageBox.Show("Необходимо указать тип смены");
+                }
+                else
+                    MessageBox.Show("Необходимо указать дату начала смены");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Сбой программы. Пожалуйста,обратитесь к администратору:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-        
 
-        ///Убрать выбранные элементы        
+        private void AddPerson(int idShift,int idPerson)
+        {
+            Shifts_Persons shifts_Persons = new Shifts_Persons()
+            {
+                IdShift = idShift,
+                IdPerson = idPerson,
+            };
+            DBConnectHelper.DbObj.Shifts_Persons.Add(shifts_Persons);
+        }       
     }
 }

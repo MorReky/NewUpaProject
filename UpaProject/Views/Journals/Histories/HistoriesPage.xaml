@@ -30,9 +30,10 @@
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       Margin="3"
+                      ItemsSource="{Binding historyMTR}"
                       Name="HistoryMtrGrid">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,DD'}"/>
+                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,yyyy'}"/>
                     <DataGridTextColumn Header="Редактор" Binding="{Binding Users.Name}"/>
                     <DataGridTextColumn Header="Гид" Binding="{Binding MTR.IdSap}"/>
                     <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}"/>
@@ -47,10 +48,11 @@
             <DataGrid Grid.Row="0" Grid.Column="0"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
+                      ItemsSource="{Binding historyStorages}"
                       Margin="3"
                       Name="HistoryStoragesGrid">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,DD'}"/>
+                    <DataGridTextColumn Header="Дата изменения" Binding="{Binding DateEdit,StringFormat='hh:mm dd,MM,yyyy'}"/>
                     <DataGridTextColumn Header="Редактор" Binding="{Binding Users.Name}"/>
                     <DataGridTextColumn Header="Гид" Binding="{Binding Storage_MTR.MTR.IdSap}"/>
                     <DataGridTextColumn Header="Наименование" Binding="{Binding Storage_MTR.MTR.Name}"/>
@@ -70,6 +72,23 @@
                       Name="HistoryOpJournal">
                 <DataGrid.Columns>
 
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="1" >
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}" Text="Вход пользователей"/>
+            </GroupBox.Header>
+            <DataGrid Grid.Row="0" Grid.Column="0"
+                      ItemsSource="{Binding historyLoginUsers}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="3"
+                      Name="HistoryLoginUser">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                    <DataGridTextColumn Header="Имя пользователя" Binding="{Binding Users.Name}"/>
+                    <DataGridTextColumn Header="Дата входа" Binding="{Binding DateLogin}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>

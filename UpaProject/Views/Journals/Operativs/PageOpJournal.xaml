@@ -3,25 +3,28 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
       xmlns:local="clr-namespace:UpaProject.Journals"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Оперативный журнал">
+    <Page.DataContext>
+        <vm:PageOpJournalViewModel/>
+    </Page.DataContext>
 
     <DockPanel Background="White" LastChildFill="True">
         <DockPanel  DockPanel.Dock="Top">            
             <Button Content="Новая смена"
-                    Name="BtnNewTurn"
-                    Click="BtnNewTurn_Click"
+                    Command="{Binding NewTurn}"
                     DockPanel.Dock="Left"
                     Style="{StaticResource BtnFrame}"/>
             <Button Content="Создать событие"
-                    Name="BtnNewSubj"
                     DockPanel.Dock="Left"
-                    Click="BtnNewSubj_Click"
+                    Command="{Binding NewSubject}"
                     Style="{StaticResource BtnFrame}"/>
             <Button Content="Импорт в Excel"
                     DockPanel.Dock="Left"
+                    IsEnabled="False"
                     Style="{StaticResource BtnFrame}"/>
             <StackPanel Orientation="Vertical"
                     DockPanel.Dock="Right">
@@ -29,8 +32,7 @@
                            HorizontalAlignment="Center"
                            FontWeight="Black"
                            Style="{StaticResource Txt}"/>
-                <TextBlock Text="*Дата*"
-                           Name="txtDate"
+                <TextBlock Text="{Binding LastOpenTurn}"
                            FontWeight="Black"
                            Style="{StaticResource Txt}" 
                            TextAlignment="Center"
@@ -45,11 +47,14 @@
                            FontSize="10pt"/>
             </GroupBox.Header>
             <StackPanel Orientation="Horizontal">
-                
+                <Button Style="{StaticResource BtnFrame}"
+                        Content="Обновить"
+                        Command="{Binding Path=ResourceUpdate}"/>
             </StackPanel>
         </GroupBox>
 
         <DataGrid x:Name="GridList"
+                  ItemsSource="{Binding DataTable}"
                       ColumnWidth="auto"
                       SelectionMode="Single"
                       VerticalScrollBarVisibility="Auto"

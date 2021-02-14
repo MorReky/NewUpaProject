@@ -11,7 +11,7 @@ namespace UpaProject.ViewModels
    internal class StoragesPageViewModel:ViewModel
     {
         private IEnumerable<Storage_MTR> _Source;
-        private IEnumerable<Storage_MTR> Source
+        public IEnumerable<Storage_MTR> Source
         {
             get => _Source;
             set=>Set(ref _Source,value);

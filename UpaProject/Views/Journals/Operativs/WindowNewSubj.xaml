@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:UpaProject.Journals"
         mc:Ignorable="d"
         Title="Новое событие"
-        WindowStyle="ToolWindow" MaxHeight="500" MaxWidth="780" >
+        WindowStyle="ToolWindow" MaxHeight="500" MaxWidth="780"
+        WindowStartupLocation="CenterScreen">
     <DockPanel LastChildFill="False" >
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"

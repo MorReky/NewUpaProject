@@ -38,7 +38,7 @@ namespace UpaProject.Views.Storages
         {
             InitializeComponent();
 
-            if (ClassUserHelper.Role==1)
+            if (ClassUserHelper.Role == 1)
             {
                 MTRGrid.IsReadOnly = false;
             }
@@ -47,10 +47,11 @@ namespace UpaProject.Views.Storages
 
             MTRGrid.ItemsSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
             CmbGrid.ItemsSource = StoragesCollection;
+            CmbId.ItemsSource = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
 
             CmbStorage.ItemsSource = StoragesCollection;
             CmbStorage.Text = "Общий склад";
-                      
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += FrameLoad;
@@ -68,7 +69,7 @@ namespace UpaProject.Views.Storages
         }
 
         private void FrameLoad(object sender, object e)
-        {   
+        {
             MTRGrid.ItemsSource = MTRGrid.ItemsSource;
         }
 
@@ -93,19 +94,19 @@ namespace UpaProject.Views.Storages
         private void MTRGrid_CurrentCellChanged(object sender, EventArgs e)
         {
             int IdStorage_mtr;
-            if (((sender as DataGrid).CurrentItem as Storage_MTR)!=null)
+            if (((sender as DataGrid).CurrentItem as Storage_MTR) != null)
             {
                 IdStorage_mtr = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR;
                 HistoryStorages historyObj = new HistoryStorages()
                 {
                     IdStorage_MTR = ((sender as DataGrid).CurrentItem as Storage_MTR).IDStorage_MTR,
                     IdUser = ClassUserHelper.ID,
-                    DateEdit=DateTime.Now,
-                    Activity="Редактирование записи"
+                    DateEdit = DateTime.Now,
+                    Activity = "Редактирование записи"
                 };
                 DBConnectHelper.DbObj.HistoryStorages.Add(historyObj);
             }
-            DBConnectHelper.DbObj.SaveChanges();            
+            DBConnectHelper.DbObj.SaveChanges();
         }
 
         private void BtnToExcel_Click(object sender, RoutedEventArgs e)
@@ -139,7 +140,7 @@ namespace UpaProject.Views.Storages
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Исключение:" + ex, "Сбой", MessageBoxButton.OK, MessageBoxImage.Error);
             }

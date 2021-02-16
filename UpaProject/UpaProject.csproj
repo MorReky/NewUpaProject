@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -67,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastracture\ClassHelper\ClassRulesHelper.cs" />
     <Compile Include="Infrastracture\ClassHelper\ClassUserHelper.cs" />
     <Compile Include="Infrastracture\Commands\Base\Command.cs" />
     <Compile Include="Infrastracture\Commands\LambdaCommand.cs" />
@@ -130,6 +133,9 @@
     <Compile Include="Models\DataFilesApp\Realizers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\RulesForRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\Shifts_Persons.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -154,6 +160,7 @@
     <Compile Include="ViewModels\AutorizationPageViewModel.cs" />
     <Compile Include="ViewModels\HelpersClass\TimeDate.cs" />
     <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">

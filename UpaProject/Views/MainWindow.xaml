@@ -12,12 +12,12 @@
                      Height="auto"
                      x:Key="ContextCatalogs">
             <MenuItem x:Name="BtnCatalogEq"
-                 Background="White"
                  FontFamily="Franklin Gothic Heavy"
                  FontSize="12pt"
                  MinHeight="40"
                  FontWeight="DemiBold"
                  Foreground="#FF3D3D35"
+                 Background="#7F088DD0"
                  Padding="3"
                  Header="Справочник оборудования и материалов"
                       Click="BtnCatalogEq_Click"/>

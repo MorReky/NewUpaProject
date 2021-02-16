@@ -137,6 +137,13 @@
           <Property Name="IdOpRecord" Type="int" Nullable="false" />
           <Property Name="IdPerson" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="RulesForRole">
+          <Key>
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="CanChangeStorage" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Shifts_Persons">
           <Key>
             <PropertyRef Name="IDShifts_Persons" />
@@ -462,6 +469,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_RulesForRole">
+          <End Role="RulesForRole" Type="Self.RulesForRole" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RulesForRole">
+              <PropertyRef Name="Role" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище UpaDBModelContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoryLoginUsers" EntityType="Self.HistoryLoginUsers" Schema="dbo" store:Type="Tables" />
@@ -478,6 +497,7 @@
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromActivites" EntityType="Self.PromActivites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Realizers" EntityType="Self.Realizers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RulesForRole" EntityType="Self.RulesForRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shifts_Persons" EntityType="Self.Shifts_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_MTR" EntityType="Self.Storage_MTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storages" EntityType="Self.Storages" Schema="dbo" store:Type="Tables" />
@@ -573,6 +593,10 @@
             <End Role="SystemsAsu" EntitySet="SystemsAsu" />
             <End Role="SystemsAsu_Tags" EntitySet="SystemsAsu_Tags" />
           </AssociationSet>
+          <AssociationSet Name="FK_Users_RulesForRole" Association="Self.FK_Users_RulesForRole">
+            <End Role="RulesForRole" EntitySet="RulesForRole" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -594,6 +618,7 @@
           <EntitySet Name="Place" EntityType="UpaDBModel.Place" />
           <EntitySet Name="PromActivites" EntityType="UpaDBModel.PromActivites" />
           <EntitySet Name="Realizers" EntityType="UpaDBModel.Realizers" />
+          <EntitySet Name="RulesForRole" EntityType="UpaDBModel.RulesForRole" />
           <EntitySet Name="Shifts_Persons" EntityType="UpaDBModel.Shifts_Persons" />
           <EntitySet Name="Storage_MTR" EntityType="UpaDBModel.Storage_MTR" />
           <EntitySet Name="Storages" EntityType="UpaDBModel.Storages" />
@@ -680,6 +705,10 @@
           <AssociationSet Name="FK_SystemsAsu_Tags_Place" Association="UpaDBModel.FK_SystemsAsu_Tags_Place">
             <End Role="Place" EntitySet="Place" />
             <End Role="SystemsAsu_Tags" EntitySet="SystemsAsu_Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_RulesForRole" Association="UpaDBModel.FK_Users_RulesForRole">
+            <End Role="RulesForRole" EntitySet="RulesForRole" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Storage_MTR_Storages" Association="UpaDBModel.FK_Storage_MTR_Storages">
             <End Role="Storages" EntitySet="Storages" />
@@ -852,6 +881,14 @@
           <NavigationProperty Name="OpRececord" Relationship="UpaDBModel.FK_Realizers_OpRececord" FromRole="Realizers" ToRole="OpRececord" />
           <NavigationProperty Name="Persons" Relationship="UpaDBModel.FK_Realizers_Persons" FromRole="Realizers" ToRole="Persons" />
         </EntityType>
+        <EntityType Name="RulesForRole">
+          <Key>
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="CanChangeStorage" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_Users_RulesForRole" FromRole="RulesForRole" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Shifts_Persons">
           <Key>
             <PropertyRef Name="IDShifts_Persons" />
@@ -926,6 +963,7 @@
           <NavigationProperty Name="HistoryMTR" Relationship="UpaDBModel.FK_HistoryMTR_Users" FromRole="Users" ToRole="HistoryMTR" />
           <NavigationProperty Name="HistoryStorages" Relationship="UpaDBModel.FK_HistoryStorages_Users" FromRole="Users" ToRole="HistoryStorages" />
           <NavigationProperty Name="HistroyOpRecord" Relationship="UpaDBModel.FK_HistroyOpRecord_Users" FromRole="Users" ToRole="HistroyOpRecord" />
+          <NavigationProperty Name="RulesForRole" Relationship="UpaDBModel.FK_Users_RulesForRole" FromRole="Users" ToRole="RulesForRole" />
         </EntityType>
         <Association Name="FK_OpRececord_Departments">
           <End Type="UpaDBModel.Departments" Role="Departments" Multiplicity="1" />
@@ -1167,6 +1205,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_RulesForRole">
+          <End Type="UpaDBModel.RulesForRole" Role="RulesForRole" Multiplicity="1" />
+          <End Type="UpaDBModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RulesForRole">
+              <PropertyRef Name="Role" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Storage_MTR_Storages">
           <End Type="UpaDBModel.Storages" Role="Storages" Multiplicity="1" />
           <End Type="UpaDBModel.Storage_MTR" Role="Storage_MTR" Multiplicity="*" />
@@ -1341,6 +1391,14 @@
                 <ScalarProperty Name="IdPerson" ColumnName="IdPerson" />
                 <ScalarProperty Name="IdOpRecord" ColumnName="IdOpRecord" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RulesForRole">
+            <EntityTypeMapping TypeName="UpaDBModel.RulesForRole">
+              <MappingFragment StoreEntitySet="RulesForRole">
+                <ScalarProperty Name="CanChangeStorage" ColumnName="CanChangeStorage" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

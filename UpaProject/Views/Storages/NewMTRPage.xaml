@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
       xmlns:local="clr-namespace:UpaProject.Views.Storages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
        Title="Новый материал">
+    <Page.DataContext>
+        <vm:NewMTRPageViewModel/>
+    </Page.DataContext>
     <DockPanel>
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -17,11 +21,14 @@
                            Text="ГИД:"
                            FontSize="13pt"
                            MinWidth="200"/>
-                <TextBox Style="{StaticResource Txb}"
+                <ComboBox Style="{StaticResource Cmb}"
                          Width="100"
+                         ItemsSource="{Binding Path=MTRs}"
+                         SelectedItem="{Binding Path=SapIdMTR}"
+                         DisplayMemberPath="IdSap"
                          FontSize="13pt"
                          Name="TxbIdSap"
-                         MaxLength="7"/>
+                         IsEditable="True"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="5">
@@ -30,6 +37,7 @@
                            FontSize="13pt"/>
                 <TextBox Style="{StaticResource Txb}"
                          Name="TxbName"
+                         Text="{Binding NameMTR}"
                          FontSize="13pt"
                          Width="300"/>
             </StackPanel>
@@ -42,6 +50,7 @@
                          Width="100"
                          FontSize="13pt"
                          MaxLength="6"
+                         Text="{Binding Path=UnitMTR}"
                          Name="TxbBaseEI"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
@@ -52,6 +61,7 @@
                 <TextBox Style="{StaticResource Txb}"
                          Width="100"
                          FontSize="13pt"
+                         Text="{Binding Path=QuantityMTR}"
                          Name="TxbQuantity"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"

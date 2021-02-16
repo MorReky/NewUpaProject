@@ -49,7 +49,7 @@ namespace UpaProject
 
         private void BtnCatalogEq_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameLoader.frmObj.Navigate(new PageEqiupmentCatalog());
         }
 
         private void BtnJournal_Click(object sender, RoutedEventArgs e)

@@ -8,9 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Склады">
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <vm:StoragesPageViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
     <DockPanel LastChildFill="True">
         <GroupBox DockPanel.Dock="Top">
             <GroupBox.Header>
@@ -38,9 +38,9 @@
                            Style="{StaticResource Txt}"
                            Text="Гид:"/>
                 <ComboBox Name="CmbId" 
-                          DisplayMemberPath="IDSap"
+                          DisplayMemberPath="IdSap"
                           VerticalAlignment="Center"
-                          SelectedValuePath="IDSap"
+                          SelectedValuePath="IdSap"
                           FontSize="12pt"
                           Grid.Column="1"
                           Grid.Row="0"
@@ -74,9 +74,10 @@
                           FontSize="12pt"
                           Grid.Column="4"
                           Grid.Row="0"
-                          Margin="2"
+                          Margin="2"                         
                           SelectionChanged="CmbStorage_SelectionChanged"
-                          ItemsSource="{Binding Storages}"
+                          SelectedIndex="9"
+                          ItemsSource="{Binding StoragesCollection}"
                           Style="{StaticResource Cmb}"/>
                 <TextBlock FontSize="12pt"
                            Grid.Column="2"
@@ -92,76 +93,7 @@
                           Margin="2"
                          TextChanged="TxbComments_TextChanged"
                           Style="{StaticResource Txb}"/>
-            </Grid>
-            <!--<Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock FontSize="12pt"
-                           Grid.Column="0"
-                           Grid.Row="0"
-                           Style="{StaticResource Txt}"
-                           Text="Гид:"/>
-                <ComboBox Name="CmbId" 
-                          DisplayMemberPath="Storage"
-                          VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
-                          FontSize="12pt"
-                          Grid.Column="1"
-                          Grid.Row="0"
-                          Margin="2"
-                          Style="{StaticResource Cmb}"/>
-                <TextBlock FontSize="12pt"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Style="{StaticResource Txt}"
-                           Text="Наименование:"/>
-                <ComboBox Name="CmbName" 
-                          DisplayMemberPath="Storage"
-                          VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
-                          FontSize="12pt"
-                          Grid.Column="1"
-                          Grid.Row="1"
-                          Margin="2"
-                          Style="{StaticResource Cmb}"/>
-                <TextBlock FontSize="12pt"
-                           Grid.Column="0"
-                           Grid.Row="2"
-                           Style="{StaticResource Txt}"
-                           Text="Местоположение:"/>
-                <ComboBox Name="CmbStorage" 
-                          DisplayMemberPath="Storage"
-                          VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
-                          FontSize="12pt"
-                          Grid.Column="1"
-                          Grid.Row="2"
-                          Margin="2"
-                          SelectionChanged="CmbStorage_SelectionChanged"
-                          Style="{StaticResource Cmb}"/>
-                <TextBlock FontSize="12pt"
-                           Grid.Column="0"
-                           Grid.Row="3"
-                           Style="{StaticResource Txt}"
-                           Text="Комментарии:"/>
-                <ComboBox Name="CmbComments" 
-                          DisplayMemberPath="Storage"
-                          VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
-                          FontSize="12pt"
-                          Grid.Column="1"
-                          Grid.Row="3"
-                          Margin="2"
-                          Style="{StaticResource Cmb}"/>
-            </Grid>-->
+            </Grid>            
         </GroupBox>
 
         <GroupBox DockPanel.Dock="Top">
@@ -171,7 +103,7 @@
                            FontSize="10pt"/>
             </GroupBox.Header>
             <StackPanel Orientation="Horizontal"                    
-                    Margin="5">
+                    Margin="5">                
                 <Button Style="{StaticResource BtnFrame}"
                     Name="BtnAddMTR"
                     IsEnabled="False"
@@ -188,13 +120,18 @@
                     Name="BtnToExcel"
                     Content="Вывод данных в Excel"
                     Click="BtnToExcel_Click"/>
+                <Button Style="{StaticResource BtnFrame}"
+                        Content="Обновить"
+                        Command="{Binding ResourceUpdate}"/>
             </StackPanel>
         </GroupBox>
-        <DataGrid Margin="10" Name="MTRGrid"
+        <DataGrid Margin="10"
+                  Name="MTRGrid"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
                   CurrentCellChanged="MTRGrid_CurrentCellChanged"
+                  ItemsSource="{Binding DataTable}"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ГИД" Binding="{Binding MTR.IdSap}" />
@@ -204,6 +141,7 @@
                 <DataGridComboBoxColumn Header="Местоположение"
                                         x:Name="CmbGrid"
                                         TextBinding="{Binding IdStorage}"
+                                        ItemsSource="{Binding StoragesCollection}"
                                         DisplayMemberPath="Storage"
                                         SelectedValuePath="IdStorage"/>
                 <DataGridTextColumn Header="Комментарии" Binding="{Binding Comment}"/>

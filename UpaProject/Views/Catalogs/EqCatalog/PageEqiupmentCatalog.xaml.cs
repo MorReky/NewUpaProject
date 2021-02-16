@@ -37,11 +37,12 @@ namespace UpaProject.Catalogs
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);
             timer.Tick += UpdateContext;
+            GridList.ItemsSource = DBConnectHelper.DbObj.MTR.ToList();
         }
 
         private void UpdateContext(object sender,EventArgs e)
         {
-           
+            GridList.ItemsSource = DBConnectHelper.DbObj.MTR.ToList();           
         }
 
         private void CmbLoader()
@@ -60,12 +61,9 @@ namespace UpaProject.Catalogs
             
         }
 
-        
 
-        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e) => UpdateContext(sender,e);
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {

@@ -37,5 +37,6 @@ namespace UpaProject.Models.DataFilesApp
         public virtual ICollection<HistoryStorages> HistoryStorages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistroyOpRecord> HistroyOpRecord { get; set; }
+        public virtual RulesForRole RulesForRole { get; set; }
     }
 }

@@ -30,15 +30,18 @@
                             <TextBlock Text="ГИД"
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbGlobalId"
-                                      Style="{StaticResource CmbCatalog}"
-                                      HorizontalContentAlignment="Left"/>
+                                      Style="{StaticResource Cmb}"
+                                      HorizontalContentAlignment="Left"
+                                      IsEnabled="False"
+                                      />
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
                             <TextBlock Text="Наименование сокращенное"
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbNameAbbreviatedSearch"                                  
-                                      Style="{StaticResource CmbCatalog}"
+                                      Style="{StaticResource Cmb}"
+                                      IsEnabled="False"
                                       SelectionChanged="CmbNameAbbreviatedSearch_SelectionChanged"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
@@ -54,7 +57,8 @@
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbTypeSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                  IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -62,7 +66,8 @@
                                        Text="Базовая единица измерения"/>
                             <ComboBox x:Name="CmbBaseUnitSearch" 
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                  IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -70,7 +75,8 @@
                                        Text="Наименование АСУ МТР"/>
                             <ComboBox x:Name="CmbNameAsuMtrSearch"  
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -78,15 +84,17 @@
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbBrandAndSizeSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
                             <TextBlock Style="{StaticResource Txt}"
                                        Text="Каталоговый номер, ГОСТ"/>
-                            <ComboBox x:Name="CmbCatalogNumberSearch"
+                            <ComboBox x:Name="CmbNumberSearch"
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -94,7 +102,8 @@
                                        Text="Марка материала"/>
                             <ComboBox x:Name="CmbMaterialGradeSearch" 
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -102,7 +111,8 @@
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbDrawingNumberSearch"
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -110,7 +120,8 @@
                                        Text="Технические характеристики"/>
                             <ComboBox x:Name="CmbTechCharacterSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -118,7 +129,8 @@
                                        Text="Оборудование"/>
                             <ComboBox x:Name="CmbEquipmentSearch" 
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -126,7 +138,8 @@
                                        Text="Вид МТР"/>
                             <ComboBox x:Name="CmbTypeMTRNameSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -134,7 +147,8 @@
                                        Text="ГИД производителя"/>
                             <ComboBox x:Name="CmbManufacturerGlobalIentifierSearch"
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -142,7 +156,8 @@
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbManufacterSearch"  
                                   ItemsSource="{Binding}"
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -150,7 +165,8 @@
                                        Style="{StaticResource Txt}"/>
                             <ComboBox x:Name="CmbMTPClassClassCodeSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <StackPanel Margin ="5,0,5,0"
                                 Orientation="Vertical">
@@ -158,10 +174,12 @@
                                        Text="Класс МТР наименование "/>
                             <ComboBox x:Name="CmbMTPClassClassNameSearch" 
                                   ItemsSource="{Binding}" 
-                                  Style="{StaticResource CmbCatalog}"/>
+                                      IsEnabled="False"
+                                  Style="{StaticResource Cmb}"/>
                         </StackPanel>
                         <Button x:Name="BtnSearch" 
                             Content="Поиск" 
+                            IsEnabled="False"
                             Style="{StaticResource Button_Main}"
                             Margin="10,5,10,3"                             
                             Height="22" 
@@ -211,7 +229,7 @@
                             <DataGridTextColumn  Header="ГИД"  
                                                  CanUserResize="True" 
                                                  IsReadOnly="true" 
-                                                 Binding="{Binding GlobalId}" >
+                                                 Binding="{Binding IdSap}" >
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="Control.FontWeight"
@@ -225,101 +243,119 @@
                                                 CanUserResize="True" 
                                                 IsReadOnly="true" 
                                                 Width="250"
-                                                Binding="{Binding NameAbbreviated}" />
+                                                Binding="{Binding NameAbbreviated}" 
+                                                Visibility="Collapsed"/>
                             <DataGridTextColumn Header="Наимен.полн."
                                                 CanUserResize="True"
                                                 IsReadOnly="true" 
                                                 Width="450"
-                                                Binding="{Binding FullName}" />
+                                                Binding="{Binding Name}" />
                             <DataGridTextColumn Header="Подкласс"
                                                 CanUserResize="True"
                                                 IsReadOnly="true" 
                                                 Width="450"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding EqType.EqTypeName}" />
                             <DataGridTextColumn Header="Ед.измер."
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="50"
-                                                Binding="{Binding BaseUnit}" />
+                                                Binding="{Binding Unit}" />
                             <DataGridTextColumn Header="Назв.АСУ МТР"
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding NameASU_MTR}"/>
                             <DataGridTextColumn Header="Марка/Размер"
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding BrandAndSize}"/>
                             <DataGridTextColumn Header="Подкласс"
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="300"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding EqType.EqTypeName}" />
                             <DataGridTextColumn Header="Каталог.номер"
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding CatalogNumberAndGost}"/>
                             <DataGridTextColumn Header="Марка мат."
                                                 CanUserResize="True" 
                                                 IsReadOnly="true" 
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding MaterialGrade}" />
                             <DataGridTextColumn Header="Номер чертежа"
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding DrawingNumber}"/>
                             <DataGridTextColumn Header="Тех.хар-ки" 
                                                 CanUserResize="True" 
                                                 IsReadOnly="true" 
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding TechnicalSpecifications}" />
                             <DataGridTextColumn Header="Оборудование"
                                                 CanUserResize="True" 
                                                 IsReadOnly="true" 
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding Equipment}"/>
                             <DataGridTextColumn Header="Вид МТР" 
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="150"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding TypeMTRName}"/>
                             <DataGridTextColumn Header="Код производителя"
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding ManufacturerCode}"/>
                             <DataGridTextColumn Header="Производитель" 
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding ManufacturerName}"/>
                             <DataGridTextColumn Header="Код класс МТР"
                                                 CanUserResize="True"
                                                 IsReadOnly="true" 
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding MTPClassCode}"/>
                             <DataGridTextColumn Header="Класс МТР"
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding MTPClassName}"/>
                             <DataGridTextColumn Header="Комментарий" 
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="250"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding Comment}"/>
                             <DataGridCheckBoxColumn Header="Использование ОФ" 
                                                 CanUserResize="True"
                                                 IsReadOnly="true"
                                                 Width="150"
+                                                Visibility="Collapsed"
                                                 Binding="{Binding OperationOfEquipmentOF}"/>
                             <DataGridCheckBoxColumn Header="Использование ГОК"
                                                 CanUserResize="True" 
                                                 IsReadOnly="true"
                                                 Width="150"
+                                                    Visibility="Collapsed"
                                                 Binding="{Binding OperationOfEquipmentMPP}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -330,22 +366,23 @@
                                 Orientation="Horizontal">
                         <Button x:Name="BtnAdd"
                                 Content="Добавить единицу"
-                                Style="{StaticResource ButtonFrame}"
+                                Style="{StaticResource BtnFrame}"
                                 Click="BtnAdd_Click"/>
                         <Button x:Name="BtnEdit"
                                 Content="Изменить" 
-                                Style="{StaticResource ButtonFrame}"
+                                Style="{StaticResource BtnFrame}"
                                 Click="BtnEdit_Click"/>
                         <Button x:Name="BtnUpdate"
                                 Content="Обновить" 
-                                Style="{StaticResource ButtonFrame}"
+                                Style="{StaticResource BtnFrame}"
                                 Click="BtnUpdate_Click"/>
                         <Button x:Name="BtnDelete"
                                 Content="Удалить" 
-                                Style="{StaticResource ButtonFrame}"
+                                Style="{StaticResource BtnFrame}"
                                 Click="BtnDelete_Click"/>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical"
+                                IsEnabled="False">
                         <StackPanel Height="auto"
                                     HorizontalAlignment="Left"
                                     Orientation="Horizontal"

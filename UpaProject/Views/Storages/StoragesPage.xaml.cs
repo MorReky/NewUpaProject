@@ -47,11 +47,13 @@ namespace UpaProject.Views.Storages
 
             MTRGrid.ItemsSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
             CmbGrid.ItemsSource = StoragesCollection;
-            CmbId.ItemsSource = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
 
             CmbStorage.ItemsSource = StoragesCollection;
-            CmbStorage.Text = "Общий склад";
+            CmbStorage.SelectedValue= 10;
 
+            //CmbId.ItemsSource = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
+            //CmbId.SelectedIndex = 0;
+            
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += FrameLoad;
@@ -60,11 +62,11 @@ namespace UpaProject.Views.Storages
 
         private void CmbStorage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (CmbStorage.SelectedValue.ToString() == "Общий склад")
+            if (Convert.ToInt32(CmbStorage.SelectedValue)== 10)
                 Source = DBConnectHelper.DbObj.Storage_MTR.ToList();
             else
                 // MTRGrid.ItemsSource = (MTRGrid.ItemsSource as IEnumerable<Storage_MTR>).Where(x=>x.Storage==CmbStorage.SelectedValue.ToString()).ToList();
-                Source = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdStorage == CmbStorage.SelectedValue.ToString()).ToList();
+                Source = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdStorage.ToString() == CmbStorage.SelectedValue.ToString()).ToList();
             MTRGrid.ItemsSource = Source;
         }
 

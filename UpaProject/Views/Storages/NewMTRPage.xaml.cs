@@ -38,7 +38,7 @@ namespace UpaProject.Views.Storages
             {
                 try
                 {
-                    var obj = DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.MTR.IdSap.ToString() == TxbIdSap.Text && x.IdStorage == CmbStorage.SelectedValue.ToString());
+                    var obj = DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.MTR.IdSap.ToString() == TxbIdSap.Text && x.IdStorage == Convert.ToInt32(CmbStorage.SelectedValue));
                     //Если совпадений на запись МТР в этом  контейнере нет,то...
                     if (obj == null)
                     {
@@ -69,7 +69,7 @@ namespace UpaProject.Views.Storages
                         Storage_MTR storage_MTR = new Storage_MTR()
                         {
                             IdMTR = IdObj,
-                            IdStorage = CmbStorage.SelectedValue.ToString(),
+                            IdStorage = Convert.ToInt32(CmbStorage.SelectedValue),
                             Quantity = Convert.ToInt32(TxbQuantity.Text),
                             Comment = TxbComment.Text,
                         };

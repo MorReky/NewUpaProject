@@ -46,6 +46,7 @@
                           Grid.Row="0"
                           Margin="2"
                           SelectionChanged="CmbId_SelectionChanged"
+                          ItemsSource="{Binding }"
                           Style="{StaticResource Cmb}"/>
                 <TextBlock FontSize="12pt"
                            Grid.Column="0"
@@ -70,13 +71,12 @@
                 <ComboBox Name="CmbStorage" 
                           DisplayMemberPath="Storage"
                           VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
+                          SelectedValuePath="IDStorage"
                           FontSize="12pt"
                           Grid.Column="4"
                           Grid.Row="0"
                           Margin="2"                         
                           SelectionChanged="CmbStorage_SelectionChanged"
-                          SelectedIndex="9"
                           ItemsSource="{Binding StoragesCollection}"
                           Style="{StaticResource Cmb}"/>
                 <TextBlock FontSize="12pt"

@@ -71,7 +71,7 @@
                            FontSize="13pt"/>
                 <ComboBox DisplayMemberPath="Storage"
                           VerticalAlignment="Center"
-                          SelectedValuePath="Storage"
+                          SelectedValuePath="IDStorage"
                           ItemsSource="{Binding Storages}"
                           Style="{StaticResource Cmb}"
                           Name="CmbStorage"

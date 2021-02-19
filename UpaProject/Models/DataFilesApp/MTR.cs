@@ -17,7 +17,6 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MTR()
         {
-            this.HistoryMTR = new HashSet<HistoryMTR>();
             this.MTR_Images = new HashSet<MTR_Images>();
             this.Storage_MTR = new HashSet<Storage_MTR>();
         }
@@ -27,8 +26,6 @@ namespace UpaProject.Models.DataFilesApp
         public string Name { get; set; }
         public string Unit { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistoryMTR> HistoryMTR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MTR_Images> MTR_Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

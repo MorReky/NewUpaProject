@@ -22,7 +22,7 @@ namespace UpaProject.Models.DataFilesApp
     
         public int IDStorage_MTR { get; set; }
         public int IdMTR { get; set; }
-        public string IdStorage { get; set; }
+        public int IdStorage { get; set; }
         public Nullable<int> Quantity { get; set; }
         public string Comment { get; set; }
     

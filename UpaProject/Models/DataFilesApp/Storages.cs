@@ -20,6 +20,7 @@ namespace UpaProject.Models.DataFilesApp
             this.Storage_MTR = new HashSet<Storage_MTR>();
         }
     
+        public int IDStorage { get; set; }
         public string Storage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

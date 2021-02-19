@@ -38,7 +38,7 @@ namespace UpaProject.Views.Storages
             {
                 try
                 {
-                    var obj = DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.MTR.IdSap.ToString() == TxbIdSap.Text && x.IdStorage == Convert.ToInt32(CmbStorage.SelectedValue));
+                    var obj = DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.MTR.IdSap.ToString() == TxbIdSap.Text && x.IdStorage.ToString() == CmbStorage.SelectedValue.ToString());
                     //Если совпадений на запись МТР в этом  контейнере нет,то...
                     if (obj == null)
                     {
@@ -64,7 +64,10 @@ namespace UpaProject.Views.Storages
                             DBConnectHelper.DbObj.HistoryMTR.Add(historyObj);
                         }
                         else
+                        {
+                            //Даже если есть такой элемент сохраняем измененные данные                            
                             IdObj = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IdSap.ToString() == TxbIdSap.Text).IDMTR;
+                        }
                         //Создаем записи в таблице учета и в таблице истории внесения МТР
                         Storage_MTR storage_MTR = new Storage_MTR()
                         {

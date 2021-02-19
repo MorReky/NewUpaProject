@@ -61,7 +61,6 @@ namespace UpaProject.ViewModels
         #endregion
         
         #region Комманды
-
         #endregion
 
         public NewMTRPageViewModel()

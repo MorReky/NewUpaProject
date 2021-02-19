@@ -51,8 +51,8 @@ namespace UpaProject.Views.Storages
             CmbStorage.ItemsSource = StoragesCollection;
             CmbStorage.SelectedValue= 10;
 
-            //CmbId.ItemsSource = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
-            //CmbId.SelectedIndex = 0;
+            CmbId.ItemsSource = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
+            CmbId.SelectedIndex = -1;
             
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(2);

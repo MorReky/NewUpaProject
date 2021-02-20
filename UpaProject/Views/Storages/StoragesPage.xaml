@@ -10,7 +10,7 @@
       Title="Склады">
     <!--<Page.DataContext>
         <vm:StoragesPageViewModel/>
-    </Page.DataContext>-->
+    </Page.DataContext>z-->
     <DockPanel LastChildFill="True">
         <GroupBox DockPanel.Dock="Top">
             <GroupBox.Header>

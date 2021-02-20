@@ -57,7 +57,7 @@ namespace UpaProject.ViewModels
             ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
             #endregion
             StoragesCollection = DBConnectHelper.DbObj.Storages.ToList();
-
+           
         }
 
     }

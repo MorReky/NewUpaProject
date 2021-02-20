@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1" ZoomLevel="60">
+      <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="3.75" PointY="19.5" />
         <EntityTypeShape EntityType="UpaDBModel.HistoryLoginUsers" Width="1.5" PointX="5.25" PointY="10.875" />
         <EntityTypeShape EntityType="UpaDBModel.HistoryMTR" Width="1.5" PointX="5.25" PointY="13.5" />

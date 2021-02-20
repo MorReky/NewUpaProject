@@ -140,10 +140,10 @@
                 <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
                 <DataGridComboBoxColumn Header="Местоположение"
                                         x:Name="CmbGrid"
-                                        TextBinding="{Binding IdStorage}"
+                                        SelectedValueBinding="{Binding IdStorage}"
                                         ItemsSource="{Binding StoragesCollection}"
                                         DisplayMemberPath="Storage"
-                                        SelectedValuePath="IdStorage"/>
+                                        SelectedValuePath="IDStorage"/>
                 <DataGridTextColumn Header="Комментарии" Binding="{Binding Comment}"/>
             </DataGrid.Columns>
         </DataGrid>

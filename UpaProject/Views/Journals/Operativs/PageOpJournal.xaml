@@ -24,7 +24,8 @@
                     Style="{StaticResource BtnFrame}"/>
             <Button Content="Импорт в Excel"
                     DockPanel.Dock="Left"
-                    IsEnabled="False"
+                    IsEnabled="true"
+                    Command="{Binding ToExcel}"
                     Style="{StaticResource BtnFrame}"/>
             <StackPanel Orientation="Vertical"
                     DockPanel.Dock="Right">
@@ -61,6 +62,7 @@
                       HorizontalScrollBarVisibility="Auto"  
                       Margin="10,10,10,10" 
                       FontSize="14"
+                  IsReadOnly="True"
                       FrozenColumnCount="2"
                       AutoGenerateColumns="False" >
             <DataGrid.Resources>
@@ -75,9 +77,10 @@
             <DataGrid.Columns >
                 <!--<DataGridTextColumn  Header="Время создания записи"  CanUserResize="True" IsReadOnly="true"  Binding="{Binding RecDate }" Width="10" />-->
                 <DataGridTextColumn Header="Смена" Binding="{Binding OpShifts.Type}"/>
-                <DataGridTextColumn Header="Дата" Binding="{Binding OpRececord.DateOccurence}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding OpRececord.DateOccurence,StringFormat='dd.MM.yyyy'}"/>
                 <DataGridTextColumn Header="Время возникновения" Binding="{Binding OpRececord.TimeOccurence}"/>
                 <DataGridTextColumn Header="Время решения" Binding="{Binding OpRececord.TimeSolution}"/>
+                <DataGridTextColumn Header="Время простоя" Binding="{Binding OpRececord.DownTime}"/>
                 <DataGridTextColumn Header="Отделение" Binding="{Binding OpRececord.Departments.Name}"/>
                 <DataGridTextColumn Header="Критичность" Binding="{Binding OpRececord.Criticality}"/>
                 <DataGridTextColumn Header="Тег" Binding="{Binding OpRececord.Place.Tag}"/>
@@ -88,8 +91,7 @@
                 <DataGridTemplateColumn Header="Исполнитель" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding OpShifts.Type}"
-                                      Name="Lv"
+                            <TextBlock Text="{Binding OpRececord.Realizers.Count}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

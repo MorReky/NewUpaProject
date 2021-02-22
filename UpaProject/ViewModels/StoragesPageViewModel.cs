@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using UpaProject.DataFilesApp;
 using UpaProject.Infrastracture.Commands;
@@ -38,7 +40,7 @@ namespace UpaProject.ViewModels
             get => _StoragesCollection;
             set => Set(ref _StoragesCollection, value);
         }
-         
+
         #endregion
 
         #region Комманды
@@ -49,6 +51,7 @@ namespace UpaProject.ViewModels
         public bool CanOnResourceUpdateExecute(object p) => true;
         #endregion
 
+
         #endregion
 
         public StoragesPageViewModel()
@@ -57,8 +60,7 @@ namespace UpaProject.ViewModels
             ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
             #endregion
             StoragesCollection = DBConnectHelper.DbObj.Storages.ToList();
-           
-        }
 
-    }
+        }
+    }   
 }

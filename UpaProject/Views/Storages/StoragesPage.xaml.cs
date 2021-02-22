@@ -66,6 +66,7 @@ namespace UpaProject.Views.Storages
                 Source = DBConnectHelper.DbObj.Storage_MTR.ToList();
             else
                 // MTRGrid.ItemsSource = (MTRGrid.ItemsSource as IEnumerable<Storage_MTR>).Where(x=>x.Storage==CmbStorage.SelectedValue.ToString()).ToList();
+                //null System.NotSupportedException: "Не удалось создать константу с типом "System.Object" и значением NULL. В этом контексте поддерживаются только типы сущностей, типы перечисления и типы-примитивы
                 Source = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdStorage.ToString() == CmbStorage.SelectedValue.ToString()).ToList();
             MTRGrid.ItemsSource = Source;
         }

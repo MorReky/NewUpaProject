@@ -26,6 +26,7 @@ namespace UpaProject.Models.DataFilesApp
         public System.DateTime DateOccurence { get; set; }
         public System.TimeSpan TimeOccurence { get; set; }
         public System.TimeSpan TimeSolution { get; set; }
+        public System.TimeSpan DownTime { get; set; }
         public int IdDepartment { get; set; }
         public int Criticality { get; set; }
         public int IdPlace { get; set; }

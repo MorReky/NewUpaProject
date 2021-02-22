@@ -79,29 +79,20 @@
                          BorderBrush="Black"
                          PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                            Margin="5,0"
-                            VerticalAlignment="Center">
-                <TextBlock VerticalAlignment="Center" 
-                           Text="Критичность:" 
+            <TextBlock TextWrapping="Wrap" 
+                           VerticalAlignment="Center"
                            Style="{StaticResource Txt}"
                            MinWidth="110"
-                           Margin="5"/>
-                <ComboBox x:Name="CmbSeriousness" 
-                          VerticalAlignment="Center"
-                           Style="{StaticResource Cmb}"
-                          SelectedIndex="1"
-                          Margin="5"
-                          Width="170"
-                          BorderBrush="Black"
-                          FontFamily="Franklin Gothic Heavy"
-                          FontSize="11pt"
-                          FontWeight="DemiBold" >
-                    <ComboBoxItem Content="0-Ложный вызов"/>
-                    <ComboBoxItem Content="1-Остановки оборудования не было"/>
-                    <ComboBoxItem Content="2-Оборудование было остановлено"/>
-                </ComboBox>
-            </StackPanel>
+                           Text="Время простоя:"
+                           Margin="5" />
+            <TextBox x:Name="TxbDownTime" 
+                         VerticalAlignment="Center" 
+                         Style="{StaticResource Txb}"
+                         Text="1:00"
+                         Margin="5"
+                         Padding="5,4" 
+                         BorderBrush="Black"
+                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
@@ -169,7 +160,31 @@
                                   Margin="5"
                                   Width="150"
                                   BorderBrush="Black"/>
+                    <StackPanel Orientation="Horizontal"
+                            Margin="5,0"
+                            VerticalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center" 
+                           Text="Критичность:" 
+                           Style="{StaticResource Txt}"
+                           MinWidth="110"
+                           Margin="5"/>
+                        <ComboBox x:Name="CmbSeriousness" 
+                          VerticalAlignment="Center"
+                           Style="{StaticResource Cmb}"
+                          SelectedIndex="1"
+                          Margin="5"
+                          Width="170"
+                          BorderBrush="Black"
+                          FontFamily="Franklin Gothic Heavy"
+                          FontSize="11pt"
+                          FontWeight="DemiBold" >
+                            <ComboBoxItem Content="0-Ложный вызов"/>
+                            <ComboBoxItem Content="1-Остановки оборудования не было"/>
+                            <ComboBoxItem Content="2-Оборудование было остановлено"/>
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
+                
             </StackPanel>
         </DockPanel>
         <DockPanel LastChildFill="False"

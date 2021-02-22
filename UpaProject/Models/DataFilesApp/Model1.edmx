@@ -82,6 +82,7 @@
           <Property Name="DateOccurence" Type="date" Nullable="false" />
           <Property Name="TimeOccurence" Type="time" Precision="0" Nullable="false" />
           <Property Name="TimeSolution" Type="time" Precision="0" Nullable="false" />
+          <Property Name="DownTime" Type="time" Precision="0" Nullable="false" />
           <Property Name="IdDepartment" Type="int" Nullable="false" />
           <Property Name="Criticality" Type="int" Nullable="false" />
           <Property Name="IdPlace" Type="int" Nullable="false" />
@@ -230,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HistoryStorages_Storage-MTR">
+        <Association Name="FK_HistoryStorages_Storage_MTR">
           <End Role="Storage_MTR" Type="Self.Storage_MTR" Multiplicity="1" />
           <End Role="HistoryStorages" Type="Self.HistoryStorages" Multiplicity="*" />
           <ReferentialConstraint>
@@ -502,7 +503,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryMTR" EntitySet="HistoryMTR" />
           </AssociationSet>
-          <AssociationSet Name="FK_HistoryStorages_Storage-MTR" Association="Self.FK_HistoryStorages_Storage-MTR">
+          <AssociationSet Name="FK_HistoryStorages_Storage_MTR" Association="Self.FK_HistoryStorages_Storage_MTR">
             <End Role="Storage_MTR" EntitySet="Storage_MTR" />
             <End Role="HistoryStorages" EntitySet="HistoryStorages" />
           </AssociationSet>
@@ -790,6 +791,7 @@
           <Property Name="DateOccurence" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TimeOccurence" Type="Time" Nullable="false" Precision="0" />
           <Property Name="TimeSolution" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="DownTime" Type="Time" Nullable="false" Precision="0" />
           <Property Name="IdDepartment" Type="Int32" Nullable="false" />
           <Property Name="Criticality" Type="Int32" Nullable="false" />
           <Property Name="IdPlace" Type="Int32" Nullable="false" />
@@ -1302,6 +1304,7 @@
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
                 <ScalarProperty Name="Criticality" ColumnName="Criticality" />
                 <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="DownTime" ColumnName="DownTime" />
                 <ScalarProperty Name="TimeSolution" ColumnName="TimeSolution" />
                 <ScalarProperty Name="TimeOccurence" ColumnName="TimeOccurence" />
                 <ScalarProperty Name="DateOccurence" ColumnName="DateOccurence" />

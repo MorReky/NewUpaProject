@@ -121,8 +121,10 @@
             <PropertyRef Name="IDPlace" />
           </Key>
           <Property Name="IDPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tag" Type="nvarchar" MaxLength="10" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
           <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdMTR" Type="int" />
         </EntityType>
         <EntityType Name="PromActivites">
           <Key>
@@ -351,6 +353,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_MTR">
+          <End Role="MTR" Type="Self.MTR" Multiplicity="0..1" />
+          <End Role="Place" Type="Self.Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IDMTR" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="IdMTR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Realizers_OpRececord">
           <End Role="OpRececord" Type="Self.OpRececord" Multiplicity="1" />
           <End Role="Realizers" Type="Self.Realizers" Multiplicity="*" />
@@ -543,6 +557,10 @@
             <End Role="OpShifts" EntitySet="OpShifts" />
             <End Role="OpShifts_OpRecord" EntitySet="OpShifts_OpRecord" />
           </AssociationSet>
+          <AssociationSet Name="FK_Place_MTR" Association="Self.FK_Place_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
           <AssociationSet Name="FK_Realizers_OpRececord" Association="Self.FK_Realizers_OpRececord">
             <End Role="OpRececord" EntitySet="OpRececord" />
             <End Role="Realizers" EntitySet="Realizers" />
@@ -651,6 +669,10 @@
           <AssociationSet Name="FK_MTR_Images_MTR" Association="UpaDBModel.FK_MTR_Images_MTR">
             <End Role="MTR" EntitySet="MTR" />
             <End Role="MTR_Images" EntitySet="MTR_Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Place_MTR" Association="UpaDBModel.FK_Place_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="Place" EntitySet="Place" />
           </AssociationSet>
           <AssociationSet Name="FK_Storage_MTR_MTR" Association="UpaDBModel.FK_Storage_MTR_MTR">
             <End Role="MTR" EntitySet="MTR" />
@@ -771,6 +793,7 @@
           <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MTR_Images" Relationship="UpaDBModel.FK_MTR_Images_MTR" FromRole="MTR" ToRole="MTR_Images" />
+          <NavigationProperty Name="Place" Relationship="UpaDBModel.FK_Place_MTR" FromRole="MTR" ToRole="Place" />
           <NavigationProperty Name="Storage_MTR" Relationship="UpaDBModel.FK_Storage_MTR_MTR" FromRole="MTR" ToRole="Storage_MTR" />
         </EntityType>
         <EntityType Name="MTR_Images">
@@ -841,8 +864,11 @@
             <PropertyRef Name="IDPlace" />
           </Key>
           <Property Name="IDPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tag" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdMTR" Type="Int32" />
+          <NavigationProperty Name="MTR" Relationship="UpaDBModel.FK_Place_MTR" FromRole="Place" ToRole="MTR" />
           <NavigationProperty Name="OpRececord" Relationship="UpaDBModel.FK_OpRececord_Place" FromRole="Place" ToRole="OpRececord" />
           <NavigationProperty Name="SystemsAsu_Tags" Relationship="UpaDBModel.FK_SystemsAsu_Tags_Place" FromRole="Place" ToRole="SystemsAsu_Tags" />
         </EntityType>
@@ -1063,6 +1089,18 @@
               <PropertyRef Name="IDMTR" />
             </Principal>
             <Dependent Role="MTR_Images">
+              <PropertyRef Name="IdMTR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Place_MTR">
+          <End Type="UpaDBModel.MTR" Role="MTR" Multiplicity="0..1" />
+          <End Type="UpaDBModel.Place" Role="Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IDMTR" />
+            </Principal>
+            <Dependent Role="Place">
               <PropertyRef Name="IdMTR" />
             </Dependent>
           </ReferentialConstraint>
@@ -1343,7 +1381,9 @@
           <EntitySetMapping Name="Place">
             <EntityTypeMapping TypeName="UpaDBModel.Place">
               <MappingFragment StoreEntitySet="Place">
+                <ScalarProperty Name="IdMTR" ColumnName="IdMTR" />
                 <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
                 <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
               </MappingFragment>

@@ -23,8 +23,11 @@ namespace UpaProject.Models.DataFilesApp
     
         public int IDPlace { get; set; }
         public string Tag { get; set; }
+        public string Name { get; set; }
         public string Comments { get; set; }
+        public Nullable<int> IdMTR { get; set; }
     
+        public virtual MTR MTR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OpRececord> OpRececord { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

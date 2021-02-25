@@ -33,8 +33,11 @@ namespace UpaProject.Journals
             TxtType.Text = opShiftsObj.Type == 1 ? "Дневная" : "Ночная";
 
             CmbDepartment.ItemsSource = DBConnectHelper.DbObj.Departments.ToList();
+            CmbDepartment.SelectedIndex = -1;
             CmbSystemASU.ItemsSource = DBConnectHelper.DbObj.SystemsAsu.ToList();
+            CmbSystemASU.SelectedIndex = 1;
             CmbTag.ItemsSource = DBConnectHelper.DbObj.Place.ToList();
+            CmbSystemASU.SelectedIndex = -1;
 
             LBPersonal.ItemsSource = DBConnectHelper.DbObj.Shifts_Persons.Where(y=>y.IdShift== opShiftsObj.IDShift).Select(x => x.Persons).ToList();
         }
@@ -94,36 +97,33 @@ namespace UpaProject.Journals
                 DBConnectHelper.DbObj.SaveChanges();
                 MessageBox.Show("Данные успешно сохранены!");
             }
-
-            //    try
-            //    {
-            //        if (!(String.IsNullOrEmpty(CmbTag.Text) && String.IsNullOrEmpty(TxbEvent.Text) && String.IsNullOrEmpty(TxbElimination.Text)))
-            //        {
-
-
-            //            MessageBox.Show("Запись успешно добавлена",
-            //                                "Уведомление",
-            //                                 MessageBoxButton.OK,
-            //                                 MessageBoxImage.Information);
-            //    }
-            //        else
-            //            MessageBox.Show("Поля 'Теговый номер','Событие','Решение' обязательны для заполнения",
-            //                                "ошибка",
-            //                                 MessageBoxButton.OK,
-            //                                 MessageBoxImage.Error);
-            //}
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Критическая работа с приложением. " + ex.Message.ToString(),
-            //                        "Уведомление",
-            //                         MessageBoxButton.OK,
-            //                         MessageBoxImage.Warning);
-            //    }
         }
 
         private void CmbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (CmbDepartment.SelectedValue != null)
+            {
+                CmbSystemASU.ItemsSource = DBConnectHelper.DbObj.SystemsAsu.Where(X => X.IDDepartment.ToString() == CmbDepartment.SelectedValue.ToString()).ToList();
+                CmbSystemASU.SelectedIndex = -1;
+                CmbTag.SelectedIndex = -1;
 
+            }
+        }
+        private void CmbSystemASU_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CmbSystemASU.SelectedValue != null)
+            {
+                CmbTag.ItemsSource = DBConnectHelper.DbObj.SystemsAsu_Tags.Where(x => x.IDSystemAsu.ToString() == CmbSystemASU.SelectedValue.ToString()).Select(y => y.Place).ToList();
+               // CmbDepartment.SelectedValue = DBConnectHelper.DbObj.SystemsAsu_Tags.Where(x=>x.IDSystemAsu.ToString()==CmbSystemASU.SelectedValue.ToString()).Select(y=>y.SystemsAsu.IDDepartment);
+                CmbTag.SelectedIndex = -1;
+
+            }
+            else
+                CmbTag.ItemsSource = null;
+        }
+        private void CmbTag_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           // CmbSystemASU.SelectedValue = DBConnectHelper.DbObj.SystemsAsu_Tags.Where(x => x.IDSystemAsu.ToString() == CmbSystemASU.SelectedValue.ToString()).Select(y => y.IDSystemAsu);
         }
 
         private void TxbTimeStart_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -141,5 +141,6 @@ namespace UpaProject.Journals
                 
             }
         }
+
     }
 }

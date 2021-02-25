@@ -18,6 +18,7 @@ namespace UpaProject.Models.DataFilesApp
         public MTR()
         {
             this.MTR_Images = new HashSet<MTR_Images>();
+            this.Place = new HashSet<Place>();
             this.Storage_MTR = new HashSet<Storage_MTR>();
         }
     
@@ -28,6 +29,8 @@ namespace UpaProject.Models.DataFilesApp
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MTR_Images> MTR_Images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place> Place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage_MTR> Storage_MTR { get; set; }
     }

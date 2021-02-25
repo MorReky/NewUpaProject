@@ -163,6 +163,7 @@
     <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
+    <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />
     <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">
       <DependentUpon>HistoriesPage.xaml</DependentUpon>
     </Compile>

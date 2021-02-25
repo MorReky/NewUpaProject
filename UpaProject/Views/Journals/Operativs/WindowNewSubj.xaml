@@ -132,6 +132,7 @@
                       Style="{StaticResource Cmb}"
                       x:Name="CmbSystemASU" 
                       ItemsSource="{Binding}" 
+                      SelectionChanged="CmbSystemASU_SelectionChanged"
                       VerticalAlignment="Center" 
                       Text=""
                       Margin="5" 
@@ -158,6 +159,7 @@
                                   VerticalAlignment="Center"
                                   Text="" 
                                   Margin="5"
+                              SelectionChanged="CmbTag_SelectionChanged"
                                   Width="150"
                                   BorderBrush="Black"/>
                     <StackPanel Orientation="Horizontal"

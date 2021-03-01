@@ -35,8 +35,7 @@
                        Height="auto"
                        FontSize="24"/>
             <TextBlock Margin="0,0,0,0"
-                       Name="TxtDate"
-                       Text="{Binding LastShift.DateStartShift}"
+                       Text="{Binding LastShift.DateStartShift.Date}"
                        TextWrapping="Wrap" 
                        FontFamily="Franklin Gothic Heavy"
                        FontWeight="Bold"
@@ -57,14 +56,12 @@
                            VerticalAlignment="Center"
                            Text="Время начала:" 
                            Margin="5" />
-                <TextBox x:Name="TxbTimeStart" 
-                         VerticalAlignment="Center"
+                <TextBox VerticalAlignment="Center"
                          Text="{Binding TimeStart}"
                          Style="{StaticResource Txb}"
                          Margin="5"
                          Padding="5,4" 
-                         BorderBrush="Black"
-                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
+                         BorderBrush="Black"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                             Margin="5,0"
@@ -75,29 +72,25 @@
                            MinWidth="110"
                            Text="Время окончания:"
                            Margin="5" />
-                <TextBox x:Name="TxbTimeEnd" 
-                         VerticalAlignment="Center" 
+                <TextBox VerticalAlignment="Center" 
                          Style="{StaticResource Txb}"
                          Text="{Binding TimeEnd}"
                          Margin="5"
                          Padding="5,4" 
-                         BorderBrush="Black"
-                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
+                         BorderBrush="Black"/>
             </StackPanel>
             <TextBlock TextWrapping="Wrap" 
-                           VerticalAlignment="Center"
-                           Style="{StaticResource Txt}"
-                           MinWidth="110"
-                           Text="Время простоя:"
-                           Margin="5" />
-            <TextBox x:Name="TxbDownTime" 
-                         VerticalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Style="{StaticResource Txt}"
+                       MinWidth="110"
+                       Text="Время простоя:"
+                       Margin="5" />
+            <TextBox VerticalAlignment="Center" 
                          Style="{StaticResource Txb}"
                          Text="{Binding DownTime}"
                          Margin="5"
                          Padding="5,4" 
-                         BorderBrush="Black"
-                         PreviewTextInput="TxbTimeStart_PreviewTextInput"/>
+                         BorderBrush="Black"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
@@ -111,15 +104,12 @@
                       IsEditable="True"
                       StaysOpenOnEdit ="True"
                       Style="{StaticResource Cmb}"
-                      x:Name="CmbDepartment" 
                       SelectedIndex="-1"
                       ItemsSource="{Binding DepartmentsList}"
                       SelectedValuePath="IDDepartment"
-                      SelectionChanged="CmbDepartment_SelectionChanged"
                       DisplayMemberPath="Name"
                       SelectedItem="{Binding SelectedDepartment}"
                       VerticalAlignment="Center" 
-                      Text="" 
                       Margin="5"
                       MinWidth="600"
                       BorderBrush="Black"/>
@@ -138,10 +128,8 @@
                       DisplayMemberPath="Name"
                       SelectedValuePath="IDSystemAsu"
                       Style="{StaticResource Cmb}"
-                      x:Name="CmbSystemASU" 
                       ItemsSource="{Binding SelectedDepartment.SystemsAsu}" 
                       SelectedItem="{Binding SelectedSystemsAsu}"
-                      SelectionChanged="CmbSystemASU_SelectionChanged"
                       VerticalAlignment="Center" 
                       Text=""
                       Margin="5" 
@@ -153,26 +141,23 @@
             <StackPanel DockPanel.Dock="Left">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center"
-                                   Text="Теговый номер:" 
                                    Style="{StaticResource Txt}"
                                    MinWidth="135"
                                    Margin="5,0"
                                    Width="180"/>
-                    <ComboBox x:Name="CmbTag"
-                                  IsReadOnly="False" 
-                                  IsEditable="True"
+                    <ComboBox IsReadOnly="False" 
+                              IsEditable="True"
                               DisplayMemberPath="Tag"
                               SelectedValuePath="IDPlace"
-                               Style="{StaticResource Cmb}"
+                              Style="{StaticResource Cmb}"
                               ItemsSource="{Binding SelectedSystemsAsu.Place}"
                               SelectedItem="{Binding SelectedTag}"
-                                  StaysOpenOnEdit ="True" 
-                                  VerticalAlignment="Center"
-                                  Text="" 
-                                  Margin="5"
-                              SelectionChanged="CmbTag_SelectionChanged"
-                                  Width="150"
-                                  BorderBrush="Black"/>
+                              StaysOpenOnEdit ="True" 
+                              VerticalAlignment="Center"
+                              Text="" 
+                              Margin="5"
+                              Width="150"
+                              BorderBrush="Black"/>
                     <StackPanel Orientation="Horizontal"
                             Margin="5,0"
                             VerticalAlignment="Center">
@@ -181,8 +166,7 @@
                            Style="{StaticResource Txt}"
                            MinWidth="110"
                            Margin="5"/>
-                        <ComboBox x:Name="CmbSeriousness" 
-                          VerticalAlignment="Center"
+                        <ComboBox VerticalAlignment="Center"
                           Style="{StaticResource Cmb}"
                           SelectedIndex="{Binding Criticality}"
                           Margin="5"
@@ -220,7 +204,6 @@
                                    Style="{StaticResource Txt}" />
                         </GroupBox.Header>
                         <ListView DockPanel.Dock="Left"
-                                  Name="LBPersonal"
                                   DisplayMemberPath="Name"
                                   SelectedValuePath="Person.IDPerson"
                                   SelectionMode="Single"
@@ -228,23 +211,15 @@
                                   ItemsSource="{Binding PersonsList}">
 
                         </ListView>
-                        <!--<ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Style="{StaticResource Txt}"
-                                           Text="{Binding}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>-->
                     </GroupBox>
                     <StackPanel Orientation="Vertical">
                         <Button Style="{StaticResource ButtonOK}"
-                                Name="BtnPersonAdd"
                                 Command="{Binding ChagedRealizer}"
                                 CommandParameter="+"
                                 Content="==&gt;"/>
                         <Button Style="{StaticResource ButtonOK}"
                                 Command="{Binding ChagedRealizer}"
                                 CommandParameter="-"
-                                Name="BtnPersonSub"
                                 Content= "&lt;=="/>
                     </StackPanel>
                     <GroupBox>
@@ -256,7 +231,6 @@
                                    Style="{StaticResource Txt}" />
                         </GroupBox.Header>
                         <ListView DockPanel.Dock="Right"
-                                  Name="LBRealizers"
                                   ItemsSource="{Binding SelectedPersonsList}"
                                   DisplayMemberPath="Name"
                                   SelectedValuePath="Person.IDPerson">
@@ -273,14 +247,13 @@
                            MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
-            <TextBox x:Name="TxbEvent"
-                         VerticalAlignment="Center"  
-                         Text="{Binding Event}" 
-                         Margin="5"
-                         Width="600" 
+            <TextBox VerticalAlignment="Center"  
+                     Text="{Binding Event}" 
+                     Margin="5"
+                     Width="600" 
                      TextWrapping="Wrap"
                      Style="{StaticResource Txb}"
-                         BorderBrush="Black"/>
+                     BorderBrush="Black"/>
         </StackPanel>
         <StackPanel  Orientation="Horizontal"
                      DockPanel.Dock="Top">
@@ -290,14 +263,13 @@
                            MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
-            <TextBox x:Name="TxbCause"
-                         VerticalAlignment="Center" 
-                         Text="{Binding Cause}"
+            <TextBox VerticalAlignment="Center" 
+                     Text="{Binding Cause}"
                      TextWrapping="Wrap"
-                         Margin="5"
-                         Width="600" 
+                     Margin="5"
+                     Width="600" 
                      Style="{StaticResource Txb}"
-                         BorderBrush="Black"/>
+                     BorderBrush="Black"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
@@ -307,14 +279,13 @@
                            MinWidth="135"
                            Margin="5,0"
                            Width="120"/>
-            <TextBox x:Name="TxbElimination"
-                         VerticalAlignment="Center" 
-                         Text="{Binding Elimination}"
-                         Margin="5"
+            <TextBox VerticalAlignment="Center" 
+                     Text="{Binding Elimination}"
+                     Margin="5"
                      TextWrapping="Wrap"
-                         Width="600" 
+                     Width="600" 
                      Style="{StaticResource Txb}"
-                         BorderBrush="Black"/>
+                     BorderBrush="Black"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top">
@@ -324,26 +295,23 @@
                            Style="{StaticResource Txt}"
                            MinWidth="135"
                            Width="120"/>
-            <TextBox x:Name="TxbComment" 
-                         VerticalAlignment="Center"
-                         Text="{Binding Comment}" 
-                         Margin="5"
+            <TextBox VerticalAlignment="Center"
+                     Text="{Binding Comment}" 
+                     Margin="5"
                      TextWrapping="Wrap"
-                         Width="600"
+                     Width="600"
                      Style="{StaticResource Txb}"
-                         BorderBrush="Black" />
+                     BorderBrush="Black" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Top"
                     HorizontalAlignment="Center">
-            <Button x:Name="BtnAddNewSubj"
-                    Content="Добавить новое событие"
+            <Button Content="Добавить новое событие"
                     Command="{Binding AddNewSubj}"
                     Style="{StaticResource BtnFrame}" 
                     HorizontalAlignment="Center"
-                    FontSize="14pt"
-                    Click="BtnAddNewSubj_Click"/>
+                    FontSize="14pt"/>
         </StackPanel>
 
     </DockPanel>

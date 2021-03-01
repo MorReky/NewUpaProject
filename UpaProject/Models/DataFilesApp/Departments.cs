@@ -22,6 +22,7 @@ namespace UpaProject.Models.DataFilesApp
         }
     
         public int IDDepartment { get; set; }
+        public Nullable<int> Number { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

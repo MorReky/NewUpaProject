@@ -5,29 +5,29 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a8db05ca9076443faa7463c9a3e4a6fc" Name="Diagram1" ZoomLevel="78">
-        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="3.75" PointY="16.875" />
-        <EntityTypeShape EntityType="UpaDBModel.HistoryLoginUsers" Width="1.5" PointX="5.25" PointY="14.25" />
-        <EntityTypeShape EntityType="UpaDBModel.HistoryMTR" Width="1.5" PointX="5.25" PointY="8.25" />
-        <EntityTypeShape EntityType="UpaDBModel.HistoryStorages" Width="1.5" PointX="5.25" PointY="4.25" />
-        <EntityTypeShape EntityType="UpaDBModel.HistroyOpRecord" Width="1.5" PointX="8.25" PointY="6.25" />
-        <EntityTypeShape EntityType="UpaDBModel.Images" Width="1.5" PointX="3.75" PointY="23.125" />
-        <EntityTypeShape EntityType="UpaDBModel.MTR" Width="1.5" PointX="0.75" PointY="2.5" />
-        <EntityTypeShape EntityType="UpaDBModel.MTR_Images" Width="1.5" PointX="6" PointY="0.75" />
-        <EntityTypeShape EntityType="UpaDBModel.OpRececord" Width="1.5" PointX="6" PointY="17.25" />
-        <EntityTypeShape EntityType="UpaDBModel.OpShifts" Width="1.5" PointX="6" PointY="11.5" />
-        <EntityTypeShape EntityType="UpaDBModel.OpShifts_OpRecord" Width="1.5" PointX="8.25" PointY="18.5" />
-        <EntityTypeShape EntityType="UpaDBModel.Persons" Width="1.5" PointX="6" PointY="26.375" />
-        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="3.75" PointY="19.375" />
-        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="8.75" PointY="1.375" />
-        <EntityTypeShape EntityType="UpaDBModel.Realizers" Width="1.5" PointX="8.25" PointY="15.5" />
-        <EntityTypeShape EntityType="UpaDBModel.RulesForRole" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="UpaDBModel.Shifts_Persons" Width="1.5" PointX="8.25" PointY="22" />
-        <EntityTypeShape EntityType="UpaDBModel.Storage_MTR" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="UpaDBModel.Storages" Width="1.5" PointX="0.75" PointY="9.625" />
-        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="3.375" />
-        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="3.75" PointY="25.625" />
-        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu_Tags" Width="1.5" PointX="6" PointY="22.75" />
-        <EntityTypeShape EntityType="UpaDBModel.Users" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="UpaDBModel.Departments" Width="1.5" PointX="3.75" PointY="16.375" />
+        <EntityTypeShape EntityType="UpaDBModel.HistoryLoginUsers" Width="1.5" PointX="5.25" PointY="10.875" />
+        <EntityTypeShape EntityType="UpaDBModel.HistoryMTR" Width="1.5" PointX="5.25" PointY="13.5" />
+        <EntityTypeShape EntityType="UpaDBModel.HistoryStorages" Width="1.5" PointX="5.25" PointY="5.875" />
+        <EntityTypeShape EntityType="UpaDBModel.HistroyOpRecord" Width="1.5" PointX="8.25" PointY="5.875" />
+        <EntityTypeShape EntityType="UpaDBModel.Images" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="UpaDBModel.MTR" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UpaDBModel.MTR_Images" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="UpaDBModel.OpRececord" Width="1.5" PointX="6" PointY="16.875" />
+        <EntityTypeShape EntityType="UpaDBModel.OpShifts" Width="1.5" PointX="7.75" PointY="11.625" />
+        <EntityTypeShape EntityType="UpaDBModel.OpShifts_OpRecord" Width="1.5" PointX="10" PointY="15.375" />
+        <EntityTypeShape EntityType="UpaDBModel.Persons" Width="1.5" PointX="7.75" PointY="2.5" />
+        <EntityTypeShape EntityType="UpaDBModel.Place" Width="1.5" PointX="3.75" PointY="19.125" />
+        <EntityTypeShape EntityType="UpaDBModel.Place_MTR" Width="1.5" PointX="9" PointY="18.25" />
+        <EntityTypeShape EntityType="UpaDBModel.PromActivites" Width="1.5" PointX="9.75" PointY="0.875" />
+        <EntityTypeShape EntityType="UpaDBModel.Realizers" Width="1.5" PointX="11" PointY="8.875" />
+        <EntityTypeShape EntityType="UpaDBModel.RulesForRole" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="UpaDBModel.Shifts_Persons" Width="1.5" PointX="10" PointY="11.625" />
+        <EntityTypeShape EntityType="UpaDBModel.Storage_MTR" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="UpaDBModel.Storages" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="UpaDBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2.875" />
+        <EntityTypeShape EntityType="UpaDBModel.SystemsAsu" Width="1.5" PointX="1.5" PointY="19.25" />
+        <EntityTypeShape EntityType="UpaDBModel.Users" Width="1.5" PointX="3" PointY="5.5" />
         <AssociationConnector Association="UpaDBModel.FK_OpRececord_Departments" />
         <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Departments" />
         <AssociationConnector Association="UpaDBModel.FK_HistoryLoginUsers_Users" />
@@ -38,7 +38,7 @@
         <AssociationConnector Association="UpaDBModel.FK_HistroyOpRecord_Users" />
         <AssociationConnector Association="UpaDBModel.FK_MTR_Images_Images1" />
         <AssociationConnector Association="UpaDBModel.FK_MTR_Images_MTR" />
-        <AssociationConnector Association="UpaDBModel.FK_Place_MTR" />
+        <AssociationConnector Association="UpaDBModel.FK_Place_MTR_MTR" />
         <AssociationConnector Association="UpaDBModel.FK_Storage_MTR_MTR" />
         <AssociationConnector Association="UpaDBModel.FK_OpRececord_Place" />
         <AssociationConnector Association="UpaDBModel.FK_OpShifts_OpRecord_OpRececord" />
@@ -47,10 +47,10 @@
         <AssociationConnector Association="UpaDBModel.FK_Shifts_Persons_OpShifts" />
         <AssociationConnector Association="UpaDBModel.FK_Realizers_Persons" />
         <AssociationConnector Association="UpaDBModel.FK_Shifts_Persons_Persons" />
-        <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Tags_Place" />
+        <AssociationConnector Association="UpaDBModel.FK_Place_SystemsAsu" />
+        <AssociationConnector Association="UpaDBModel.FK_Place_MTR_Place" />
         <AssociationConnector Association="UpaDBModel.FK_Users_RulesForRole" />
         <AssociationConnector Association="UpaDBModel.FK_Storage_MTR_Storages" />
-        <AssociationConnector Association="UpaDBModel.FK_SystemsAsu_Tags_SystemsAsu" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

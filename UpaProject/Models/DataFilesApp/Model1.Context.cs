@@ -38,6 +38,7 @@ namespace UpaProject.Models.DataFilesApp
         public virtual DbSet<OpShifts_OpRecord> OpShifts_OpRecord { get; set; }
         public virtual DbSet<Persons> Persons { get; set; }
         public virtual DbSet<Place> Place { get; set; }
+        public virtual DbSet<Place_MTR> Place_MTR { get; set; }
         public virtual DbSet<PromActivites> PromActivites { get; set; }
         public virtual DbSet<Realizers> Realizers { get; set; }
         public virtual DbSet<RulesForRole> RulesForRole { get; set; }
@@ -46,7 +47,6 @@ namespace UpaProject.Models.DataFilesApp
         public virtual DbSet<Storages> Storages { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<SystemsAsu> SystemsAsu { get; set; }
-        public virtual DbSet<SystemsAsu_Tags> SystemsAsu_Tags { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

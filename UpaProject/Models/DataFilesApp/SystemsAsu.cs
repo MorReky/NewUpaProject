@@ -17,7 +17,7 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SystemsAsu()
         {
-            this.SystemsAsu_Tags = new HashSet<SystemsAsu_Tags>();
+            this.Place = new HashSet<Place>();
         }
     
         public int IDSystemAsu { get; set; }
@@ -27,6 +27,6 @@ namespace UpaProject.Models.DataFilesApp
     
         public virtual Departments Departments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SystemsAsu_Tags> SystemsAsu_Tags { get; set; }
+        public virtual ICollection<Place> Place { get; set; }
     }
 }

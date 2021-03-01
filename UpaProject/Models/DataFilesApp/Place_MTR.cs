@@ -12,13 +12,13 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class SystemsAsu_Tags
+    public partial class Place_MTR
     {
         public int ID { get; set; }
-        public int IDSystemAsu { get; set; }
-        public int IdPlace { get; set; }
+        public Nullable<int> IdPlace { get; set; }
+        public Nullable<int> IdMTR { get; set; }
     
+        public virtual MTR MTR { get; set; }
         public virtual Place Place { get; set; }
-        public virtual SystemsAsu SystemsAsu { get; set; }
     }
 }

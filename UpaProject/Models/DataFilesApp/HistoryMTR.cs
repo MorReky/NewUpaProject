@@ -20,6 +20,7 @@ namespace UpaProject.Models.DataFilesApp
         public Nullable<System.DateTime> DateEdit { get; set; }
         public string Activity { get; set; }
     
+        public virtual MTR MTR { get; set; }
         public virtual Users Users { get; set; }
     }
 }

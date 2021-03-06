@@ -143,8 +143,8 @@
                     <TextBlock VerticalAlignment="Center"
                                    Style="{StaticResource Txt}"
                                    MinWidth="135"
-                                   Margin="5,0"
-                                   Width="180"/>
+                               Text="Теговая позиция"
+                                   Margin="5,0"/>
                     <ComboBox IsReadOnly="False" 
                               IsEditable="True"
                               DisplayMemberPath="Tag"

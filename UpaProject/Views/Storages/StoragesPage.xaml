@@ -11,7 +11,7 @@
     <!--<Page.DataContext>
         <vm:StoragesPageViewModel/>
     </Page.DataContext>z-->
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" >
         <GroupBox DockPanel.Dock="Top">
             <GroupBox.Header>
                 <TextBlock Style="{StaticResource Txt}"

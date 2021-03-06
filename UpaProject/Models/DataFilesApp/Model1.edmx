@@ -197,7 +197,7 @@
           </Key>
           <Property Name="IDSystemAsu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDDepartment" Type="int" Nullable="false" />
-          <Property Name="IdSapSystem" Type="int" />
+          <Property Name="IdSapSystem" Type="nvarchar" MaxLength="30" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
@@ -219,6 +219,18 @@
             </Principal>
             <Dependent Role="HistoryLoginUsers">
               <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryMTR_MTR">
+          <End Role="MTR" Type="Self.MTR" Multiplicity="1" />
+          <End Role="HistoryMTR" Type="Self.HistoryMTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IDMTR" />
+            </Principal>
+            <Dependent Role="HistoryMTR">
+              <PropertyRef Name="IdMTR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -514,6 +526,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryLoginUsers" EntitySet="HistoryLoginUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_HistoryMTR_MTR" Association="Self.FK_HistoryMTR_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="HistoryMTR" EntitySet="HistoryMTR" />
+          </AssociationSet>
           <AssociationSet Name="FK_HistoryMTR_Users" Association="Self.FK_HistoryMTR_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryMTR" EntitySet="HistoryMTR" />
@@ -643,6 +659,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryLoginUsers" EntitySet="HistoryLoginUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_HistoryMTR_MTR" Association="UpaDBModel.FK_HistoryMTR_MTR">
+            <End Role="MTR" EntitySet="MTR" />
+            <End Role="HistoryMTR" EntitySet="HistoryMTR" />
+          </AssociationSet>
           <AssociationSet Name="FK_HistoryMTR_Users" Association="UpaDBModel.FK_HistoryMTR_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryMTR" EntitySet="HistoryMTR" />
@@ -752,6 +772,7 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="DateEdit" Type="DateTime" Precision="3" />
           <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MTR" Relationship="UpaDBModel.FK_HistoryMTR_MTR" FromRole="HistoryMTR" ToRole="MTR" />
           <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_HistoryMTR_Users" FromRole="HistoryMTR" ToRole="Users" />
         </EntityType>
         <EntityType Name="HistoryStorages">
@@ -794,6 +815,7 @@
           <Property Name="IdSap" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistoryMTR" Relationship="UpaDBModel.FK_HistoryMTR_MTR" FromRole="MTR" ToRole="HistoryMTR" />
           <NavigationProperty Name="MTR_Images" Relationship="UpaDBModel.FK_MTR_Images_MTR" FromRole="MTR" ToRole="MTR_Images" />
           <NavigationProperty Name="Place_MTR" Relationship="UpaDBModel.FK_Place_MTR_MTR" FromRole="MTR" ToRole="Place_MTR" />
           <NavigationProperty Name="Storage_MTR" Relationship="UpaDBModel.FK_Storage_MTR_MTR" FromRole="MTR" ToRole="Storage_MTR" />
@@ -955,7 +977,7 @@
           </Key>
           <Property Name="IDSystemAsu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IDDepartment" Type="Int32" Nullable="false" />
-          <Property Name="IdSapSystem" Type="Int32" />
+          <Property Name="IdSapSystem" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departments" Relationship="UpaDBModel.FK_SystemsAsu_Departments" FromRole="SystemsAsu" ToRole="Departments" />
           <NavigationProperty Name="Place" Relationship="UpaDBModel.FK_Place_SystemsAsu" FromRole="SystemsAsu" ToRole="Place" />
@@ -1008,6 +1030,18 @@
             </Principal>
             <Dependent Role="HistoryLoginUsers">
               <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryMTR_MTR">
+          <End Type="UpaDBModel.MTR" Role="MTR" Multiplicity="1" />
+          <End Type="UpaDBModel.HistoryMTR" Role="HistoryMTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MTR">
+              <PropertyRef Name="IDMTR" />
+            </Principal>
+            <Dependent Role="HistoryMTR">
+              <PropertyRef Name="IdMTR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

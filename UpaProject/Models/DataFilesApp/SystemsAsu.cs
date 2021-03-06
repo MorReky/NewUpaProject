@@ -22,7 +22,7 @@ namespace UpaProject.Models.DataFilesApp
     
         public int IDSystemAsu { get; set; }
         public int IDDepartment { get; set; }
-        public Nullable<int> IdSapSystem { get; set; }
+        public string IdSapSystem { get; set; }
         public string Name { get; set; }
     
         public virtual Departments Departments { get; set; }

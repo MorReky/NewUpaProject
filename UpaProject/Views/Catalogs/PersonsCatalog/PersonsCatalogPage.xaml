@@ -25,6 +25,9 @@
                     Content="Новый сотрудник"
                         Command="{Binding AddPerson}"/>
                 <Button Style="{StaticResource BtnFrame}"
+                    Content="Редактировать"
+                        Command="{Binding AddPerson}"/>
+                <Button Style="{StaticResource BtnFrame}"
                     Name="BtnToExcel"
                     Content="Вывод данных в Excel"/>
                 <Button Style="{StaticResource BtnFrame}"
@@ -37,13 +40,24 @@
         </GroupBox>
         <DataGrid Margin="10"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"
+                  IsReadOnly="False"
                   CanUserAddRows="False"
-                  ItemsSource="{Binding TableSource}"
+                  ItemsSource="{Binding TableSource, Mode=TwoWay}"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Name }" />
                 <DataGridTextColumn Header="Должность" Binding="{Binding Role}"/>
+                <DataGridTemplateColumn IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedIndex="{Binding WorkGroup,Mode=TwoWay}">
+                                <ComboBoxItem Content="Неоперделено" TabIndex="0"/>
+                                <ComboBoxItem Content="Рабочий" TabIndex="1"/>
+                                <ComboBoxItem Content="ИТР" TabIndex="2"/>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

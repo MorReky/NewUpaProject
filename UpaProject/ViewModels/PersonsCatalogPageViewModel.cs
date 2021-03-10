@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ namespace UpaProject.ViewModels
     internal class PersonsCatalogPageViewModel:ViewModel
     {
         #region Свойства
-        public IEnumerable<Persons> TableSource { get => DBConnectHelper.DbObj.Persons.ToList(); }
+        public IEnumerable<Persons> TableSource { get=> DBConnectHelper.DbObj.Persons.ToList(); set => DBConnectHelper.DbObj.SaveChanges(); }
+            
+        
         #endregion
 
         #region Комманды
@@ -33,6 +36,7 @@ namespace UpaProject.ViewModels
             #region Комманды
             AddPerson = new LambdaCommand(OnAddPersonExecuted, CanOnAddPersonExecute);
             #endregion
+            TableSource = DBConnectHelper.DbObj.Persons.ToList();
         }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Infrastracture\ClassHelper\ClassUserHelper.cs" />
     <Compile Include="Infrastracture\Commands\Base\Command.cs" />
     <Compile Include="Infrastracture\Commands\LambdaCommand.cs" />
+    <Compile Include="Infrastracture\Converters\StringBuilderToString.cs" />
     <Compile Include="Models\DataFilesApp\Departments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -161,9 +162,17 @@
     <Compile Include="ViewModels\HelpersClass\TimeDate.cs" />
     <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
     <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
+    <Compile Include="ViewModels\PageNewCatalogPersonsViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
+    <Compile Include="ViewModels\PersonsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />
+    <Compile Include="Views\Catalogs\PersonsCatalog\PageNewCatalogPage.xaml.cs">
+      <DependentUpon>PageNewCatalogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogs\PersonsCatalog\PersonsCatalogPage.xaml.cs">
+      <DependentUpon>PersonsCatalogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">
       <DependentUpon>HistoriesPage.xaml</DependentUpon>
     </Compile>
@@ -179,11 +188,11 @@
     <Compile Include="Views\Storages\StoragesPage.xaml.cs">
       <DependentUpon>StoragesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml">
+    <Page Include="Views\Catalogs\PersonsCatalog\PageNewCatalogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml">
+    <Page Include="Views\Catalogs\PersonsCatalog\PersonsCatalogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,12 +225,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\Base\ViewModel.cs" />
-    <Compile Include="Views\Catalogs\EqCatalog\PageAddNewEq.xaml.cs">
-      <DependentUpon>PageAddNewEq.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Catalogs\EqCatalog\PageEqiupmentCatalog.xaml.cs">
-      <DependentUpon>PageEqiupmentCatalog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\DataFilesApp\DBConnectHelper.cs" />
     <Compile Include="Infrastracture\FrameApp\FrameLoader.cs" />
     <Compile Include="Views\Journals\Operativs\PageOpJournal.xaml.cs">

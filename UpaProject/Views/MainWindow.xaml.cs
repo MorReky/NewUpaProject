@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UpaProject.Catalogs;
 using UpaProject.DataFilesApp;
 using UpaProject.FrameApp;
 using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
+using UpaProject.Views.Catalogs.EqCatalog;
 using UpaProject.Views.Journals.Histories;
 using UpaProject.Views.LogIN;
 using UpaProject.Views.Storages;
@@ -47,9 +47,9 @@ namespace UpaProject
         }
         
 
-        private void BtnCatalogEq_Click(object sender, RoutedEventArgs e)
+        private void BtnCatalogPers_Click(object sender, RoutedEventArgs e)
         {
-            FrameLoader.frmObj.Navigate(new PageEqiupmentCatalog());
+           FrameLoader.frmObj.Navigate(new PersonsCatalogPage());
         }
 
         private void BtnJournal_Click(object sender, RoutedEventArgs e)

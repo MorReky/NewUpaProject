@@ -55,7 +55,7 @@ namespace UpaProject.ViewModels
                 {
                     Name = Name,
                     Role = Role,
-                    WorkGroup = WorkGroup
+                    IdWorkGroup = WorkGroup
                 };
                 DBConnectHelper.DbObj.Persons.Add(personsObj);
                 DBConnectHelper.DbObj.SaveChanges();

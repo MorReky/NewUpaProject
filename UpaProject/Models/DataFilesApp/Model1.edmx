@@ -115,7 +115,8 @@
           <Property Name="IDPerson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="WorkGroup" Type="int" Nullable="false" />
+          <Property Name="IdStatus" Type="int" Nullable="false" />
+          <Property Name="IdWorkGroup" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -164,6 +165,13 @@
           <Property Name="IdShift" Type="int" Nullable="false" />
           <Property Name="IdPerson" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="StatusValues">
+          <Key>
+            <PropertyRef Name="IDStatus" />
+          </Key>
+          <Property Name="IDStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="Storage_MTR">
           <Key>
             <PropertyRef Name="IDStorage_MTR" />
@@ -209,6 +217,13 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkGroupValues">
+          <Key>
+            <PropertyRef Name="IDWorkGroup" />
+          </Key>
+          <Property Name="IDWorkGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkGroup" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_HistoryLoginUsers_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -366,6 +381,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Persons_StatusValues">
+          <End Role="StatusValues" Type="Self.StatusValues" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusValues">
+              <PropertyRef Name="IDStatus" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_WorkGroupValues">
+          <End Role="WorkGroupValues" Type="Self.WorkGroupValues" Multiplicity="1" />
+          <End Role="Persons" Type="Self.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkGroupValues">
+              <PropertyRef Name="IDWorkGroup" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="IdWorkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_SystemsAsu">
           <End Role="SystemsAsu" Type="Self.SystemsAsu" Multiplicity="0..1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -517,11 +556,13 @@
           <EntitySet Name="Realizers" EntityType="Self.Realizers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RulesForRole" EntityType="Self.RulesForRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shifts_Persons" EntityType="Self.Shifts_Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusValues" EntityType="Self.StatusValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storage_MTR" EntityType="Self.Storage_MTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storages" EntityType="Self.Storages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystemsAsu" EntityType="Self.SystemsAsu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkGroupValues" EntityType="Self.WorkGroupValues" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_HistoryLoginUsers_Users" Association="Self.FK_HistoryLoginUsers_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryLoginUsers" EntitySet="HistoryLoginUsers" />
@@ -573,6 +614,14 @@
           <AssociationSet Name="FK_OpShifts_OpRecord_OpShifts" Association="Self.FK_OpShifts_OpRecord_OpShifts">
             <End Role="OpShifts" EntitySet="OpShifts" />
             <End Role="OpShifts_OpRecord" EntitySet="OpShifts_OpRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_StatusValues" Association="Self.FK_Persons_StatusValues">
+            <End Role="StatusValues" EntitySet="StatusValues" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_WorkGroupValues" Association="Self.FK_Persons_WorkGroupValues">
+            <End Role="WorkGroupValues" EntitySet="WorkGroupValues" />
+            <End Role="Persons" EntitySet="Persons" />
           </AssociationSet>
           <AssociationSet Name="FK_Place_SystemsAsu" Association="Self.FK_Place_SystemsAsu">
             <End Role="SystemsAsu" EntitySet="SystemsAsu" />
@@ -642,11 +691,13 @@
           <EntitySet Name="Realizers" EntityType="UpaDBModel.Realizers" />
           <EntitySet Name="RulesForRole" EntityType="UpaDBModel.RulesForRole" />
           <EntitySet Name="Shifts_Persons" EntityType="UpaDBModel.Shifts_Persons" />
+          <EntitySet Name="StatusValues" EntityType="UpaDBModel.StatusValues" />
           <EntitySet Name="Storage_MTR" EntityType="UpaDBModel.Storage_MTR" />
           <EntitySet Name="Storages" EntityType="UpaDBModel.Storages" />
           <EntitySet Name="sysdiagrams" EntityType="UpaDBModel.sysdiagrams" />
           <EntitySet Name="SystemsAsu" EntityType="UpaDBModel.SystemsAsu" />
           <EntitySet Name="Users" EntityType="UpaDBModel.Users" />
+          <EntitySet Name="WorkGroupValues" EntityType="UpaDBModel.WorkGroupValues" />
           <AssociationSet Name="FK_OpRececord_Departments" Association="UpaDBModel.FK_OpRececord_Departments">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="OpRececord" EntitySet="OpRececord" />
@@ -718,6 +769,14 @@
           <AssociationSet Name="FK_Shifts_Persons_OpShifts" Association="UpaDBModel.FK_Shifts_Persons_OpShifts">
             <End Role="OpShifts" EntitySet="OpShifts" />
             <End Role="Shifts_Persons" EntitySet="Shifts_Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_StatusValues" Association="UpaDBModel.FK_Persons_StatusValues">
+            <End Role="StatusValues" EntitySet="StatusValues" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persons_WorkGroupValues" Association="UpaDBModel.FK_Persons_WorkGroupValues">
+            <End Role="WorkGroupValues" EntitySet="WorkGroupValues" />
+            <End Role="Persons" EntitySet="Persons" />
           </AssociationSet>
           <AssociationSet Name="FK_Realizers_Persons" Association="UpaDBModel.FK_Realizers_Persons">
             <End Role="Persons" EntitySet="Persons" />
@@ -879,7 +938,10 @@
           <Property Name="IDPerson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WorkGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdStatus" Type="Int32" Nullable="false" />
+          <Property Name="IdWorkGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StatusValues" Relationship="UpaDBModel.FK_Persons_StatusValues" FromRole="Persons" ToRole="StatusValues" />
+          <NavigationProperty Name="WorkGroupValues" Relationship="UpaDBModel.FK_Persons_WorkGroupValues" FromRole="Persons" ToRole="WorkGroupValues" />
           <NavigationProperty Name="Realizers" Relationship="UpaDBModel.FK_Realizers_Persons" FromRole="Persons" ToRole="Realizers" />
           <NavigationProperty Name="Shifts_Persons" Relationship="UpaDBModel.FK_Shifts_Persons_Persons" FromRole="Persons" ToRole="Shifts_Persons" />
         </EntityType>
@@ -940,6 +1002,14 @@
           <NavigationProperty Name="OpShifts" Relationship="UpaDBModel.FK_Shifts_Persons_OpShifts" FromRole="Shifts_Persons" ToRole="OpShifts" />
           <NavigationProperty Name="Persons" Relationship="UpaDBModel.FK_Shifts_Persons_Persons" FromRole="Shifts_Persons" ToRole="Persons" />
         </EntityType>
+        <EntityType Name="StatusValues">
+          <Key>
+            <PropertyRef Name="IDStatus" />
+          </Key>
+          <Property Name="IDStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Persons" Relationship="UpaDBModel.FK_Persons_StatusValues" FromRole="StatusValues" ToRole="Persons" />
+        </EntityType>
         <EntityType Name="Storage_MTR">
           <Key>
             <PropertyRef Name="IDStorage_MTR" />
@@ -996,6 +1066,14 @@
           <NavigationProperty Name="HistoryStorages" Relationship="UpaDBModel.FK_HistoryStorages_Users" FromRole="Users" ToRole="HistoryStorages" />
           <NavigationProperty Name="HistroyOpRecord" Relationship="UpaDBModel.FK_HistroyOpRecord_Users" FromRole="Users" ToRole="HistroyOpRecord" />
           <NavigationProperty Name="RulesForRole" Relationship="UpaDBModel.FK_Users_RulesForRole" FromRole="Users" ToRole="RulesForRole" />
+        </EntityType>
+        <EntityType Name="WorkGroupValues">
+          <Key>
+            <PropertyRef Name="IDWorkGroup" />
+          </Key>
+          <Property Name="IDWorkGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkGroup" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Persons" Relationship="UpaDBModel.FK_Persons_WorkGroupValues" FromRole="WorkGroupValues" ToRole="Persons" />
         </EntityType>
         <Association Name="FK_OpRececord_Departments">
           <End Type="UpaDBModel.Departments" Role="Departments" Multiplicity="1" />
@@ -1213,6 +1291,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Persons_StatusValues">
+          <End Type="UpaDBModel.StatusValues" Role="StatusValues" Multiplicity="1" />
+          <End Type="UpaDBModel.Persons" Role="Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusValues">
+              <PropertyRef Name="IDStatus" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persons_WorkGroupValues">
+          <End Type="UpaDBModel.WorkGroupValues" Role="WorkGroupValues" Multiplicity="1" />
+          <End Type="UpaDBModel.Persons" Role="Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkGroupValues">
+              <PropertyRef Name="IDWorkGroup" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="IdWorkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Realizers_Persons">
           <End Type="UpaDBModel.Persons" Role="Persons" Multiplicity="1" />
           <End Type="UpaDBModel.Realizers" Role="Realizers" Multiplicity="*" />
@@ -1408,7 +1510,8 @@
           <EntitySetMapping Name="Persons">
             <EntityTypeMapping TypeName="UpaDBModel.Persons">
               <MappingFragment StoreEntitySet="Persons">
-                <ScalarProperty Name="WorkGroup" ColumnName="WorkGroup" />
+                <ScalarProperty Name="IdWorkGroup" ColumnName="IdWorkGroup" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />
@@ -1468,6 +1571,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StatusValues">
+            <EntityTypeMapping TypeName="UpaDBModel.StatusValues">
+              <MappingFragment StoreEntitySet="StatusValues">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IDStatus" ColumnName="IDStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Storage_MTR">
             <EntityTypeMapping TypeName="UpaDBModel.Storage_MTR">
               <MappingFragment StoreEntitySet="Storage_MTR">
@@ -1516,6 +1627,14 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkGroupValues">
+            <EntityTypeMapping TypeName="UpaDBModel.WorkGroupValues">
+              <MappingFragment StoreEntitySet="WorkGroupValues">
+                <ScalarProperty Name="WorkGroup" ColumnName="WorkGroup" />
+                <ScalarProperty Name="IDWorkGroup" ColumnName="IDWorkGroup" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

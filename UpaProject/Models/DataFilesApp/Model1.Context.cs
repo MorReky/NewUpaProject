@@ -43,10 +43,12 @@ namespace UpaProject.Models.DataFilesApp
         public virtual DbSet<Realizers> Realizers { get; set; }
         public virtual DbSet<RulesForRole> RulesForRole { get; set; }
         public virtual DbSet<Shifts_Persons> Shifts_Persons { get; set; }
+        public virtual DbSet<StatusValues> StatusValues { get; set; }
         public virtual DbSet<Storage_MTR> Storage_MTR { get; set; }
         public virtual DbSet<Storages> Storages { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<SystemsAsu> SystemsAsu { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<WorkGroupValues> WorkGroupValues { get; set; }
     }
 }

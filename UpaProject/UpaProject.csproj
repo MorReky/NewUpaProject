@@ -143,6 +143,9 @@
     <Compile Include="Models\DataFilesApp\Shifts_Persons.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\StatusValues.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataFilesApp\Storages.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -158,15 +161,22 @@
     <Compile Include="Models\DataFilesApp\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataFilesApp\WorkGroupValues.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AutorizationPageViewModel.cs" />
     <Compile Include="ViewModels\HelpersClass\TimeDate.cs" />
     <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\MTRCatalogsPageViewModel.cs" />
     <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
     <Compile Include="ViewModels\PageNewCatalogPersonsViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
     <Compile Include="ViewModels\PersonsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />
+    <Compile Include="Views\Catalogs\MTRCatalog\MTRCatalogsPage.xaml.cs">
+      <DependentUpon>MTRCatalogsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Catalogs\PersonsCatalog\PageNewCatalogPage.xaml.cs">
       <DependentUpon>PageNewCatalogPage.xaml</DependentUpon>
     </Compile>
@@ -188,6 +198,10 @@
     <Compile Include="Views\Storages\StoragesPage.xaml.cs">
       <DependentUpon>StoragesPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Catalogs\MTRCatalog\MTRCatalogsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Catalogs\PersonsCatalog\PageNewCatalogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

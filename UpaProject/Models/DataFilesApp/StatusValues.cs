@@ -12,26 +12,18 @@ namespace UpaProject.Models.DataFilesApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Persons
+    public partial class StatusValues
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Persons()
+        public StatusValues()
         {
-            this.Realizers = new HashSet<Realizers>();
-            this.Shifts_Persons = new HashSet<Shifts_Persons>();
+            this.Persons = new HashSet<Persons>();
         }
     
-        public int IDPerson { get; set; }
-        public string Name { get; set; }
-        public string Role { get; set; }
-        public int IdStatus { get; set; }
-        public int IdWorkGroup { get; set; }
+        public int IDStatus { get; set; }
+        public string Status { get; set; }
     
-        public virtual StatusValues StatusValues { get; set; }
-        public virtual WorkGroupValues WorkGroupValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Realizers> Realizers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shifts_Persons> Shifts_Persons { get; set; }
+        public virtual ICollection<Persons> Persons { get; set; }
     }
 }

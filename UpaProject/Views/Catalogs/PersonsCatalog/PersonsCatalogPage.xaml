@@ -25,9 +25,6 @@
                     Content="Новый сотрудник"
                         Command="{Binding AddPerson}"/>
                 <Button Style="{StaticResource BtnFrame}"
-                    Name="BtnToExcel"
-                    Content="Вывод данных в Excel"/>
-                <Button Style="{StaticResource BtnFrame}"
                         Content="Удалить"
                         Command="{Binding DeletePosition}"/>
                 <Button Style="{StaticResource BtnFrame}"

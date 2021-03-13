@@ -71,6 +71,11 @@ namespace UpaProject.ViewModels
             return false;
         }
         #endregion
+        #region Обновление данных
+        public ICommand ResourceUpdate { get; set; }
+        public void OnResourceUpdateExecuted(object p)=> TableSource = TableSource;
+        public bool CanOnResourceUpdateExecute(object p) => true;
+        #endregion
 
         #endregion
         public PersonsCatalogPageViewModel()

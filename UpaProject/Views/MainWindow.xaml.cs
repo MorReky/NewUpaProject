@@ -18,6 +18,7 @@ using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
 using UpaProject.Views.Catalogs.EqCatalog;
+using UpaProject.Views.Catalogs.MTRCatalog;
 using UpaProject.Views.Journals.Histories;
 using UpaProject.Views.LogIN;
 using UpaProject.Views.Storages;
@@ -64,7 +65,7 @@ namespace UpaProject
 
         private void BtnEq_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameLoader.frmObj.Navigate(new MTRCatalogsPage());
         }
 
         private void BtnStorage_Click(object sender, RoutedEventArgs e)

@@ -26,8 +26,9 @@
                     Content="Добавление нового МТР"
                         Command="{Binding AddPerson}"/>
                 <Button Style="{StaticResource BtnFrame}"
-                    Name="BtnToExcel"
-                    Content="Вывод данных в Excel"/>
+                        Name="BtnToExcel"
+                        Content="Вывод данных в Excel"
+                        Command="{Binding ToExcel}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Удалить"
                         Command="{Binding }"/>

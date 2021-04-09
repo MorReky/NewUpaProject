@@ -63,7 +63,7 @@ namespace UpaProject
             FrameLoader.frmObj.Navigate(new PageOpJournal());
         }
 
-        private void BtnEq_Click(object sender, RoutedEventArgs e)
+        private void BtnCatalogMTR_Click(object sender, RoutedEventArgs e)
         {
             FrameLoader.frmObj.Navigate(new MTRCatalogsPage());
         }
@@ -97,7 +97,7 @@ namespace UpaProject
                 BtnCatalogs.IsEnabled = true;
                 BtnJournal.IsEnabled = true;
                 BtnStorage.IsEnabled = true;
-                BtnEq.IsEnabled = true;
+                //BtnEq.IsEnabled = true;
             }
             if (ClassUserHelper.Role == 2)
             {

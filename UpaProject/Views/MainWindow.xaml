@@ -21,7 +21,7 @@
                       Padding="3"
                       Header="Справочник Сотрудников"
                       Click="BtnCatalogPers_Click"/>
-            <MenuItem x:Name="BtnEq"
+            <MenuItem x:Name="BtnCatalogMTR"
                       FontFamily="Franklin Gothic Heavy"
                       FontSize="12pt"
                       MinHeight="40"
@@ -30,7 +30,7 @@
                       Background="#7F088DD0"
                       Padding="3"
                       Header="Справочник оборудования"
-                      Click="BtnEq_Click"/>
+                      Click="BtnCatalogMTR_Click"/>
         </ContextMenu>
         <ContextMenu Width="auto"
                      Height="auto"
@@ -88,9 +88,7 @@
             <Button Content="Оборудование"
                     DockPanel.Dock="Top"                    
                     Style="{StaticResource Button_Main}"
-                    IsEnabled="False"
-                    Name="BtnEq"
-                    Click="BtnEq_Click"/>
+                    IsEnabled="False"/>
             <Button Content="Выход"
                     DockPanel.Dock="Top"    
                     Style="{StaticResource Button_Main}"

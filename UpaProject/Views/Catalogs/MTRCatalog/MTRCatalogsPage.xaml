@@ -24,7 +24,7 @@
                     Margin="5">
                 <Button Style="{StaticResource BtnFrame}"
                     Content="Добавление нового МТР"
-                        Command="{Binding AddPerson}"/>
+                        Command="{Binding GoToNewMTRPage}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Name="BtnToExcel"
                         Content="Вывод данных в Excel"
@@ -34,7 +34,7 @@
                         Command="{Binding }"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Обновить"
-                        Command="{Binding ResourceUpdate}"/>
+                        Command="{Binding }"/>
             </StackPanel>
         </GroupBox>
         <DataGrid Margin="10"

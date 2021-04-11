@@ -32,13 +32,18 @@ namespace UpaProject.ViewModels
 		public void OnGoToNewMTRPageExecuted(object p) => FrameLoader.frmObj.Navigate(new NewMTRPage());
 		public bool CanOnGoToNewMTRPageExecute(object p) => true;
 		#endregion
-
+		#region Обновление данных
+		public ICommand ResourceUpdate { get; set; }
+		public void OnResourceUpdateExecuted(object p) => TableSource = TableSource;
+		public bool CanOnResourceUpdateExecute(object p) => true;
+		#endregion
 
 		#endregion
 
 		public MTRCatalogsPageViewModel()
         {
 			#region Комманды
+			ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
 			ToExcel = new LambdaCommand(OnToExcelExecuted, CanOnToExcelExecute);
 			GoToNewMTRPage = new LambdaCommand(OnGoToNewMTRPageExecuted, CanOnGoToNewMTRPageExecute);
 			#endregion

@@ -26,6 +26,7 @@
                         Command="{Binding AddPerson}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Удалить"
+                        IsEnabled="False"
                         Command="{Binding DeletePosition}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Обновить"

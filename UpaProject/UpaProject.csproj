@@ -169,10 +169,12 @@
     <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
     <Compile Include="ViewModels\MTRCatalogsPageViewModel.cs" />
     <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
+    <Compile Include="ViewModels\NewPositionPageViewModel.cs" />
     <Compile Include="ViewModels\PageNewCatalogPersonsViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
     <Compile Include="ViewModels\PersonsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
+    <Compile Include="ViewModels\TagsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />
     <Compile Include="Views\Catalogs\MTRCatalog\MTRCatalogsPage.xaml.cs">
       <DependentUpon>MTRCatalogsPage.xaml</DependentUpon>
@@ -182,6 +184,12 @@
     </Compile>
     <Compile Include="Views\Catalogs\PersonsCatalog\PersonsCatalogPage.xaml.cs">
       <DependentUpon>PersonsCatalogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogs\TagsCatalog\NewPositionPage.xaml.cs">
+      <DependentUpon>NewPositionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogs\TagsCatalog\TagsCatalogPage.xaml.cs">
+      <DependentUpon>TagsCatalogPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Journals\Histories\HistoriesPage.xaml.cs">
       <DependentUpon>HistoriesPage.xaml</DependentUpon>
@@ -207,6 +215,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Catalogs\PersonsCatalog\PersonsCatalogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Catalogs\TagsCatalog\NewPositionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Catalogs\TagsCatalog\TagsCatalogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

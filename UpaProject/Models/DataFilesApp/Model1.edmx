@@ -128,7 +128,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="150" />
           <Property Name="Comments" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Place-MTR">
+        <EntityType Name="Place_MTR">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -419,24 +419,24 @@
         </Association>
         <Association Name="FK_Place-MTR_MTR">
           <End Role="MTR" Type="Self.MTR" Multiplicity="0..1" />
-          <End Role="Place-MTR" Type="Self.Place-MTR" Multiplicity="*" />
+          <End Role="Place_MTR" Type="Self.Place_MTR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MTR">
               <PropertyRef Name="IDMTR" />
             </Principal>
-            <Dependent Role="Place-MTR">
+            <Dependent Role="Place_MTR">
               <PropertyRef Name="IdMTR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Place-MTR_Place">
           <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
-          <End Role="Place-MTR" Type="Self.Place-MTR" Multiplicity="*" />
+          <End Role="Place_MTR" Type="Self.Place_MTR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Place">
               <PropertyRef Name="IDPlace" />
             </Principal>
-            <Dependent Role="Place-MTR">
+            <Dependent Role="Place_MTR">
               <PropertyRef Name="IdPlace" />
             </Dependent>
           </ReferentialConstraint>
@@ -551,7 +551,7 @@
           <EntitySet Name="OpShifts_OpRecord" EntityType="Self.OpShifts_OpRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Place-MTR" EntityType="Self.Place-MTR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Place_MTR" EntityType="Self.Place_MTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromActivites" EntityType="Self.PromActivites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Realizers" EntityType="Self.Realizers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RulesForRole" EntityType="Self.RulesForRole" Schema="dbo" store:Type="Tables" />
@@ -629,11 +629,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_Place-MTR_MTR" Association="Self.FK_Place-MTR_MTR">
             <End Role="MTR" EntitySet="MTR" />
-            <End Role="Place-MTR" EntitySet="Place-MTR" />
+            <End Role="Place_MTR" EntitySet="Place_MTR" />
           </AssociationSet>
           <AssociationSet Name="FK_Place-MTR_Place" Association="Self.FK_Place-MTR_Place">
             <End Role="Place" EntitySet="Place" />
-            <End Role="Place-MTR" EntitySet="Place-MTR" />
+            <End Role="Place_MTR" EntitySet="Place_MTR" />
           </AssociationSet>
           <AssociationSet Name="FK_Realizers_OpRececord" Association="Self.FK_Realizers_OpRececord">
             <End Role="OpRececord" EntitySet="OpRececord" />
@@ -1531,7 +1531,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Place_MTR">
             <EntityTypeMapping TypeName="UpaDBModel.Place_MTR">
-              <MappingFragment StoreEntitySet="Place-MTR">
+              <MappingFragment StoreEntitySet="Place_MTR">
                 <ScalarProperty Name="IdMTR" ColumnName="IdMTR" />
                 <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

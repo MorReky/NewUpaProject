@@ -19,6 +19,7 @@ using UpaProject.Journals;
 using UpaProject.Models.DataFilesApp;
 using UpaProject.Views.Catalogs.EqCatalog;
 using UpaProject.Views.Catalogs.MTRCatalog;
+using UpaProject.Views.Catalogs.TagsCatalog;
 using UpaProject.Views.Journals.Histories;
 using UpaProject.Views.LogIN;
 using UpaProject.Views.Storages;
@@ -111,5 +112,11 @@ namespace UpaProject
         {
             FrameLoader.frmObj.Navigate(new HistoriesPage());
         }
+
+        private void BtnCatalogTag_Click(object sender, RoutedEventArgs e)
+        {
+            FrameLoader.frmObj.Navigate(new TagsCatalogPage());
+        }
+
     }
 }

@@ -19,7 +19,7 @@
                       Foreground="#FF3D3D35"
                       Background="#7F088DD0"
                       Padding="3"
-                      Header="Справочник Сотрудников"
+                      Header="Справочник cотрудников"
                       Click="BtnCatalogPers_Click"/>
             <MenuItem x:Name="BtnCatalogMTR"
                       FontFamily="Franklin Gothic Heavy"
@@ -31,6 +31,16 @@
                       Padding="3"
                       Header="Справочник оборудования"
                       Click="BtnCatalogMTR_Click"/>
+            <MenuItem x:Name="BtnCatalogTag"
+                      FontFamily="Franklin Gothic Heavy"
+                      FontSize="12pt"
+                      MinHeight="40"
+                      FontWeight="DemiBold"
+                      Foreground="#FF3D3D35"
+                      Background="#7F088DD0"
+                      Padding="3"
+                      Header="Справочник позиций"
+                      Click="BtnCatalogTag_Click"/>
         </ContextMenu>
         <ContextMenu Width="auto"
                      Height="auto"

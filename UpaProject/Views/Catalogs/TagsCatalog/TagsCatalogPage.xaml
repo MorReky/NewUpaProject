@@ -1,0 +1,51 @@
+﻿<Page x:Class="UpaProject.Views.Catalogs.TagsCatalog.TagsCatalogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
+      xmlns:local="clr-namespace:UpaProject.Views.Catalogs.TagsCatalog"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Справочник местоположений ЕО">
+    <Page.DataContext>
+    <vm:TagsCatalogPageViewModel/>
+    </Page.DataContext>
+    <DockPanel LastChildFill="True">
+
+        <GroupBox DockPanel.Dock="Top">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource Txt}"
+                           Text="Редактирование"
+                           FontSize="10pt"/>
+            </GroupBox.Header>
+            <StackPanel Orientation="Horizontal"                    
+                    Margin="5">
+                <Button Style="{StaticResource BtnFrame}"
+                    Content="Новая позиция"
+                        Command="{Binding }"/>
+                <Button Style="{StaticResource BtnFrame}"
+                        Content="Удалить"
+                        IsEnabled="False"
+                        Command="{Binding DeletePosition}"/>
+                <Button Style="{StaticResource BtnFrame}"
+                        Content="Обновить"
+                        Command="{Binding ResourceUpdate}"/>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Margin="10"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="False"
+                  CanUserAddRows="False"
+                  ItemsSource="{Binding TableSource, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedRow}"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тег" Binding="{Binding Place.Tag}" />
+                <DataGridTextColumn Header="Позиция" Binding="{Binding Place.Name}" />
+                <DataGridTextColumn Header="Гид" Binding="{Binding MTR.IdSap}" />
+                <DataGridTextColumn Header="Наименование МТР" Binding="{Binding MTR.Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Page>

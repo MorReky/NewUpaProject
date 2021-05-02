@@ -25,9 +25,9 @@
                     Content="Новый сотрудник"
                         Command="{Binding AddPerson}"/>
                 <Button Style="{StaticResource BtnFrame}"
-                        Content="Удалить"
+                        Content="Удалить" 
                         IsEnabled="False"
-                        Command="{Binding DeletePosition}"/>
+                        Command="{Binding DeleteSelectedRow}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Обновить"
                         Command="{Binding ResourceUpdate}"/>
@@ -38,7 +38,7 @@
                   IsReadOnly="False"
                   CanUserAddRows="False"
                   ItemsSource="{Binding TableSource, Mode=TwoWay}"
-                  SelectedItem="{Binding SelectedRow}"
+                  SelectedValue="{Binding SelectedRow,Mode=TwoWay}"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding Name }" />
@@ -46,22 +46,28 @@
                 <DataGridTemplateColumn Header="Статус">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox Text="{Binding StatusValues.Status,Mode=TwoWay}">
-                                <ComboBoxItem Content="Работает"/>
-                                <ComboBoxItem Content="Уволен"/>
-                                <ComboBoxItem Content="В отпуске"/>
-                            </ComboBox>
+                            <ComboBox SelectedValue="{Binding IdStatus,
+                                                      Mode=TwoWay,
+                                                      UpdateSourceTrigger=PropertyChanged}"
+                                      ItemsSource="{Binding DataContext.StatusValue, 
+                                                    RelativeSource={RelativeSource Mode=FindAncestor,
+                                                    AncestorType=Page}}"
+                                      DisplayMemberPath="Status"
+                                      SelectedValuePath="IDStatus"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox Text="{Binding WorkGroupValues.WorkGroup,Mode=TwoWay}">
-                                <ComboBoxItem Content="Неопределено"/>
-                                <ComboBoxItem Content="Рабочий"/>
-                                <ComboBoxItem Content="ИТР"/>
-                            </ComboBox>
+                            <ComboBox SelectedValue="{Binding IdWorkGroup,
+                                                      Mode=TwoWay,
+                                                      UpdateSourceTrigger=PropertyChanged}"
+                                      ItemsSource="{Binding DataContext.WorkGroupValue,
+                                                    RelativeSource={RelativeSource Mode=FindAncestor,
+                                                    AncestorType=Page}}"
+                                      DisplayMemberPath="WorkGroup"
+                                      SelectedValuePath="IDWorkGroup"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

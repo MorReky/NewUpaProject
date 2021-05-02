@@ -69,14 +69,12 @@ namespace UpaProject.ViewModels
 		public ICommand DeleteSelectedRow { get; }
 		public void OnDeleteSelectedRowExecuted(object p)
         {
-			MessageBoxResult result = MessageBox.Show($"Позиция {SelectedRow.IdSap} {SelectedRow.Name} будет удалена", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+			MessageBoxResult result = MessageBox.Show($"Позиция {SelectedRow.IdSap} {SelectedRow.Name} будет удалена", "Внимание!", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 			if (result == MessageBoxResult.OK)
 			{
 				DBConnectHelper.DbObj.MTR.Remove(SelectedRow);
 				TableSource = TableSource;
 			}
-			else
-				return;
 		}
 		public bool CanOnDeleteSelectedRowExecute(object p)=> (SelectedRow != null)?true: false;
         

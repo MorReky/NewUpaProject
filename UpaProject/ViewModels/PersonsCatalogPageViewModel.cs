@@ -16,55 +16,69 @@ using UpaProject.Views.Catalogs.EqCatalog;
 
 namespace UpaProject.ViewModels
 {
-    internal class PersonsCatalogPageViewModel:ViewModel
+    internal class PersonsCatalogPageViewModel : ViewModel
     {
         #region Свойства
-        public ObservableCollection<Persons> TableSource
+        #region TableSource
+        public IEnumerable<Persons> TableSource
         {
-            get => new ObservableCollection<Persons>(DBConnectHelper.DbObj.Persons);
+            get => DBConnectHelper.DbObj.Persons.ToList();
             set
             {
-                OnPropertyChanged("Update");
                 DBConnectHelper.DbObj.SaveChanges();
+                OnPropertyChanged("TableSource");
             }
         }
-       // public ObservableCollection<WorkGroupValues> WorkGroups { get => new ObservableCollection<WorkGroupValues>(DBConnectHelper.DbObj.WorkGroupValues.ToList()); set => DBConnectHelper.DbObj.SaveChanges(); }
-
-        private object _SelectedRow;
-        public object SelectedRow
-        { 
+        #endregion        
+        #region SelectedRow
+        private Persons _SelectedRow;
+        public Persons SelectedRow
+        {
             get => _SelectedRow;
-            set => Set(ref _SelectedRow, value);
-        }        
+            set
+            {
+                if (!Equals(_SelectedRow, value))
+                {
+                    _SelectedRow = value;
+                    DBConnectHelper.DbObj.SaveChanges();
+                    OnPropertyChanged("SelectedRow");
+                }
+                else
+                    _SelectedRow = value;
+            }
+        }
+        #endregion
+        public IEnumerable<StatusValues> StatusValue { get => DBConnectHelper.DbObj.StatusValues.ToList(); }
+        public IEnumerable<WorkGroupValues> WorkGroupValue { get => DBConnectHelper.DbObj.WorkGroupValues.ToList(); }
         #endregion
 
         #region Комманды
         #region Открытие окна Добавления нового сотрудника
         public ICommand AddPerson { get; }
-        public void OnAddPersonExecuted(object p)=> FrameLoader.frmObj.Navigate(new PageNewCatalogPage());
+        public void OnAddPersonExecuted(object p) => FrameLoader.frmObj.Navigate(new PageNewCatalogPage());
         public bool CanOnAddPersonExecute(object p) => true;
         #endregion
         #region Удаление позиции
-        public ICommand DeletePosition { get; }
+        public ICommand DeleteSelectedRow { get; }
 
-        public void OnDeletePositionExecuted(object p)
+        public void OnDeleteSelectedRowExecuted(object p)
         {
-            MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить выбранного сотрудника?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result==MessageBoxResult.Yes)
+            MessageBoxResult result = MessageBox.Show($"Сотрудник {SelectedRow.Name} Будет удален из списка", "Внимание!", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.OK)
             {
                 try
                 {
                     DBConnectHelper.DbObj.Persons.Remove(SelectedRow as Persons);
-                    DBConnectHelper.DbObj.SaveChanges();
-                    MessageBox.Show("Сотрудник удален!");
+                    TableSource = TableSource;
+
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Возникла непредвиденная ошибка: " + ex);
                 }
             }
         }
-        public bool CanOnDeletePositionExecute(object p)
+        public bool CanOnDeleteSelectedRowExecute(object p)
         {
             if (SelectedRow != null)
                 return true;
@@ -73,7 +87,7 @@ namespace UpaProject.ViewModels
         #endregion
         #region Обновление данных
         public ICommand ResourceUpdate { get; set; }
-        public void OnResourceUpdateExecuted(object p)=> TableSource = TableSource;
+        public void OnResourceUpdateExecuted(object p) => TableSource = TableSource;
         public bool CanOnResourceUpdateExecute(object p) => true;
         #endregion
 
@@ -82,10 +96,11 @@ namespace UpaProject.ViewModels
         {
             #region Комманды
             AddPerson = new LambdaCommand(OnAddPersonExecuted, CanOnAddPersonExecute);
-            DeletePosition = new LambdaCommand(OnDeletePositionExecuted, CanOnDeletePositionExecute);
+            DeleteSelectedRow = new LambdaCommand(OnDeleteSelectedRowExecuted, CanOnDeleteSelectedRowExecute);
+            ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
             #endregion
-            
-           // TableSource = DBConnectHelper.DbObj.Persons.ToList();
+
+            // TableSource = DBConnectHelper.DbObj.Persons.ToList();
         }
     }
 }

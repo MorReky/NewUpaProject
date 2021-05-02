@@ -77,21 +77,21 @@ namespace UpaProject.ViewModels
         #endregion
 
         #region Вернуться назад
-        public ICommand Back { get; }
+        public ICommand GoBack { get; }
 
-        public void OnBackExecuted(object p)
+        public void OnGoBackExecuted(object p)
         {
             FrameLoader.frmObj.GoBack();
         }
 
-        public bool CanOnBackExecute(object p) => true;
+        public bool CanOnGoBackExecute(object p) => true;
         #endregion
         #endregion
         public PageNewCatalogPersonsViewModel()
         {
             #region Комманды
             AddPersons = new LambdaCommand(OnAddPersonsExecuted, CanOnAddPersonsExecute);
-            Back = new LambdaCommand(OnBackExecuted, CanOnBackExecute);
+            GoBack = new LambdaCommand(OnGoBackExecuted, CanOnGoBackExecute);
             #endregion
 
         }

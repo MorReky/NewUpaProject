@@ -19,12 +19,39 @@ namespace UpaProject.ViewModels
     internal class MTRCatalogsPageViewModel:ViewModel
     {
         #region Свойства
-        public IEnumerable<MTR> TableSource { get => DBConnectHelper.DbObj.MTR.ToList(); set => DBConnectHelper.DbObj.SaveChanges(); }
-		#endregion
+        public IEnumerable<MTR> TableSource 
+		{
+			get => DBConnectHelper.DbObj.MTR.ToList();
+			set 
+			{ 
+				DBConnectHelper.DbObj.SaveChanges();
+				OnPropertyChanged("TableSource"); 
+			}
+		}
+		#region SelectedRow
+		private MTR _SelectedRow;
+		public MTR SelectedRow
+        {
+			get => _SelectedRow;
+			set
+            {
+				if (!Equals(_SelectedRow, value))
+				{
+					_SelectedRow = value;
+					DBConnectHelper.DbObj.SaveChanges();
+					OnPropertyChanged("SelectedRow");
+				}
+				else
+					_SelectedRow = value;
+            }
+        }
+        #endregion
 
-		#region Комманды
-		#region Выгрузка в excel
-		public ICommand ToExcel { get; set; }
+        #endregion
+
+        #region Комманды
+        #region Выгрузка в excel
+        public ICommand ToExcel { get; set; }
 		public void OnToExcelExecuted(object p) => GeneredNewExcel();
 		public bool CanOnToExcelExecute(object p) => true;
         #endregion
@@ -38,7 +65,23 @@ namespace UpaProject.ViewModels
 		public void OnResourceUpdateExecuted(object p) => TableSource = TableSource;
 		public bool CanOnResourceUpdateExecute(object p) => true;
 		#endregion
+		#region Удаление позиции
+		public ICommand DeleteSelectedRow { get; }
+		public void OnDeleteSelectedRowExecuted(object p)
+        {
+			MessageBoxResult result = MessageBox.Show($"Позиция {SelectedRow.IdSap} {SelectedRow.Name} будет удалена", "Внимание", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+			if (result == MessageBoxResult.OK)
+			{
+				DBConnectHelper.DbObj.MTR.Remove(SelectedRow);
+				TableSource = TableSource;
+			}
+			else
+				return;
+		}
+		public bool CanOnDeleteSelectedRowExecute(object p)=> (SelectedRow != null)?true: false;
+        
 
+		#endregion
 		#endregion
 
 		public MTRCatalogsPageViewModel()
@@ -47,6 +90,7 @@ namespace UpaProject.ViewModels
 			ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
 			ToExcel = new LambdaCommand(OnToExcelExecuted, CanOnToExcelExecute);
 			GoToNewMTRPage = new LambdaCommand(OnGoToNewMTRPageExecuted, CanOnGoToNewMTRPageExecute);
+			DeleteSelectedRow=new LambdaCommand(OnDeleteSelectedRowExecuted, CanOnDeleteSelectedRowExecute);
 			#endregion
 		}
 

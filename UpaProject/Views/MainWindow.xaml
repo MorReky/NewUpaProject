@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UpaProject"
+        xmlns:vm="clr-namespace:UpaProject.ViewModels"
         mc:Ignorable="d"
         Title="UpaOborot" Height="550" Width="1200"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <ContextMenu Width="auto"
                      Height="auto"
@@ -73,10 +77,11 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="193*"/>
-            <ColumnDefinition Width="699*"/>
+            <ColumnDefinition Width="230" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Background="#FF088DD0" LastChildFill="False" >
+        <DockPanel Background="#FF088DD0" Width="{Binding MMM}" LastChildFill="False" >
             <Button Content="Справочники"   
                     IsEnabled="False"
                     DockPanel.Dock="Top"
@@ -104,19 +109,26 @@
                     Style="{StaticResource Button_Main}"
                     Click="BtnExit_Click"
                     Margin="5,40"
-                    Name="BtnExit"/>            
+                    Name="BtnExit"/>
         </DockPanel>
+        <Button Style="{StaticResource BtnFrame}" 
+                Grid.Column="1"
+                MinWidth="0" HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,0"
+                Padding="5"
+                Visibility="Collapsed"
+                IsEnabled="False">
+            <Button.Content>
+                <TextBlock TextWrapping="Wrap" Text="Скрыть"/>
+            </Button.Content>
+        </Button>
         <Frame
             NavigationUIVisibility="Hidden"
             Name="FrmMain"
             Grid.Row="0"
             Grid.Column="1"
-            ContentRendered="FrmMain_ContentRendered"/>
-        <!--<TextBlock Text="Программа в стадии разработки"
-                   VerticalAlignment="Bottom"  
-                   HorizontalAlignment="Right"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   Margin="3"/>-->
+            ContentRendered="FrmMain_ContentRendered"
+            Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

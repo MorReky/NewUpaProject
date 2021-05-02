@@ -11,10 +11,47 @@
     <Page.DataContext>
         <vm:NewPositionPageViewModel/>
     </Page.DataContext>
-    <DockPanel LastChildFill="False">
+    <DockPanel LastChildFill="True">
         <StackPanel HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-            
+                    VerticalAlignment="Center"
+                    x:Name="Test"
+                    Orientation="Vertical">
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}" 
+                           Text="Тег"
+                           MinWidth="200"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Text="{Binding Tag}"
+                         Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}" 
+                           Text="Название позиции"
+                           MinWidth="200"/>
+                <TextBox Style="{StaticResource Txb}"
+                         Width="300"
+                         Text="{Binding Name}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5">
+                <TextBlock Style="{StaticResource Txt}" 
+                           Text="Система АСУ"
+                           MinWidth="200"/>
+                <ComboBox Style="{StaticResource Cmb}"
+                         Width="300"
+                          ItemsSource="{Binding ASUSystems}"
+                          SelectedValuePath="IDSystemAsu"
+                          DisplayMemberPath="Name"
+                          IsEditable="False"/>
+            </StackPanel>
+            <Button Style="{StaticResource BtnFrame}"
+                    FontSize="13pt"
+                    Content="Продолжить"/>
+            <Button Style="{StaticResource BtnFrame}"
+                    FontSize="13pt"
+                    Content="Отмена"/>
         </StackPanel>        
     </DockPanel>
 </Page>

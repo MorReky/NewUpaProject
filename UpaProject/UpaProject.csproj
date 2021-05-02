@@ -167,8 +167,9 @@
     <Compile Include="ViewModels\AutorizationPageViewModel.cs" />
     <Compile Include="ViewModels\HelpersClass\TimeDate.cs" />
     <Compile Include="ViewModels\HistoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MTRCatalogsPageViewModel.cs" />
-    <Compile Include="ViewModels\NewMTRPageViewModel.cs" />
+    <Compile Include="ViewModels\AddMTRPageViewModel.cs" />
     <Compile Include="ViewModels\NewPositionPageViewModel.cs" />
     <Compile Include="ViewModels\PageNewCatalogPersonsViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
@@ -176,6 +177,9 @@
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="ViewModels\TagsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />
+    <Compile Include="Views\Catalogs\MTRCatalog\AddNewMTRPage.xaml.cs">
+      <DependentUpon>AddNewMTRPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Catalogs\MTRCatalog\MTRCatalogsPage.xaml.cs">
       <DependentUpon>MTRCatalogsPage.xaml</DependentUpon>
     </Compile>
@@ -200,12 +204,16 @@
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Storages\NewMTRPage.xaml.cs">
-      <DependentUpon>NewMTRPage.xaml</DependentUpon>
+    <Compile Include="Views\Storages\AddMTRInStoragesPage.xaml.cs">
+      <DependentUpon>AddMTRInStoragesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Storages\StoragesPage.xaml.cs">
       <DependentUpon>StoragesPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Catalogs\MTRCatalog\AddNewMTRPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Catalogs\MTRCatalog\MTRCatalogsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -274,7 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Storages\NewMTRPage.xaml">
+    <Page Include="Views\Storages\AddMTRInStoragesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

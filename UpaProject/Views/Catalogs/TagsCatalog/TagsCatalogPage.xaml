@@ -23,7 +23,7 @@
                     Margin="5">
                 <Button Style="{StaticResource BtnFrame}"
                     Content="Новая позиция"
-                        Command="{Binding }"/>
+                        Command="{Binding NewPosition}"/>
                 <Button Style="{StaticResource BtnFrame}"
                         Content="Удалить"
                         IsEnabled="False"

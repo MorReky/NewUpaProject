@@ -62,7 +62,7 @@
           <Key>
             <PropertyRef Name="IDMTR" />
           </Key>
-          <Property Name="IDMTR" Type="int" Nullable="false" />
+          <Property Name="IDMTR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSap" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="500" />
           <Property Name="Unit" Type="nvarchar" MaxLength="20" />
@@ -870,7 +870,7 @@
           <Key>
             <PropertyRef Name="IDMTR" />
           </Key>
-          <Property Name="IDMTR" Type="Int32" Nullable="false" />
+          <Property Name="IDMTR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSap" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />

@@ -10,6 +10,7 @@ using UpaProject.FrameApp;
 using UpaProject.Infrastracture.Commands;
 using UpaProject.Models.DataFilesApp;
 using UpaProject.ViewModels.Base;
+using UpaProject.Views.Catalogs.MTRCatalog;
 using UpaProject.Views.Storages;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -29,7 +30,7 @@ namespace UpaProject.ViewModels
         #endregion
         #region переход на форму внесения нового МТР
 		public ICommand GoToNewMTRPage { get; }
-		public void OnGoToNewMTRPageExecuted(object p) => FrameLoader.frmObj.Navigate(new NewMTRPage());
+		public void OnGoToNewMTRPageExecuted(object p) => FrameLoader.frmObj.Navigate(new AddNewMTRPage());
 		public bool CanOnGoToNewMTRPageExecute(object p) => true;
 		#endregion
 		#region Обновление данных

@@ -61,7 +61,7 @@
             <Button Content="Отмена"
                     FontSize="13pt"
                     Style="{StaticResource BtnFrame}"
-                    Command="{Binding Back}"
+                    Command="{Binding GoBack}"
                     />
             <TextBlock Style="{StaticResource Txt}"
                        HorizontalAlignment="Center"                       

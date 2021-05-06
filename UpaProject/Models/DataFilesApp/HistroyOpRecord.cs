@@ -20,7 +20,6 @@ namespace UpaProject.Models.DataFilesApp
         public System.DateTime DateEdit { get; set; }
         public string Activity { get; set; }
     
-        public virtual OpRececord OpRececord { get; set; }
         public virtual Users Users { get; set; }
     }
 }

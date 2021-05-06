@@ -19,19 +19,12 @@ namespace UpaProject.ViewModels
     {
         #region Свойства
         #region TableSource
-        private IEnumerable<Storage_MTR> _TableSource { get => DBConnectHelper.DbObj.Storage_MTR.ToList(); }
+        private IEnumerable<Storage_MTR> _TableSource;
 
         public IEnumerable<Storage_MTR> TableSource
         {
-            get
-            {
-                if (IdSapFilter != "0")
-                {
-                    OnPropertyChanged();
-                    return _TableSource.Where(x => x.MTR.IdSap.ToString() == IdSapFilter).ToList();
-                }
-                else return _TableSource;
-             }
+            get=> _TableSource;
+            set => Set(ref _TableSource, value);
             //set
             //{
 
@@ -113,9 +106,9 @@ namespace UpaProject.ViewModels
         #region Комманды
 
         #region Обновление данных на странице
-        //public ICommand ResourceUpdate { get; set; }
-        //public void OnResourceUpdateExecuted(object p) => TableSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
-        //public bool CanOnResourceUpdateExecute(object p) => true;
+        public ICommand ResourceUpdate { get; set; }
+        public void OnResourceUpdateExecuted(object p) => TableSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
+        public bool CanOnResourceUpdateExecute(object p) => true;
         #endregion
 
 
@@ -126,7 +119,7 @@ namespace UpaProject.ViewModels
             #region Комманды
             //ResourceUpdate = new LambdaCommand(OnResourceUpdateExecuted, CanOnResourceUpdateExecute);
             #endregion
-            //TableSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
+            TableSource = DBConnectHelper.DbObj.Storage_MTR.ToList();
         }
     }
 }

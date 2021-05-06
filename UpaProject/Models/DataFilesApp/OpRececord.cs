@@ -17,7 +17,6 @@ namespace UpaProject.Models.DataFilesApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OpRececord()
         {
-            this.HistroyOpRecord = new HashSet<HistroyOpRecord>();
             this.OpShifts_OpRecord = new HashSet<OpShifts_OpRecord>();
             this.Realizers = new HashSet<Realizers>();
         }
@@ -36,8 +35,6 @@ namespace UpaProject.Models.DataFilesApp
         public string Comments { get; set; }
     
         public virtual Departments Departments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistroyOpRecord> HistroyOpRecord { get; set; }
         public virtual Place Place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OpShifts_OpRecord> OpShifts_OpRecord { get; set; }

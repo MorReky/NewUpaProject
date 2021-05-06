@@ -10,7 +10,7 @@
       Title="Склады">
     <!--<Page.DataContext>
         <vm:StoragesPageViewModel/>
-    </Page.DataContext>z-->
+    </Page.DataContext>-->
     <DockPanel LastChildFill="True" >
         <GroupBox DockPanel.Dock="Top">
             <GroupBox.Header>
@@ -129,19 +129,18 @@
                   Name="MTRGrid"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  CanUserAddRows="False"
+                  CanUserAddRows="{Binding EditTable}"
                   CurrentCellChanged="MTRGrid_CurrentCellChanged"
-                  ItemsSource="{Binding DataTable}"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ГИД" Binding="{Binding MTR.IdSap}" />
-                <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding MTR.Name}" Width="450"/>
                 <DataGridTextColumn Header="Ед.Измерения" Binding="{Binding MTR.Unit}"/>
                 <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
                 <DataGridComboBoxColumn Header="Местоположение"
                                         x:Name="CmbGrid"
                                         SelectedValueBinding="{Binding IdStorage}"
-                                        ItemsSource="{Binding StoragesCollection}"
+                                        ItemsSource="{Binding DataContext.MTRCollection,RelativeSource={RelativeSource AncestorType=Page,Mode=FindAncestor}}"
                                         DisplayMemberPath="Storage"
                                         SelectedValuePath="IDStorage"/>
                 <DataGridTextColumn Header="Комментарии" Binding="{Binding Comment}"/>

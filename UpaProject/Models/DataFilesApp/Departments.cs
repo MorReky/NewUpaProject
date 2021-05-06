@@ -18,6 +18,7 @@ namespace UpaProject.Models.DataFilesApp
         public Departments()
         {
             this.OpRececord = new HashSet<OpRececord>();
+            this.Place = new HashSet<Place>();
             this.SystemsAsu = new HashSet<SystemsAsu>();
         }
     
@@ -27,6 +28,8 @@ namespace UpaProject.Models.DataFilesApp
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OpRececord> OpRececord { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Place> Place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SystemsAsu> SystemsAsu { get; set; }
     }

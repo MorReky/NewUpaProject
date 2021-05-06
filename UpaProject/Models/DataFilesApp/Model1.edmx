@@ -123,6 +123,7 @@
             <PropertyRef Name="IDPlace" />
           </Key>
           <Property Name="IDPlace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDepartment" Type="int" />
           <Property Name="IdSystemAsu" Type="int" />
           <Property Name="Tag" Type="nvarchar" MaxLength="20" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" />
@@ -285,18 +286,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_HistroyOpRecord_OpRececord">
-          <End Role="OpRececord" Type="Self.OpRececord" Multiplicity="1" />
-          <End Role="HistroyOpRecord" Type="Self.HistroyOpRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpRececord">
-              <PropertyRef Name="IDOpRecord" />
-            </Principal>
-            <Dependent Role="HistroyOpRecord">
-              <PropertyRef Name="IdOpRecord" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HistroyOpRecord_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="HistroyOpRecord" Type="Self.HistroyOpRecord" Multiplicity="*" />
@@ -405,6 +394,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="Place" Type="Self.Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDDepartment" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Place_MTR_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Place_MTR" Type="Self.Place_MTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="IDPlace" />
+            </Principal>
+            <Dependent Role="Place_MTR">
+              <PropertyRef Name="IdPlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_SystemsAsu">
           <End Role="SystemsAsu" Type="Self.SystemsAsu" Multiplicity="0..1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -426,18 +439,6 @@
             </Principal>
             <Dependent Role="Place_MTR">
               <PropertyRef Name="IdMTR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Place-MTR_Place">
-          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
-          <End Role="Place_MTR" Type="Self.Place_MTR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Place">
-              <PropertyRef Name="IDPlace" />
-            </Principal>
-            <Dependent Role="Place_MTR">
-              <PropertyRef Name="IdPlace" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -583,10 +584,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryStorages" EntitySet="HistoryStorages" />
           </AssociationSet>
-          <AssociationSet Name="FK_HistroyOpRecord_OpRececord" Association="Self.FK_HistroyOpRecord_OpRececord">
-            <End Role="OpRececord" EntitySet="OpRececord" />
-            <End Role="HistroyOpRecord" EntitySet="HistroyOpRecord" />
-          </AssociationSet>
           <AssociationSet Name="FK_HistroyOpRecord_Users" Association="Self.FK_HistroyOpRecord_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="HistroyOpRecord" EntitySet="HistroyOpRecord" />
@@ -623,16 +620,20 @@
             <End Role="WorkGroupValues" EntitySet="WorkGroupValues" />
             <End Role="Persons" EntitySet="Persons" />
           </AssociationSet>
+          <AssociationSet Name="FK_Place_Departments" Association="Self.FK_Place_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Place_MTR_Place" Association="Self.FK_Place_MTR_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Place_MTR" EntitySet="Place_MTR" />
+          </AssociationSet>
           <AssociationSet Name="FK_Place_SystemsAsu" Association="Self.FK_Place_SystemsAsu">
             <End Role="SystemsAsu" EntitySet="SystemsAsu" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
           <AssociationSet Name="FK_Place-MTR_MTR" Association="Self.FK_Place-MTR_MTR">
             <End Role="MTR" EntitySet="MTR" />
-            <End Role="Place_MTR" EntitySet="Place_MTR" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Place-MTR_Place" Association="Self.FK_Place-MTR_Place">
-            <End Role="Place" EntitySet="Place" />
             <End Role="Place_MTR" EntitySet="Place_MTR" />
           </AssociationSet>
           <AssociationSet Name="FK_Realizers_OpRececord" Association="Self.FK_Realizers_OpRececord">
@@ -702,6 +703,10 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="OpRececord" EntitySet="OpRececord" />
           </AssociationSet>
+          <AssociationSet Name="FK_Place_Departments" Association="UpaDBModel.FK_Place_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
           <AssociationSet Name="FK_SystemsAsu_Departments" Association="UpaDBModel.FK_SystemsAsu_Departments">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="SystemsAsu" EntitySet="SystemsAsu" />
@@ -725,10 +730,6 @@
           <AssociationSet Name="FK_HistoryStorages_Users" Association="UpaDBModel.FK_HistoryStorages_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="HistoryStorages" EntitySet="HistoryStorages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HistroyOpRecord_OpRececord" Association="UpaDBModel.FK_HistroyOpRecord_OpRececord">
-            <End Role="OpRececord" EntitySet="OpRececord" />
-            <End Role="HistroyOpRecord" EntitySet="HistroyOpRecord" />
           </AssociationSet>
           <AssociationSet Name="FK_HistroyOpRecord_Users" Association="UpaDBModel.FK_HistroyOpRecord_Users">
             <End Role="Users" EntitySet="Users" />
@@ -786,13 +787,13 @@
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Shifts_Persons" EntitySet="Shifts_Persons" />
           </AssociationSet>
-          <AssociationSet Name="FK_Place_SystemsAsu" Association="UpaDBModel.FK_Place_SystemsAsu">
-            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
-            <End Role="Place" EntitySet="Place" />
-          </AssociationSet>
           <AssociationSet Name="FK_Place_MTR_Place" Association="UpaDBModel.FK_Place_MTR_Place">
             <End Role="Place" EntitySet="Place" />
             <End Role="Place_MTR" EntitySet="Place_MTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Place_SystemsAsu" Association="UpaDBModel.FK_Place_SystemsAsu">
+            <End Role="SystemsAsu" EntitySet="SystemsAsu" />
+            <End Role="Place" EntitySet="Place" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_RulesForRole" Association="UpaDBModel.FK_Users_RulesForRole">
             <End Role="RulesForRole" EntitySet="RulesForRole" />
@@ -811,6 +812,7 @@
           <Property Name="Number" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OpRececord" Relationship="UpaDBModel.FK_OpRececord_Departments" FromRole="Departments" ToRole="OpRececord" />
+          <NavigationProperty Name="Place" Relationship="UpaDBModel.FK_Place_Departments" FromRole="Departments" ToRole="Place" />
           <NavigationProperty Name="SystemsAsu" Relationship="UpaDBModel.FK_SystemsAsu_Departments" FromRole="Departments" ToRole="SystemsAsu" />
         </EntityType>
         <EntityType Name="HistoryLoginUsers">
@@ -855,7 +857,6 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="DateEdit" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Activity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OpRececord" Relationship="UpaDBModel.FK_HistroyOpRecord_OpRececord" FromRole="HistroyOpRecord" ToRole="OpRececord" />
           <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_HistroyOpRecord_Users" FromRole="HistroyOpRecord" ToRole="Users" />
         </EntityType>
         <EntityType Name="Images">
@@ -906,7 +907,6 @@
           <Property Name="Solution" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departments" Relationship="UpaDBModel.FK_OpRececord_Departments" FromRole="OpRececord" ToRole="Departments" />
-          <NavigationProperty Name="HistroyOpRecord" Relationship="UpaDBModel.FK_HistroyOpRecord_OpRececord" FromRole="OpRececord" ToRole="HistroyOpRecord" />
           <NavigationProperty Name="Place" Relationship="UpaDBModel.FK_OpRececord_Place" FromRole="OpRececord" ToRole="Place" />
           <NavigationProperty Name="OpShifts_OpRecord" Relationship="UpaDBModel.FK_OpShifts_OpRecord_OpRececord" FromRole="OpRececord" ToRole="OpShifts_OpRecord" />
           <NavigationProperty Name="Realizers" Relationship="UpaDBModel.FK_Realizers_OpRececord" FromRole="OpRececord" ToRole="Realizers" />
@@ -950,13 +950,15 @@
             <PropertyRef Name="IDPlace" />
           </Key>
           <Property Name="IDPlace" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepartment" Type="Int32" />
           <Property Name="IdSystemAsu" Type="Int32" />
           <Property Name="Tag" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Departments" Relationship="UpaDBModel.FK_Place_Departments" FromRole="Place" ToRole="Departments" />
           <NavigationProperty Name="OpRececord" Relationship="UpaDBModel.FK_OpRececord_Place" FromRole="Place" ToRole="OpRececord" />
-          <NavigationProperty Name="SystemsAsu" Relationship="UpaDBModel.FK_Place_SystemsAsu" FromRole="Place" ToRole="SystemsAsu" />
           <NavigationProperty Name="Place_MTR" Relationship="UpaDBModel.FK_Place_MTR_Place" FromRole="Place" ToRole="Place_MTR" />
+          <NavigationProperty Name="SystemsAsu" Relationship="UpaDBModel.FK_Place_SystemsAsu" FromRole="Place" ToRole="SystemsAsu" />
         </EntityType>
         <EntityType Name="Place_MTR">
           <Key>
@@ -1087,6 +1089,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Place_Departments">
+          <End Type="UpaDBModel.Departments" Role="Departments" Multiplicity="0..1" />
+          <End Type="UpaDBModel.Place" Role="Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDDepartment" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SystemsAsu_Departments">
           <End Type="UpaDBModel.Departments" Role="Departments" Multiplicity="1" />
           <End Type="UpaDBModel.SystemsAsu" Role="SystemsAsu" Multiplicity="*" />
@@ -1156,18 +1170,6 @@
             </Principal>
             <Dependent Role="HistoryStorages">
               <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_HistroyOpRecord_OpRececord">
-          <End Type="UpaDBModel.OpRececord" Role="OpRececord" Multiplicity="1" />
-          <End Type="UpaDBModel.HistroyOpRecord" Role="HistroyOpRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpRececord">
-              <PropertyRef Name="IDOpRecord" />
-            </Principal>
-            <Dependent Role="HistroyOpRecord">
-              <PropertyRef Name="IdOpRecord" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1339,18 +1341,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Place_SystemsAsu">
-          <End Type="UpaDBModel.SystemsAsu" Role="SystemsAsu" Multiplicity="0..1" />
-          <End Type="UpaDBModel.Place" Role="Place" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SystemsAsu">
-              <PropertyRef Name="IDSystemAsu" />
-            </Principal>
-            <Dependent Role="Place">
-              <PropertyRef Name="IdSystemAsu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Place_MTR_Place">
           <End Type="UpaDBModel.Place" Role="Place" Multiplicity="0..1" />
           <End Type="UpaDBModel.Place_MTR" Role="Place_MTR" Multiplicity="*" />
@@ -1360,6 +1350,18 @@
             </Principal>
             <Dependent Role="Place_MTR">
               <PropertyRef Name="IdPlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Place_SystemsAsu">
+          <End Type="UpaDBModel.SystemsAsu" Role="SystemsAsu" Multiplicity="0..1" />
+          <End Type="UpaDBModel.Place" Role="Place" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemsAsu">
+              <PropertyRef Name="IDSystemAsu" />
+            </Principal>
+            <Dependent Role="Place">
+              <PropertyRef Name="IdSystemAsu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1525,6 +1527,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Tag" ColumnName="Tag" />
                 <ScalarProperty Name="IdSystemAsu" ColumnName="IdSystemAsu" />
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
                 <ScalarProperty Name="IDPlace" ColumnName="IDPlace" />
               </MappingFragment>
             </EntityTypeMapping>

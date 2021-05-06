@@ -22,15 +22,17 @@ namespace UpaProject.Models.DataFilesApp
         }
     
         public int IDPlace { get; set; }
+        public Nullable<int> IdDepartment { get; set; }
         public Nullable<int> IdSystemAsu { get; set; }
         public string Tag { get; set; }
         public string Name { get; set; }
         public string Comments { get; set; }
     
+        public virtual Departments Departments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OpRececord> OpRececord { get; set; }
-        public virtual SystemsAsu SystemsAsu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Place_MTR> Place_MTR { get; set; }
+        public virtual SystemsAsu SystemsAsu { get; set; }
     }
 }

@@ -168,6 +168,7 @@ namespace UpaProject.ViewModels
                 IdOpRecord = opRececordObj.IDOpRecord,
                 IdShift = LastShift.IDShift
             };
+            DBConnectHelper.DbObj.OpShifts_OpRecord.Add(opShifts_opRecordObj);
             //Добавляем исполнителей работу в сводную таблицу запись-исполнители
             foreach (object selected in SelectedPersonsList)
             {
@@ -179,6 +180,7 @@ namespace UpaProject.ViewModels
                 DBConnectHelper.DbObj.Realizers.Add(realizers);
             }
             DBConnectHelper.DbObj.SaveChanges();
+            MessageBox.Show("Данные успешно внесены", "", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public bool CanOnAddNewSubjExecute(object p)
         {

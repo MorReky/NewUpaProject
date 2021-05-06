@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -112,7 +114,7 @@ namespace UpaProject.Views.Storages
             DBConnectHelper.DbObj.SaveChanges();
         }
 
-        private async void BtnToExcel_Click(object sender, RoutedEventArgs e)
+        private void BtnToExcel_Click(object sender, RoutedEventArgs e)
         {
             Excel.Range xlSheetRange = null;
             Excel.Application xlApp = new Excel.Application();
@@ -322,6 +324,8 @@ namespace UpaProject.Views.Storages
 
                 //Показываем ексель
                 xlApp.Visible = true;
+                //object missing = Type.Missing;
+                //xlSheet.SaveAs("Книга1.xlsx", missing, missing, missing, missing, missing, XlSaveAsAccessMode.xlExclusive, missing, missing, missing);
 
                 xlApp.Interactive = true;
                 xlApp.ScreenUpdating = true;
@@ -331,6 +335,8 @@ namespace UpaProject.Views.Storages
                 releaseObject(xlSheetRange);
                 releaseObject(xlSheet);
                 releaseObject(xlApp);
+
+                MessageBox.Show("Книга открыта");
             }
         }
         //Освобождаем ресуры (закрываем Excel)
@@ -338,7 +344,7 @@ namespace UpaProject.Views.Storages
         {
             try
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                Marshal.ReleaseComObject(obj);
                 obj = null;
             }
             catch (Exception ex)
@@ -348,6 +354,7 @@ namespace UpaProject.Views.Storages
             }
             finally
             {
+                //GC.WaitForPendingFinalizers();                
                 GC.Collect();
             }
         }

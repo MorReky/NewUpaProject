@@ -150,7 +150,7 @@
                               DisplayMemberPath="Tag"
                               SelectedValuePath="IDPlace"
                               Style="{StaticResource Cmb}"
-                              ItemsSource="{Binding SelectedSystemsAsu.Place}"
+                              ItemsSource="{Binding SelectedDepartment.Place}"
                               SelectedItem="{Binding SelectedTag}"
                               StaysOpenOnEdit ="True" 
                               VerticalAlignment="Center"

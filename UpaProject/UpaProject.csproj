@@ -69,7 +69,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Infrastracture\ClassHelper\ClassRulesHelper.cs" />
     <Compile Include="Infrastracture\ClassHelper\ClassUserHelper.cs" />
     <Compile Include="Infrastracture\Commands\Base\Command.cs" />
     <Compile Include="Infrastracture\Commands\LambdaCommand.cs" />

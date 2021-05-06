@@ -77,9 +77,8 @@ namespace UpaProject.ViewModels
 			}
 		}
 		public bool CanOnDeleteSelectedRowExecute(object p)=> (SelectedRow != null)?true: false;
-        
-
 		#endregion
+
 		#endregion
 
 		public MTRCatalogsPageViewModel()

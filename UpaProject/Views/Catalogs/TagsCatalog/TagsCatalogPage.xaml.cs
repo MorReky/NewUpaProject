@@ -20,9 +20,6 @@ namespace UpaProject.Views.Catalogs.TagsCatalog
     /// </summary>
     public partial class TagsCatalogPage : Page
     {
-        public TagsCatalogPage()
-        {
-            InitializeComponent();
-        }
+        public TagsCatalogPage()=>   InitializeComponent();
     }
 }

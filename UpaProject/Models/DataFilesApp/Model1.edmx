@@ -157,6 +157,7 @@
           </Key>
           <Property Name="Role" Type="int" Nullable="false" />
           <Property Name="CanChangeStorage" Type="bit" Nullable="false" />
+          <Property Name="CanChangeTags" Type="bit" />
         </EntityType>
         <EntityType Name="Shifts_Persons">
           <Key>
@@ -992,6 +993,7 @@
           </Key>
           <Property Name="Role" Type="Int32" Nullable="false" />
           <Property Name="CanChangeStorage" Type="Boolean" Nullable="false" />
+          <Property Name="CanChangeTags" Type="Boolean" />
           <NavigationProperty Name="Users" Relationship="UpaDBModel.FK_Users_RulesForRole" FromRole="RulesForRole" ToRole="Users" />
         </EntityType>
         <EntityType Name="Shifts_Persons">
@@ -1560,6 +1562,7 @@
           <EntitySetMapping Name="RulesForRole">
             <EntityTypeMapping TypeName="UpaDBModel.RulesForRole">
               <MappingFragment StoreEntitySet="RulesForRole">
+                <ScalarProperty Name="CanChangeTags" ColumnName="CanChangeTags" />
                 <ScalarProperty Name="CanChangeStorage" ColumnName="CanChangeStorage" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
               </MappingFragment>

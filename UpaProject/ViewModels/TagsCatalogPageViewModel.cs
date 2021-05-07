@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using UpaProject.DataFilesApp;
 using UpaProject.FrameApp;
+using UpaProject.Infrastracture.ClassHelper;
 using UpaProject.Infrastracture.Commands;
 using UpaProject.Models.DataFilesApp;
 using UpaProject.ViewModels.Base;
@@ -18,11 +19,43 @@ namespace UpaProject.ViewModels
         #region Свойства
         public IEnumerable<Place_MTR> TableSource
         {
-            get => DBConnectHelper.DbObj.Place_MTR.ToList(); set => DBConnectHelper.DbObj.SaveChanges();
+            get => DBConnectHelper.DbObj.Place_MTR.ToList();
+            set
+            {
+                DBConnectHelper.DbObj.SaveChanges();
+                OnPropertyChanged("TableSource");
+            }
         }
         #endregion
-            #region Комманды
-            #region Обновление данных
+        #region SapIdCollection
+        public IEnumerable<MTR> MTRCollection { get => DBConnectHelper.DbObj.MTR.ToList(); }
+        #endregion
+        #region SelectedRow
+        private Place_MTR _SelectedRow;
+        public Place_MTR SelectedRow
+        {
+            get => _SelectedRow;
+            set
+            {
+                if (!Equals(_SelectedRow, value))
+                {
+                    _SelectedRow = value;
+                    DBConnectHelper.DbObj.SaveChanges();
+                    OnPropertyChanged("SelectedRow");
+                }
+                else
+                    _SelectedRow = value;
+            }
+        }
+        #endregion
+        #region EditTable
+        public bool EditTable
+        {
+            get => ClassUserHelper.Role == 3 ? true : false;
+        }
+        #endregion
+        #region Комманды
+        #region Обновление данных
         public ICommand ResourceUpdate { get; set; }
         public void OnResourceUpdateExecuted(object p) => TableSource = TableSource;
         public bool CanOnResourceUpdateExecute(object p) => true;

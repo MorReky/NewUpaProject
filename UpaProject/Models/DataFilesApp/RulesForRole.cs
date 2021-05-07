@@ -22,6 +22,7 @@ namespace UpaProject.Models.DataFilesApp
     
         public int Role { get; set; }
         public bool CanChangeStorage { get; set; }
+        public Nullable<bool> CanChangeTags { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }

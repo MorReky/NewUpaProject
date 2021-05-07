@@ -35,16 +35,28 @@
         </GroupBox>
         <DataGrid Margin="10"
                   AutoGenerateColumns="False"
-                  IsReadOnly="False"
+                  IsReadOnly="{Binding EditTable}"
                   CanUserAddRows="False"
-                  ItemsSource="{Binding TableSource, Mode=TwoWay}"
+                  ItemsSource="{Binding TableSource, Mode=TwoWay, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedRow}"
                   >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тег" Binding="{Binding Place.Tag}" />
                 <DataGridTextColumn Header="Позиция" Binding="{Binding Place.Name}" />
-                <DataGridTextColumn Header="Гид" Binding="{Binding MTR.IdSap}" />
-                <DataGridTextColumn Header="Наименование МТР" Binding="{Binding MTR.Name}" />
+                <DataGridTemplateColumn Header="Гид">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedValue="{Binding IdMTR,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValuePath="IDMTR"
+                                      DisplayMemberPath="IdSap"
+                                      IsEditable="True"
+                                      ItemsSource="{Binding DataContext.MTRCollection,RelativeSource={RelativeSource
+                                        Mode=FindAncestor,AncestorType=Page}}"
+                                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Наименование МТР" IsReadOnly="True" Binding="{Binding MTR.Name,UpdateSourceTrigger=LostFocus}"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

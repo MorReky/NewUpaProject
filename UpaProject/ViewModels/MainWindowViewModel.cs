@@ -10,14 +10,13 @@ namespace UpaProject.ViewModels
     internal class MainWindowViewModel : ViewModel
     {
         #region Свойства
-        public double MMM=0;
 
         #endregion
         #region Комманды
         #endregion
         public MainWindowViewModel()
         {
-            #region Комманды
+            #region Команды
             #endregion
         }
     }

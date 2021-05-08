@@ -111,7 +111,6 @@ namespace UpaProject.ViewModels
         public bool CanOnResourceUpdateExecute(object p) => true;
         #endregion
 
-
         #endregion
 
         public StoragesPageViewModel()

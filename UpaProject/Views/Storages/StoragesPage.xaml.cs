@@ -119,9 +119,9 @@ namespace UpaProject.Views.Storages
         private void BtnToExcel_Click(object sender, RoutedEventArgs e)
         {
             //Creating a new workbook (Создание новой книги)
-            var Wb = new XLWorkbook();
+            var wb = new XLWorkbook();
             //Adding a woksheet (добавление рабочего листа)
-            var ws = Wb.Worksheets.Add("МТР");
+            var ws = wb.Worksheets.Add("МТР");
 
             MessageBox.Show("Загрузка данных началась. Пожалуйста, подождите", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -148,39 +148,49 @@ namespace UpaProject.Views.Storages
             ws.Cell(1, 18).Value = "Несортированное";
             ws.Cell(1, 19).Value = "Дата последнего обновления";
 
-            IEnumerable<Storage_MTR> rececords = DBConnectHelper.DbObj.Storage_MTR.ToList();
-            //Проставляем тип смены колонки
-            for (int i = 0; i < rececords.Count(); i++)
+
+            IEnumerable<Storage_MTR> records = DBConnectHelper.DbObj.Storage_MTR;
+            IEnumerable<MTR> mtrs = DBConnectHelper.DbObj.MTR;
+            IEnumerable<HistoryStorages> historyStorages = DBConnectHelper.DbObj.HistoryStorages;
+
+            //ws.Cell(4, 2).Value = mtrs.SelectMany(x => x.Name);
+
+
+            for (int i = 0; i < records.Count(); i++)
             {
-                data = rececords.ElementAt(i).MTR.IDMTR.ToString();
+                data = records.ElementAt(i).MTR.IDMTR.ToString();
                 ws.Cell(i + 2, 1).Value = i;
-                ws.Cell(i + 2, 2).Value = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IDMTR.ToString() == data).IdSap;
-                ws.Cell(i + 2, 3).Value = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IDMTR.ToString() == data).Name;
-                ws.Cell(i + 2, 4).Value = DBConnectHelper.DbObj.MTR.FirstOrDefault(x => x.IDMTR.ToString() == data).Unit;
+                var mtr = mtrs.FirstOrDefault(x => x.IDMTR.ToString() == data);
+                ws.Cell(i + 2, 2).Value = mtr.IdSap;
+                ws.Cell(i + 2, 3).Value = mtr.Name;
+                ws.Cell(i + 2, 4).Value = mtr.Unit;
 
-                ws.Cell(i + 2, 5).Value = DBConnectHelper.DbObj.Storage_MTR.Where(x => x.IdMTR.ToString() == data).Sum(x => x.Quantity);
+                ws.Cell(i + 2, 5).Value = records.Where(x => x.IdMTR.ToString() == data).Sum(x => x.Quantity);
+                var record = records.Where(x => x.IdMTR.ToString() == data);
+                ws.Cell(i + 2, 6).Value = record.FirstOrDefault(x => x.IdStorage == 1)?.Quantity;
+                ws.Cell(i + 2, 7).Value = record.FirstOrDefault(x => x.IdStorage == 3)?.Quantity ;
+                ws.Cell(i + 2, 8).Value = record.FirstOrDefault(x => x.IdStorage == 4)?.Quantity ;
+                ws.Cell(i + 2, 9).Value = record.FirstOrDefault(x => x.IdStorage == 7)?.Quantity ;
+                ws.Cell(i + 2, 10).Value = record.FirstOrDefault(x => x.IdStorage == 2)?.Quantity;
+                ws.Cell(i + 2, 11).Value = record.FirstOrDefault(x => x.IdStorage == 5)?.Quantity;
+                ws.Cell(i + 2, 12).Value = record.FirstOrDefault(x => x.IdStorage == 6)?.Quantity;
+                ws.Cell(i + 2, 13).Value = record.FirstOrDefault(x => x.IdStorage == 11)?.Quantity;
+                ws.Cell(i + 2, 14).Value = record.FirstOrDefault(x => x.IdStorage == 12)?.Quantity;
+                ws.Cell(i + 2, 15).Value = record.FirstOrDefault(x => x.IdStorage == 8)?.Quantity ;
+                ws.Cell(i + 2, 16).Value = record.FirstOrDefault(x => x.IdStorage == 13)?.Quantity;
+                ws.Cell(i + 2, 17).Value = record.FirstOrDefault(x => x.IdStorage == 15)?.Quantity;
+                ws.Cell(i + 2, 18).Value = record.FirstOrDefault(x => x.IdStorage == 9)?.Quantity;
 
-                ws.Cell(i + 2, 6).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 1) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 1).Quantity : 0;
-                ws.Cell(i + 2, 7).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 3) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 3).Quantity : 0;
-                ws.Cell(i + 2, 8).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 4) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 4).Quantity : 0;
-                ws.Cell(i + 2, 9).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 7) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 7).Quantity : 0;
-                ws.Cell(i + 2, 10).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 2) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 2).Quantity : 0;
-                ws.Cell(i + 2, 11).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 5) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 5).Quantity : 0;
-                ws.Cell(i + 2, 12).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 6) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 6).Quantity : 0;
-                ws.Cell(i + 2, 13).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 11) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 11).Quantity : 0;
-                ws.Cell(i + 2, 14).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 12) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 12).Quantity : 0;
-                ws.Cell(i + 2, 15).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 8) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 8).Quantity : 0;
-                ws.Cell(i + 2, 16).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 13) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 13).Quantity : 0;
-                ws.Cell(i + 2, 17).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 15) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 15).Quantity : 0;
-                ws.Cell(i + 2, 18).Value = (DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 9) != null) ? DBConnectHelper.DbObj.Storage_MTR.FirstOrDefault(x => x.IdMTR.ToString() == data && x.IdStorage == 9).Quantity : 0;
-
-                ws.Cell(i + 2, 19).Value = (DBConnectHelper.DbObj.HistoryStorages.FirstOrDefault(x => x.Storage_MTR.MTR.IDMTR.ToString() == data)!=null) ? DBConnectHelper.DbObj.HistoryStorages.FirstOrDefault(x => x.Storage_MTR.MTR.IDMTR.ToString() == data).DateEdit.ToString() : "";
+                ws.Cell(i + 2, 19).Value = historyStorages.FirstOrDefault(x => x.Storage_MTR.MTR.IDMTR.ToString() == data)?.DateEdit.ToString();
             }
+            //ws.Range((ws.Cell(2,19)),(ws.Cell(2000,19))).DataType = XLDataType.DateTime;
             MessageBox.Show("Готово! StorageTable.xlsx находится на вашем рабочем столе");
-
+            //ws.Columns().AdjustToContents();
             WindowsIdentity wi = WindowsIdentity.GetCurrent();
-            Wb.SaveAs($@"C:\Users\{wi.Name.Substring(4)}\Desktop\StorageTable.xlsx");
-            
+            wb.SaveAs($@"C:\Users\{wi.Name.Substring(4)}\Desktop\StorageTable.xlsx");
+            //Marshal.ReleaseComObject(ws);
+            //Marshal.ReleaseComObject(wb);
+
         }
 
         private void BtnNewPosition_Click(object sender, RoutedEventArgs e)

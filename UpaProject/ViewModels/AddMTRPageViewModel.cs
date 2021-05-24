@@ -15,37 +15,12 @@ using UpaProject.ViewModels.Base;
 
 namespace UpaProject.ViewModels
 {
-    internal class AddMTRPageViewModel : ViewModel
+    public class AddMTRPageViewModel : ViewModel
     {
         #region Свойства
         #region IEnumerable<MTR> MTRs
-        private IEnumerable<MTR> _MTRs;
-        public IEnumerable<MTR> MTRs
-        {
-            get => _MTRs;
-            set => Set(ref _MTRs, value);
-        }
-        #endregion
-        #region SapIdMTR
-        private MTR _SapIdMTR;
-        public MTR SapIdMTR
-        {
-            get => _SapIdMTR;
-            set
-            {
-                Set(ref _SapIdMTR, value);
-                if (_SapIdMTR != null)
-                {
-                    NameMTR = SapIdMTR.Name;
-                    UnitMTR = SapIdMTR.Unit;
-                }
-                else
-                {
-                    NameMTR = "";
-                    UnitMTR = "";
-                }
-            }
-        }
+      //  public readonly IEnumerable<MTR> MTRs = DBConnectHelper.DbObj.MTR.ToList();
+
         #endregion
         #region SapId
         private string _IdSap;
@@ -119,11 +94,11 @@ namespace UpaProject.ViewModels
                 ErrorText = "Поле Наименование не может быть пустым\n";
                 return false;
             }
-            if (SapIdMTR != null)
-            {
-                ErrorText = "Указанный МТР уже есть в Базе данных";
-                return false;
-            }
+            //if (DBConnectHelper.DbObj.MTR.Any(x=>x.IdSap.ToString()==IdSap))
+            //{
+            //    ErrorText = "Указанный МТР уже есть в Базе данных";
+            //    return false;
+            //}
             ErrorText = "";
             return true;
         }
@@ -144,12 +119,7 @@ namespace UpaProject.ViewModels
             #region Комманды
             AddNewMTR = new LambdaCommand(OnAddNewMTRExecute, CanOnAddNewMTRExecuted);
             GoBack = new LambdaCommand(OnGoBackExecuted, CanOnGoBackExecute);
-
             #endregion
-            MTRs = DBConnectHelper.DbObj.MTR.OrderBy(x => x.IdSap).ToList();
-        }
-        public void SelectMTR()
-        {
 
         }
 

@@ -21,14 +21,10 @@
                            Text="ГИД:"
                            FontSize="13pt"
                            MinWidth="200"/>
-                <ComboBox Style="{StaticResource Cmb}"
+                <TextBox Style="{StaticResource Txb}"
                          Width="100"
-                         ItemsSource="{Binding Path=MTRs}"
-                         SelectedItem="{Binding Path=SapIdMTR}"
                           Text="{Binding IdSap}"
-                         DisplayMemberPath="IdSap"
-                         FontSize="13pt"
-                         IsEditable="True"/>
+                         FontSize="13pt"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="5">

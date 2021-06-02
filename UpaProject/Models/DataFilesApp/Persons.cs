@@ -24,6 +24,7 @@ namespace UpaProject.Models.DataFilesApp
         public int IDPerson { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
+        public Nullable<int> Change { get; set; }
         public int IdStatus { get; set; }
         public int IdWorkGroup { get; set; }
     

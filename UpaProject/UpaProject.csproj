@@ -190,6 +190,7 @@
     <Compile Include="ViewModels\PageNewCatalogPersonsViewModel.cs" />
     <Compile Include="ViewModels\PageOpJournalViewModel.cs" />
     <Compile Include="ViewModels\PersonsCatalogPageViewModel.cs" />
+    <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\StoragesPageViewModel.cs" />
     <Compile Include="ViewModels\TagsCatalogPageViewModel.cs" />
     <Compile Include="ViewModels\WindowNewSubjViewModel.cs" />

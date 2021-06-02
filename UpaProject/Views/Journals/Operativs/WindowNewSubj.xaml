@@ -57,7 +57,7 @@
                            Text="Время начала:" 
                            Margin="5" />
                 <TextBox VerticalAlignment="Center"
-                         Text="{Binding TimeStart}"
+                         Text="{Binding TimeStart,ValidatesOnNotifyDataErrors=True}"
                          Style="{StaticResource Txb}"
                          Margin="5"
                          Padding="5,4" 

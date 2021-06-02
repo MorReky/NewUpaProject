@@ -4,11 +4,33 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UpaProject.Views"
+      xmlns:vm="clr-namespace:UpaProject.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="StartPage">
+      Title="Стартовая страница">
+    <Page.DataContext>
+        <vm:StartPageViewModel/>
+    </Page.DataContext>
 
-    <Grid>
-        
-    </Grid>
+    <DockPanel LastChildFill="False">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <TextBlock Style="{StaticResource Txt}"
+                       Text="Активная вахта:"/>
+            <ComboBox Style="{StaticResource Cmb}" 
+                      SelectedIndex="{Binding DeafaultChange, 
+                       UpdateSourceTrigger=PropertyChanged,
+                       Mode=TwoWay}">
+                <ComboBoxItem TabIndex="0">
+                    <TextBlock Text="Не выбрано" Style="{StaticResource Txt}"/>
+                </ComboBoxItem>
+                <ComboBoxItem TabIndex="1">
+                    <TextBlock Text="Вахта 1" Style="{StaticResource Txt}"/>
+                </ComboBoxItem>
+                <ComboBoxItem TabIndex="2">
+                    <TextBlock Text="Вахта 2" Style="{StaticResource Txt}"/>
+                </ComboBoxItem>
+                
+            </ComboBox>
+        </StackPanel>
+    </DockPanel>
 </Page>

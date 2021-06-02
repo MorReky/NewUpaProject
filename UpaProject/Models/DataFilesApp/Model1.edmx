@@ -115,6 +115,7 @@
           <Property Name="IDPerson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Change" Type="int" />
           <Property Name="IdStatus" Type="int" Nullable="false" />
           <Property Name="IdWorkGroup" Type="int" Nullable="false" />
         </EntityType>
@@ -939,6 +940,7 @@
           <Property Name="IDPerson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Change" Type="Int32" />
           <Property Name="IdStatus" Type="Int32" Nullable="false" />
           <Property Name="IdWorkGroup" Type="Int32" Nullable="false" />
           <NavigationProperty Name="StatusValues" Relationship="UpaDBModel.FK_Persons_StatusValues" FromRole="Persons" ToRole="StatusValues" />
@@ -1516,6 +1518,7 @@
               <MappingFragment StoreEntitySet="Persons">
                 <ScalarProperty Name="IdWorkGroup" ColumnName="IdWorkGroup" />
                 <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IDPerson" ColumnName="IDPerson" />

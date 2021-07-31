@@ -13,16 +13,14 @@
     </Page.DataContext>
 
     <DockPanel LastChildFill="False">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top"
+                    Margin="8">
             <TextBlock Style="{StaticResource Txt}"
                        Text="Активная вахта:"/>
             <ComboBox Style="{StaticResource Cmb}" 
                       SelectedIndex="{Binding DeafaultChange, 
                        UpdateSourceTrigger=PropertyChanged,
                        Mode=TwoWay}">
-                <ComboBoxItem TabIndex="0">
-                    <TextBlock Text="Не выбрано" Style="{StaticResource Txt}"/>
-                </ComboBoxItem>
                 <ComboBoxItem TabIndex="1">
                     <TextBlock Text="Вахта 1" Style="{StaticResource Txt}"/>
                 </ComboBoxItem>

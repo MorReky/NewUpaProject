@@ -62,7 +62,6 @@ namespace UpaProject.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int DeafaultChange {
             get {
                 return ((int)(this["DeafaultChange"]));

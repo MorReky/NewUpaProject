@@ -71,6 +71,23 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox SelectedIndex="{Binding Change}">
+                                <ComboBoxItem TabIndex="0">
+                                    <TextBlock Text="Неопределенно"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem TabIndex="1">
+                                    <TextBlock Text="Вахта 1" />
+                                </ComboBoxItem>
+                                <ComboBoxItem TabIndex="2">
+                                    <TextBlock Text="Вахта 2"/>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

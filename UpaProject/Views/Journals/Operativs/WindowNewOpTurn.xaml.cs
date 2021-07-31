@@ -29,13 +29,13 @@ namespace UpaProject.Journals
 
             DtOccur.SelectedDate = DateTime.Today;
 
-            CmbDutyEngKIP.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 3).ToList();
+            CmbDutyEngKIP.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 3 && x.Change == Properties.Settings.Default.DeafaultChange).ToList();
             CmbDutyEngKIP.Text = "-";
-            CmbDutyRep1.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2).ToList();
+            CmbDutyRep1.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2&&x.Change==Properties.Settings.Default.DeafaultChange).ToList();
             CmbDutyRep1.Text = "-";
-            CmbDutyRep2.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2).ToList();
+            CmbDutyRep2.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2 && x.Change == Properties.Settings.Default.DeafaultChange).ToList();
             CmbDutyRep2.Text = "-";
-            CmbDutyRep3.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2).ToList();
+            CmbDutyRep3.ItemsSource = DBConnectHelper.DbObj.Persons.Where(x => x.IdWorkGroup == 2 && x.Change == Properties.Settings.Default.DeafaultChange).ToList();
             CmbDutyRep3.Text = "-";
         }
 
